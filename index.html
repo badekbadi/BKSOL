@@ -1,163 +1,158 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BK Solutions | The Standard of Trust</title>
+
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BK Solutions | The Standard of Trust</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500;700&display=swap" rel="stylesheet">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: #050a14; /* <--- TU ZMIENIASZ KOLOR TŁA CAŁEJ STRONY */
-            color: #ffffff;
+            background: #050a14;
+            color: #fff;
             font-family: 'JetBrains Mono', monospace;
             height: 100vh;
             display: flex;
-            flex-direction: column; /* Ustawienie pionowe */
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             overflow: hidden;
             position: relative;
         }
 
         #particles-js {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
+            inset: 0;
             z-index: 1;
         }
 
-        /* --- KONTENER ŚRODKOWY (RAMKA I SZKŁO) --- */
+        /* --- GŁÓWNY KONTENER --- */
         .container {
             position: relative;
             z-index: 2;
             text-align: center;
-            background: rgba(0, 242, 255, 0.03); /* <--- TU ZMIENIASZ PRZEZROCZYSTOŚĆ TŁA ŚRODKA */
+            background: rgba(0,242,255,.05);
             padding: clamp(40px, 8vw, 80px);
-            border-left: 1px solid rgba(0, 242, 255, 0.2); /* <--- TU ZMIENIASZ JASNOŚĆ LEWEJ LINII */
-            border-right: 1px solid rgba(0, 242, 255, 0.2); /* <--- TU ZMIENIASZ JASNOŚĆ PRAWEJ LINII */
+            border-left: 1px solid rgba(0,242,255,.3);
+            border-right: 1px solid rgba(0,242,255,.3);
             backdrop-filter: blur(10px);
             max-width: 90vw;
-            margin-bottom: 120px; /* <--- ODSTĘP MIĘDZY KONTENEREM A MAILEM */
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 6vw, 4rem);
+            letter-spacing: clamp(6px, 1.5vw, 15px);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            text-shadow: 0 0 25px rgba(0,242,255,.6);
+        }
+
+        .standard-trust {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            letter-spacing: clamp(4px, 1vw, 8px);
+            opacity: .8;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(0,242,255,.4);
         }
 
         /* --- COMING SOON --- */
         .coming-soon-box {
-            font-size: 0.9rem; /* <--- TU ZMIENIASZ WIELKOŚĆ COMING SOON */
-            letter-spacing: 5px;
-            color: #00f2ff; /* <--- TU ZMIENIASZ KOLOR COMING SOON */
-            margin-bottom: 45px;
-            min-height: 1.2em;
-        }
-
-        /* --- BK SOLUTIONS (LOGO) --- */
-        h1 {
-            font-size: clamp(2.2rem, 6vw, 4rem); /* <--- TU ZMIENIASZ WIELKOŚĆ NAPISU BK SOLUTIONS */
-            letter-spacing: clamp(6px, 1.5vw, 15px);
-            line-height: 1.5; /* <--- TU ZMIENIASZ ODSTĘP MIĘDZY LINIAMI LOGO */
-            margin-bottom: 30px;
-            font-weight: 700;
-            text-transform: uppercase;
-            text-shadow: 0 0 25px rgba(0, 242, 255, 0.6); /* <--- TU ZMIENIASZ MOC ŚWIECENIA LOGO */
-        }
-
-        /* --- HASŁO POD LOGO --- */
-        .standard-trust {
-            font-size: clamp(1.2rem, 3vw, 2.0rem); /* <--- TU ZMIENIASZ WIELKOŚĆ HASŁA */
-            color: #ffffff;
-            letter-spacing: clamp(4px, 1vw, 8px);
-            text-transform: uppercase;
-            font-weight: 700;
-            opacity: 0.8;
-            line-height: 2.0;
-            text-shadow: 0 0 25px rgba(0, 242, 255, 0.4);
-        }
-
-        /* --- E-MAIL (TERAZ POD KONTENEREM) --- */
-        .email-link {
-            position: relative;
             z-index: 2;
-            color: #00f2ff; /* <--- TU ZMIENIASZ KOLOR MAILA */
-            text-decoration: none;
-            font-size: 1rem;
+            margin-top: 40px;
+            padding: 10px 22px;
+            border: 1px solid rgba(0,242,255,.15);
+            color: #00f2ff;
             letter-spacing: 3px;
-            transition: 0.4s;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+        }
+
+        /* --- MAIL NA DOLE --- */
+        .email-link {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+
+            color: #00f2ff;
+            text-decoration: none;
+            font-size: .9rem;
+            letter-spacing: 3px;
             padding: 10px 20px;
-            border: 1px solid rgba(0, 242, 255, 0.1);
+            border: 1px solid rgba(0,242,255,.15);
+            transition: .3s;
         }
 
         .email-link:hover {
-            background: rgba(0, 242, 255, 0.1);
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+            background: rgba(0,242,255,.1);
+            box-shadow: 0 0 20px rgba(0,242,255,.3);
             border-color: #00f2ff;
         }
 
-        /* --- KOD QR (LEWY DÓŁ) --- */
+        /* --- QR --- */
         .qr-fixed-left {
-            position: absolute;
-            bottom: 30px; /* <--- TU ZMIENIASZ ODLEGŁOŚĆ QR OD DOŁU */
-            left: 30px;   /* <--- TU ZMIENIASZ ODLEGŁOŚĆ QR OD LEWEJ */
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
             z-index: 3;
         }
 
         .qr-code {
-            width: 65px; /* <--- TU ZMIENIASZ ROZMIAR KODU QR */
+            width: 65px;
             height: 65px;
-            border: 1px solid rgba(0, 242, 255, 0.4);
+            border: 1px solid rgba(0,242,255,.4);
             padding: 5px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255,255,255,.05);
         }
 
-        .qr-code img { width: 100%; height: 100%; display: block; }
+        .qr-code img { width: 100%; height: 100%; }
 
-        /* --- NAPIS EST. 2025 (PRAWY DÓŁ) --- */
+        /* --- EST --- */
         .est-fixed-right {
-            position: absolute;
-            bottom: 30px; /* <--- TU ZMIENIASZ ODLEGŁOŚĆ DATY OD DOŁU */
-            right: 30px;  /* <--- TU ZMIENIASZ ODLEGŁOŚĆ DATY OD PRAWEJ */
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
             z-index: 3;
-            font-size: 0.6rem;
-            color: rgba(255, 255, 255, 0.4);
+            font-size: .6rem;
             letter-spacing: 3px;
-            text-transform: uppercase;
+            opacity: .4;
         }
 
-        /* --- KURSOR PISANIA --- */
+        /* --- KURSOR --- */
         .cursor {
             display: inline-block;
             width: 10px;
             height: 1.1em;
-            background: #00f2ff; /* <--- TU ZMIENIASZ KOLOR KURSORA */
+            background: #00f2ff;
             margin-left: 5px;
-            animation: blink 0.8s step-end infinite;
-            vertical-align: middle;
+            animation: blink .8s step-end infinite;
         }
 
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* --- MOBILNE DOPASOWANIE --- */
+        /* --- MOBILE --- */
         @media (max-width: 768px) {
-            .qr-fixed-left, .est-fixed-right {
-                position: relative;
-                bottom: 0; left: 0; right: 0;
+            body {
+                justify-content: flex-start;
+                padding: 15vh 10px 120px;
+                overflow-y: auto;
+            }
+
+            .qr-fixed-left,
+            .est-fixed-right {
+                position: static;
                 margin-top: 30px;
                 text-align: center;
-                display: flex;
-                justify-content: center;
             }
-            body { overflow-y: auto; display: block; padding: 15vh 10px 40px; }
-            .container { margin-bottom: 20px; }
         }
     </style>
 </head>
@@ -166,19 +161,19 @@
 <div id="particles-js"></div>
 
 <div class="container">
-    <div class="coming-soon-box">
-        <span id="type-text"></span><span class="cursor"></span>
-    </div>
-    
     <h1>BK SOLUTIONS</h1>
     <p class="standard-trust">The Standard of Trust</p>
+</div>
+
+<div class="coming-soon-box">
+    <span id="type-text"></span><span class="cursor"></span>
 </div>
 
 <a href="mailto:info@bksolutions.pl" class="email-link">info@bksolutions.pl</a>
 
 <div class="qr-fixed-left">
     <div class="qr-code">
-        <img src="qr-code.png" alt="QR Code">
+        <img src="qr-code.png" alt="QR">
     </div>
 </div>
 
@@ -188,50 +183,36 @@
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-    // --- TU ZMIENIASZ PRĘDKOŚĆ PISANIA ---
-    const text = "COMING SOON...";
-    let i = 0;
-    function type() {
-        if (i < text.length) {
-            document.getElementById("type-text").textContent += text.charAt(i);
-            i++;
-            setTimeout(type, 150); // <--- ZWIĘKSZ LICZBĘ, ŻEBY PISAŁ WOLNIEJ
-        }
+const text = "COMING SOON...";
+let i = 0;
+function type() {
+    if (i < text.length) {
+        document.getElementById("type-text").textContent += text.charAt(i++);
+        setTimeout(type, 150);
     }
-    window.onload = type;
+}
+window.onload = type;
 
-    // --- TU ZMIENIASZ PARAMETRY CZĄSTECZEK (ANIMACJI) ---
-    particlesJS("particles-js", {
-        "particles": {
-            "number": { "value": 110, "density": { "enable": true, "value_area": 800 } }, // <--- LICZBA CZĄSTECZEK
-            "color": { "value": "#00f2ff" },
-            "opacity": { "value": 0.3, "random": true },
-            "size": { "value": 3, "random": true },
-            "line_linked": { 
-                "enable": true, 
-                "distance": 160, // <--- DŁUGOŚĆ LINII ŁĄCZĄCYCH
-                "color": "#00f2ff", 
-                "opacity": 0.25, 
-                "width": 1 
-            },
-            "move": { 
-                "enable": true, 
-                "speed": 1.6, // <--- PRĘDKOŚĆ RUCHU CZĄSTECZEK
-                "direction": "none", 
-                "random": true, 
-                "out_mode": "out" 
-            }
+particlesJS("particles-js", {
+    particles: {
+        number: { value: 110 },
+        color: { value: "#00f2ff" },
+        opacity: { value: .3, random: true },
+        size: { value: 3, random: true },
+        line_linked: {
+            enable: true,
+            distance: 160,
+            color: "#00f2ff",
+            opacity: .25
         },
-        "interactivity": {
-            "events": { 
-                "onhover": { "enable": true, "mode": "grab" } // <--- EFEKT PO NAJECHANIU MYSZKĄ
-            },
-            "modes": {
-                "grab": { "distance": 220, "line_linked": { "opacity": 0.6 } }
-            }
-        },
-        "retina_detect": true
-    });
+        move: { enable: true, speed: 1.6, random: true }
+    },
+    interactivity: {
+        events: { onhover: { enable: true, mode: "grab" } },
+        modes: { grab: { distance: 220, line_linked: { opacity: .6 } } }
+    },
+    retina_detect: true
+});
 </script>
 
 </body>
