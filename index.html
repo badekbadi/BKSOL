@@ -16,7 +16,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: #050a14; /* TŁO STRONY */
+            background: #050a14;
             color: #fff;
             font-family: 'JetBrains Mono', monospace;
             height: 100vh;
@@ -31,126 +31,140 @@
         #particles-js {
             position: absolute;
             inset: 0;
-            z-index: 1; /* TŁO ANIMOWANE POD TEKSTEM */
+            z-index: 1;
         }
 
-        /* --- GŁÓWNY KONTENER (RAMKA) --- */
+        /* --- GŁÓWNY KONTENER (Bardziej przezroczysty) --- */
         .container {
             position: relative;
             z-index: 2;
             text-align: center;
-            background: rgba(0,242,255,.07); /* KOLOR WYPEŁNIENIA RAMKI */
-            padding: clamp(40px, 8vw, 80px); /* ODSTĘPY WEWNĘTRZNE */
-            border-left: 1px solid rgba(0,242,255,.3); /* LINIA LEWA */
-            border-right: 1px solid rgba(0,242,255,.3); /* LINIA PRAWA */
-            backdrop-filter: blur(10px); /* ROZMYCIE TŁA ZA RAMKĄ */
+            background: rgba(0, 242, 255, 0.03); /* Zmniejszone z .07 na .03 */
+            padding: clamp(40px, 8vw, 80px);
+            border-left: 1px solid rgba(0, 242, 255, 0.3);
+            border-right: 1px solid rgba(0, 242, 255, 0.3);
+            backdrop-filter: blur(10px);
             max-width: 90vw;
         }
 
         h1 {
-            /* WIELKOŚĆ BK SOLUTIONS (MIN, EKRAN, MAX) */
-            font-size: clamp(2.2rem, 6vw, 4rem); 
+            font-size: clamp(2.2rem, 6vw, 4rem);
             letter-spacing: clamp(6px, 1.5vw, 15px);
             margin-bottom: 30px;
             text-transform: uppercase;
-            text-shadow: 0 0 25px rgba(0,242,255,.8); /* POŚWIATA NEONOWA */
+            /* Mocniejszy Glow */
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.8), 0 0 40px rgba(0, 242, 255, 0.4);
         }
 
         .standard-trust {
-            /* WIELKOŚĆ HASŁA STANDARD OF TRUST */
             font-size: clamp(1.2rem, 2vw, 3rem);
             letter-spacing: clamp(4px, 1vw, 8px);
-            opacity: .8;
+            opacity: 0.9;
             text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(0,242,255,.4);
+            /* Dodany Glow do hasła */
+            text-shadow: 0 0 15px rgba(0, 242, 255, 0.6);
         }
 
         /* --- COMING SOON --- */
         .coming-soon-box {
             z-index: 2;
-            margin-top: 40px; /* ODSTĘP OD RAMKI POWYŻEJ */
+            margin-top: 40px;
             padding: 10px 22px;
-            border: 1px solid rgba(0,242,255,.15);
+            border: 1px solid rgba(0, 242, 255, 0.15);
             color: #00f2ff;
             letter-spacing: 3px;
             font-size: 0.95rem;
             text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
         }
 
         /* --- MAIL NA DOLE --- */
         .email-link {
             position: fixed;
-            bottom: 25px; /* ODLEGŁOŚĆ OD DOŁU EKRANU */
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 3;
             color: #00f2ff;
             text-decoration: none;
-            font-size: .9rem;
+            font-size: 0.9rem;
             letter-spacing: 3px;
             padding: 10px 20px;
-            border: 1px solid rgba(0,242,255,.15);
-            transition: .3s;
+            border: 1px solid rgba(0, 242, 255, 0.15);
+            transition: 0.3s;
         }
 
         .email-link:hover {
-            background: rgba(0,242,255,.1);
-            box-shadow: 0 0 20px rgba(0,242,255,.3);
-            border-color: #00f2ff; /* KOLOR PO NAJECHANIU */
+            background: rgba(0, 242, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+            border-color: #00f2ff;
         }
 
-        /* --- KOD QR --- */
+        /* --- KOD QR (Naprawiony rozmiar) --- */
         .qr-fixed-left {
             position: fixed;
-            bottom: 30px; /* ODLEGŁOŚĆ OD DOŁU */
-            left: 30px;   /* ODLEGŁOŚĆ OD LEWEJ */
+            bottom: 30px;
+            left: 30px;
             z-index: 3;
         }
 
         .qr-code {
-            width: 30px;  /* SZEROKOŚĆ KODU QR */
-            height: 30px;
-            border: 1px solid rgba(0,242,255,.4);
+            width: 65px; /* Przywrócony czytelny rozmiar */
+            height: 65px;
+            border: 1px solid rgba(0, 242, 255, 0.4);
             padding: 5px;
-            background: rgba(255,255,255,.05);
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* --- DATA / JEDNOSTKA --- */
+        .qr-code img { 
+            width: 100%; 
+            height: 100%; 
+            display: block;
+        }
+
+        /* --- EST --- */
         .est-fixed-right {
             position: fixed;
-            bottom: 30px; /* ODLEGŁOŚĆ OD DOŁU */
-            right: 30px;  /* ODLEGŁOŚĆ OD PRAWEJ */
+            bottom: 30px;
+            right: 30px;
             z-index: 3;
-            font-size: .6rem;
+            font-size: 0.6rem;
             letter-spacing: 3px;
-            opacity: .4;
+            opacity: 0.5;
+            text-shadow: 0 0 5px rgba(0, 242, 255, 0.2);
         }
 
-        /* --- ANIMACJA KURSORA --- */
+        /* --- KURSOR --- */
         .cursor {
             display: inline-block;
             width: 10px;
             height: 1.1em;
             background: #00f2ff;
             margin-left: 5px;
-            animation: blink .8s step-end infinite;
+            animation: blink 0.8s step-end infinite;
+            box-shadow: 0 0 10px rgba(0, 242, 255, 0.8);
         }
 
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* --- DOPASOWANIE MOBILNE --- */
+        /* --- MOBILE --- */
         @media (max-width: 768px) {
             body {
                 justify-content: flex-start;
                 padding: 15vh 10px 120px;
-                overflow-y: auto; /* POZWALA PRZEWIJAĆ NA TELEFONIE */
+                overflow-y: auto;
             }
 
             .qr-fixed-left,
             .est-fixed-right {
-                position: static; /* ELEMENTY IDĄ POD SPÓD ZAMIAST DO ROGÓW */
+                position: static;
                 margin-top: 30px;
                 text-align: center;
+                display: flex;
+                justify-content: center;
             }
         }
     </style>
@@ -182,21 +196,19 @@
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-/* --- SKRYPT PISANIA TEKSTU --- */
 const text = "COMING SOON...";
 let i = 0;
 function type() {
     if (i < text.length) {
         document.getElementById("type-text").textContent += text.charAt(i++);
-        setTimeout(type, 150); /* CZAS MIĘDZY LITERAMI (ms) */
+        setTimeout(type, 150);
     }
 }
 window.onload = type;
 
-/* --- KONFIGURACJA ANIMACJI CZĄSTECZEK --- */
 particlesJS("particles-js", {
     particles: {
-        number: { value: 100 }, /* LICZBA CZĄSTEK */
+        number: { value: 100 },
         color: { value: "#00f2ff" },
         opacity: { value: .3, random: true },
         size: { value: 3, random: true },
@@ -206,19 +218,11 @@ particlesJS("particles-js", {
             color: "#00f2ff",
             opacity: .25
         },
-        move: { 
-            enable: true, 
-            speed: 1.8, /* PRĘDKOŚĆ RUCHU */
-            random: true 
-        }
+        move: { enable: true, speed: 1.8, random: true }
     },
     interactivity: {
-        events: { 
-            onhover: { enable: true, mode: "grab" } /* REAKCJA NA MYSZKĘ */
-        },
-        modes: { 
-            grab: { distance: 220, line_linked: { opacity: .6 } } 
-        }
+        events: { onhover: { enable: true, mode: "grab" } },
+        modes: { grab: { distance: 220, line_linked: { opacity: .6 } } }
     },
     retina_detect: true
 });
