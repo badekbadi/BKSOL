@@ -3,166 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BK Solutions | Blockchain Security</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500&display=swap" rel="stylesheet">
+    <title>BK Solutions | The Standard of Trust</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
             background-color: #050a14;
+            color: #ffffff;
             font-family: 'Rajdhani', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
 
-        /* Kontener na animację 3D */
-        #canvas-bg {
+        #particles-js {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
+            top: 0;
+            left: 0;
             z-index: 1;
         }
 
         .container {
             position: relative;
             z-index: 2;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle at center, rgba(5, 10, 20, 0) 0%, rgba(5, 10, 20, 0.8) 100%);
+            text-align: center;
+            /* Subtelny efekt szkła */
+            background: rgba(255, 255, 255, 0.02);
+            padding: 60px 80px;
+            border-radius: 2px;
+            border-left: 1px solid rgba(0, 242, 255, 0.3);
+            border-right: 1px solid rgba(0, 242, 255, 0.3);
+            backdrop-filter: blur(8px);
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 60px;
-            text-align: center;
-            max-width: 600px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        .coming-soon {
+            font-size: 0.9rem;
+            letter-spacing: 5px;
+            color: #00f2ff;
+            margin-bottom: 20px;
+            font-weight: 500;
         }
 
         h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            color: #ffffff;
-            letter-spacing: 8px;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
-
-        .tagline {
-            color: #a0a0a0;
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-        }
-
-        .newsletter-box {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        input[type="email"] {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 15px;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 1rem;
-            text-align: center;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        input[type="email"]:focus {
-            border-color: #ffffff;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        button {
-            background: #ffffff;
-            color: #050a14;
-            border: none;
-            padding: 15px;
-            border-radius: 8px;
+            font-size: 4.5rem;
+            letter-spacing: 12px;
+            line-height: 1;
+            margin-bottom: 15px;
             font-weight: 700;
-            font-family: 'Orbitron', sans-serif;
-            cursor: pointer;
-            transition: 0.3s;
-            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        button:hover {
-            background: #cfcfcf;
-            letter-spacing: 3px;
-        }
-
-        .contact-link {
+        .standard-trust {
+            font-size: 1.4rem;
             color: #ffffff;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-weight: 300;
+            opacity: 0.8;
+            margin-bottom: 50px;
+        }
+
+        .contact-bar {
+            height: 1px;
+            width: 50px;
+            background: #00f2ff;
+            margin: 0 auto 20px;
+        }
+
+        .email-link {
+            color: #00f2ff;
             text-decoration: none;
-            font-weight: 500;
-            opacity: 0.6;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
             transition: 0.3s;
         }
 
-        .contact-link:hover {
-            opacity: 1;
-        }
-
-        .label-coming {
-            font-size: 0.8rem;
-            color: #555;
-            margin-top: 20px;
+        .email-link:hover {
+            text-shadow: 0 0 10px #00f2ff;
+            color: #fff;
         }
     </style>
 </head>
 <body>
 
-    <div id="canvas-bg"></div>
+    <div id="particles-js"></div>
 
     <div class="container">
-        <div class="glass-card">
-            <h1>BK SOLUTIONS</h1>
-            <p class="tagline">The New Standard of Trust</p>
-            
-            <div class="newsletter-box">
-                <input type="email" placeholder="Wprowadź swój e-mail">
-                <button>POWIADOM MNIE</button>
-            </div>
-
-            <p><a href="mailto:info@bksolutions.pl" class="contact-link">info@bksolutions.pl</a></p>
-            <p class="label-coming">PREMIERA WKRÓTCE</p>
-        </div>
+        <p class="coming-soon">COMING SOON</p>
+        <h1>BK SOLUTIONS</h1>
+        <p class="standard-trust">The Standard of Trust</p>
+        
+        <div class="contact-bar"></div>
+        <a href="mailto:info@bksolutions.pl" class="email-link">info@bksolutions.pl</a>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        VANTA.NET({
-          el: "#canvas-bg",
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.00,
-          minWidth: 200.00,
-          scale: 1.00,
-          scaleMobile: 1.00,
-          color: 0x3f3f3f,
-          backgroundColor: 0x50a14,
-          points: 10.00,
-          maxDistance: 24.00,
-          spacing: 16.00
-        })
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#00f2ff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.2 },
+                "size": { "value": 2 },
+                "line_linked": { "enable": true, "distance": 200, "color": "#00f2ff", "opacity": 0.15, "width": 1 },
+                "move": { "enable": true, "speed": 0.8, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "events": { "onhover": { "enable": true, "mode": "grab" } },
+                "modes": { "grab": { "distance": 200, "line_linked": { "opacity": 0.5 } } }
+            },
+            "retina_detect": true
+        });
     </script>
 </body>
 </html>
