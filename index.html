@@ -3,170 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BK Solutions | Cryptographic Protection</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <title>BK Solutions | Blockchain Security</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #0072ff;
-            --accent: #00f2ff;
-            --bg: #020408;
-        }
-
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            background-color: var(--bg);
-            color: #ffffff;
-            font-family: 'Montserrat', sans-serif;
             overflow: hidden;
+            background-color: #050a14;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        /* Kontener na animację 3D */
+        #canvas-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            background: radial-gradient(circle at center, rgba(5, 10, 20, 0) 0%, rgba(5, 10, 20, 0.8) 100%);
         }
 
-        /* Animowane tło - pulsacyjne linie */
-        .bg-lines {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: linear-gradient(to bottom, rgba(0,114,255,0.05) 1px, transparent 1px);
-            background-size: 100% 40px;
-            z-index: 1;
-            animation: moveLines 10s linear infinite;
-        }
-
-        @keyframes moveLines {
-            from { background-position: 0 0; }
-            to { background-position: 0 100%; }
-        }
-
-        /* Efekt skanera */
-        .scanner {
-            position: absolute;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, transparent, var(--accent), transparent);
-            box-shadow: 0 0 20px var(--accent);
-            top: -10%;
-            z-index: 2;
-            opacity: 0.3;
-            animation: scan 8s ease-in-out infinite;
-        }
-
-        @keyframes scan {
-            0% { top: -10%; opacity: 0; }
-            50% { opacity: 0.5; }
-            100% { top: 110%; opacity: 0; }
-        }
-
-        .main-content {
-            position: relative;
-            z-index: 3;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 60px;
             text-align: center;
+            max-width: 600px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
         }
 
         h1 {
-            font-family: 'Syncopate', sans-serif;
-            font-size: 4rem;
-            font-weight: 700;
-            letter-spacing: 15px;
-            margin-bottom: 0;
-            background: linear-gradient(90deg, #fff, var(--accent), #fff);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 5s linear infinite;
-        }
-
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
-
-        .subtitle {
-            font-size: 0.9rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            color: #ffffff;
             letter-spacing: 8px;
+            margin-bottom: 5px;
             text-transform: uppercase;
-            margin-bottom: 50px;
-            opacity: 0.6;
         }
 
-        .form-container {
-            margin: 40px auto;
-            max-width: 400px;
+        .tagline {
+            color: #a0a0a0;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
         }
 
-        .input-group {
-            position: relative;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            padding: 10px 0;
+        .newsletter-box {
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
         }
 
-        input {
-            background: transparent;
-            border: none;
-            color: white;
-            padding: 10px;
-            width: 100%;
-            font-family: 'Montserrat', sans-serif;
+        input[type="email"] {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            text-align: center;
             outline: none;
-            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        input[type="email"]:focus {
+            border-color: #ffffff;
+            background: rgba(0, 0, 0, 0.5);
         }
 
         button {
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            padding: 10px 25px;
+            background: #ffffff;
+            color: #050a14;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
             cursor: pointer;
-            font-family: 'Syncopate', sans-serif;
-            font-size: 0.7rem;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
+            transition: 0.3s;
+            letter-spacing: 1px;
         }
 
         button:hover {
-            background: var(--accent);
-            color: var(--bg);
-            box-shadow: 0 0 30px var(--accent);
+            background: #cfcfcf;
+            letter-spacing: 3px;
         }
 
-        .contact {
-            margin-top: 50px;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-        }
-
-        .contact a {
-            color: var(--accent);
+        .contact-link {
+            color: #ffffff;
             text-decoration: none;
+            font-weight: 500;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        .contact-link:hover {
+            opacity: 1;
+        }
+
+        .label-coming {
+            font-size: 0.8rem;
+            color: #555;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-lines"></div>
-    <div class="scanner"></div>
+    <div id="canvas-bg"></div>
 
-    <div class="main-content">
-        <h1>BK SOLUTIONS</h1>
-        <p class="subtitle">Secure Data Systems</p>
-
-        <div class="form-container">
-            <div class="input-group">
-                <input type="email" placeholder="PODAJ E-MAIL">
-                <button>DOŁĄCZ</button>
+    <div class="container">
+        <div class="glass-card">
+            <h1>BK SOLUTIONS</h1>
+            <p class="tagline">The New Standard of Trust</p>
+            
+            <div class="newsletter-box">
+                <input type="email" placeholder="Wprowadź swój e-mail">
+                <button>POWIADOM MNIE</button>
             </div>
-        </div>
 
-        <p class="contact">SUPPORT: <a href="mailto:info@bksolutions.pl">info@bksolutions.pl</a></p>
+            <p><a href="mailto:info@bksolutions.pl" class="contact-link">info@bksolutions.pl</a></p>
+            <p class="label-coming">PREMIERA WKRÓTCE</p>
+        </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script>
+        VANTA.NET({
+          el: "#canvas-bg",
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          color: 0x3f3f3f,
+          backgroundColor: 0x50a14,
+          points: 10.00,
+          maxDistance: 24.00,
+          spacing: 16.00
+        })
+    </script>
 </body>
 </html>
