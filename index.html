@@ -3,179 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BK SOLUTIONS | Secure Terminal</title>
+    <title>BK Solutions | The Standard of Trust</title>
     
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500;800&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500;700&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: #050505;
-            color: #00ff41;
-            font-family: 'JetBrains Mono', monospace;
-            overflow-x: hidden;
-            min-height: 100vh;
+            background-color: #050a14; /* Twoje tło */
+            color: #ffffff;
+            font-family: 'JetBrains Mono', monospace; /* Techniczny font */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
         }
 
-        /* Efekt starego monitora */
-        .crt-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            background-size: 100% 3px, 3px 100%;
-            pointer-events: none;
-            z-index: 100;
+        /* Tło z cząsteczkami */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
         }
 
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 40px 20px;
-            text-align: center;
             position: relative;
-            z-index: 10;
+            z-index: 2;
+            text-align: center;
+            background: rgba(0, 242, 255, 0.02);
+            padding: clamp(30px, 5vw, 60px);
+            border-left: 1px solid rgba(0, 242, 255, 0.3);
+            border-right: 1px solid rgba(0, 242, 255, 0.3);
+            backdrop-filter: blur(8px);
+            max-width: 90vw;
         }
 
-        .terminal-header {
-            font-size: 0.7rem;
-            opacity: 0.5;
-            margin-bottom: 40px;
-            letter-spacing: 2px;
+        .coming-soon-box {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: #00f2ff; /* Twoje cyjanowe kolory */
+            margin-bottom: 20px;
+            min-height: 1.2em;
         }
 
         h1 {
-            font-size: clamp(32px, 8vw, 80px);
-            font-weight: 800;
-            letter-spacing: 10px;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            letter-spacing: clamp(6px, 1.5vw, 12px);
+            line-height: 1.1;
             margin-bottom: 10px;
-        }
-
-        /* Poprawiony font dla hasła */
-        .tagline {
-            font-size: clamp(14px, 2vw, 22px);
-            font-weight: 300;
-            letter-spacing: 5px;
-            color: #00ff41;
-            margin-bottom: 40px;
+            font-weight: 700;
             text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
         }
 
-        .coming-soon {
-            font-size: 1.2rem;
-            margin-bottom: 50px;
-            color: #fff;
+        .standard-trust {
+            font-size: clamp(0.9rem, 2vw, 1.3rem);
+            color: #ffffff;
+            letter-spacing: clamp(3px, 1vw, 6px);
+            text-transform: uppercase;
+            font-weight: 300;
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+
+        .email-link {
+            color: #00f2ff;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            display: inline-block;
+            border-bottom: 1px solid transparent;
+            margin-bottom: 30px;
+        }
+
+        .email-link:hover {
+            text-shadow: 0 0 15px #00f2ff;
+            border-bottom: 1px solid #00f2ff;
+        }
+
+        /* Kod QR pod spodem */
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .qr-code {
+            width: 100px;
+            height: 100px;
+            border: 1px solid rgba(0, 242, 255, 0.4);
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            /* Filtr dopasowujący czarny QR do niebieskiego stylu */
+            filter: brightness(1.2) contrast(1.2);
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .est {
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 3px;
+            margin-top: 10px;
         }
 
         .cursor {
             display: inline-block;
-            width: 10px;
-            height: 1.2em;
-            background: #00ff41;
-            margin-left: 8px;
+            width: 8px;
+            height: 1em;
+            background: #00f2ff;
+            margin-left: 5px;
             animation: blink 1s step-end infinite;
             vertical-align: middle;
         }
 
         @keyframes blink { 50% { opacity: 0; } }
-
-        /* Sekcja kontaktu i QR na dole */
-        .footer-section {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .email {
-            color: #00ff41;
-            text-decoration: none;
-            border: 1px solid #00ff41;
-            padding: 12px 25px;
-            transition: 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .email:hover {
-            background: #00ff41;
-            color: #000;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.6);
-        }
-
-        .qr-wrapper {
-            width: 120px;
-            border: 1px solid #00ff41;
-            padding: 10px;
-            background: rgba(0, 255, 65, 0.05);
-            /* Filtr dopasowujący kolor QR do terminala */
-            filter: invert(1) hue-rotate(80deg) brightness(1.2);
-        }
-
-        .qr-wrapper img {
-            width: 100%;
-            display: block;
-        }
-
-        .est {
-            margin-top: 40px;
-            font-size: 0.6rem;
-            opacity: 0.4;
-            letter-spacing: 3px;
-        }
     </style>
 </head>
 <body>
 
-    <div class="crt-overlay"></div>
+<div id="particles-js"></div>
 
-    <div class="container">
-        <div class="terminal-header">
-            [ACCESS_GRANTED] // SESSION_ID: 0x8842...
-        </div>
-
-        <h1>BK SOLUTIONS</h1>
-        <div class="tagline">THE STANDARD OF TRUST</div>
-
-        <div class="coming-soon">
-            <span id="type-text"></span><span class="cursor"></span>
-        </div>
-
-        <div class="footer-section">
-            <a href="mailto:info@bksolutions.pl" class="email">CONTACT: info@bksolutions.pl</a>
-            
-            <div class="qr-wrapper">
-                <img src="qr-code.png" alt="QR Contact">
-            </div>
-        </div>
-
-        <div class="est">EST. 2025 // ASSET PROTECTION UNIT</div>
+<div class="container">
+    <div class="coming-soon-box">
+        <span id="type-text"></span><span class="cursor"></span>
     </div>
+    
+    <h1>BK SOLUTIONS</h1>
+    <p class="standard-trust">The Standard of Trust</p>
 
-    <script>
-        const text = "INITIALIZING SECURE TERMINAL...";
-        let i = 0;
-        function typeWriter() {
-            if (i < text.length) {
-                document.getElementById("type-text").innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
+    <div class="qr-section">
+        <a href="mailto:info@bksolutions.pl" class="email-link">info@bksolutions.pl</a>
+        
+        <div class="qr-code">
+            <img src="qr-code.png" alt="QR Code">
+        </div>
+        
+        <p class="est">EST. 2025 // SECURE UNIT</p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    // 1. Efekt wpisywania
+    const text = "COMING SOON...";
+    let i = 0;
+    function type() {
+        if (i < text.length) {
+            document.getElementById("type-text").textContent += text.charAt(i);
+            i++;
+            setTimeout(type, 150);
         }
-        window.onload = typeWriter;
-    </script>
+    }
+    window.onload = type;
+
+    // 2. Cząsteczki w Twoim kolorze #00f2ff
+    particlesJS("particles-js", {
+        "particles": {
+            "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#00f2ff" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.2 },
+            "size": { "value": 2 },
+            "line_linked": { "enable": true, "distance": 150, "color": "#00f2ff", "opacity": 0.1, "width": 1 },
+            "move": { "enable": true, "speed": 0.5, "direction": "none", "random": true, "out_mode": "out" }
+        },
+        "interactivity": {
+            "events": { "onhover": { "enable": true, "mode": "grab" } }
+        },
+        "retina_detect": true
+    });
+</script>
+
 </body>
 </html>
