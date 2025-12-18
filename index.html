@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> BK SOLUTIONS </title>
+    <title>BK SOLUTIONS ></title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -35,7 +35,7 @@
             z-index: 1;
         }
 
-        /* --- GŁÓWNY KONTENER (ŚWIECĄCA RAMKA) --- */
+        /* --- GŁÓWNY KONTENER --- */
         .container {
             position: relative;
             z-index: 2;
@@ -64,18 +64,18 @@
             text-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
         }
 
-        /* --- COMING SOON (BEZ RAMKI) --- */
+        /* --- COMING SOON --- */
         .coming-soon-box {
             z-index: 2;
-            margin-top: 44px; /* ODSTĘP OD KONTENERA */
+            margin-top: 40px;
             color: #00f2ff;
             letter-spacing: 4px;
-            font-size: 1.09rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
         }
 
-        /* --- SEKCJA KONTAKTOWA --- */
+        /* --- DOLNA SEKCJA (SOCIALE I MAIL) --- */
         .bottom-contact-area {
             position: fixed;
             bottom: 25px;
@@ -128,14 +128,27 @@
             text-shadow: 0 0 10px #00f2ff;
         }
 
-        .est-fixed-right {
+        /* --- NOWOŚĆ: ROZDZIELONE ELEMENTY W ROGACH --- */
+        .est-fixed-left {
             position: fixed;
             bottom: 30px;
-            right: 30px;
+            left: 30px; /* PO LEWEJ */
             z-index: 3;
             font-size: 0.55rem;
             letter-spacing: 2px;
             opacity: 0.4;
+            text-transform: uppercase;
+        }
+
+        .unit-fixed-right {
+            position: fixed;
+            bottom: 30px;
+            right: 30px; /* PO PRAWEJ */
+            z-index: 3;
+            font-size: 0.55rem;
+            letter-spacing: 2px;
+            opacity: 0.4;
+            text-transform: uppercase;
         }
 
         .cursor {
@@ -150,11 +163,17 @@
 
         @keyframes blink { 50% { opacity: 0; } }
 
+        /* DOPASOWANIE MOBILNE */
         @media (max-width: 768px) {
             body { justify-content: flex-start; padding: 10vh 10px 150px; overflow-y: auto; }
             .container { padding: 30px 20px; }
             .bottom-contact-area { position: relative; bottom: 0; margin-top: 50px; }
-            .est-fixed-right { position: static; margin-top: 25px; text-align: center; display: flex; justify-content: center; }
+            .est-fixed-left, .unit-fixed-right { 
+                position: static; 
+                margin-top: 15px; 
+                text-align: center; 
+                display: block; 
+            }
         }
     </style>
 </head>
@@ -183,8 +202,12 @@
     <a href="mailto:info@bksolutions.pl" class="email-link">info@bksolutions.pl</a>
 </div>
 
-<div class="est-fixed-right">
-    EST. 2025 // SECURE UNIT
+<div class="est-fixed-left">
+    EST. 2025
+</div>
+
+<div class="unit-fixed-right">
+    SECURE UNIT
 </div>
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
