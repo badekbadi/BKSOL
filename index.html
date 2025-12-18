@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BK Solutions</title>
+    <title>BK Solutions | Secure Terminal</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500;800&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -12,170 +14,204 @@
             box-sizing: border-box;
         }
 
-```
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: #0a0a0f;
-        color: #fff;
-        overflow: hidden;
-    }
-
-    .container {
-        position: relative;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #1a0a2e 0%, #0f0520 50%, #1a0a2e 100%);
-    }
-
-    /* Bokeh lights */
-    .bokeh {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(20px);
-        opacity: 0.5;
-        animation: float 15s infinite ease-in-out;
-    }
-
-    .bokeh-1 { width: 150px; height: 150px; background: rgba(255, 100, 150, 0.4); top: 10%; left: 10%; }
-    .bokeh-2 { width: 100px; height: 100px; background: rgba(100, 150, 255, 0.4); top: 60%; left: 5%; animation-delay: 2s; }
-    .bokeh-3 { width: 120px; height: 120px; background: rgba(200, 100, 255, 0.3); top: 30%; right: 15%; animation-delay: 4s; }
-    .bokeh-4 { width: 130px; height: 130px; background: rgba(100, 200, 255, 0.4); bottom: 15%; right: 10%; animation-delay: 1s; }
-
-    @keyframes float {
-        0%, 100% { transform: translateY(0) translateX(0); }
-        50% { transform: translateY(-20px) translateX(10px); }
-    }
-
-    .rain-overlay {
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        backdrop-filter: blur(1px);
-        pointer-events: none;
-    }
-
-    /* Content */
-    .content {
-        text-align: center;
-        z-index: 5;
-    }
-
-    h1 {
-        font-size: clamp(40px, 10vw, 110px);
-        font-weight: 300;
-        letter-spacing: clamp(10px, 2vw, 25px);
-        color: #fff;
-        text-transform: uppercase;
-        margin-bottom: 30px;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-        padding: 0 20px;
-    }
-
-    .coming-soon {
-        font-size: clamp(11px, 1.5vw, 16px);
-        text-transform: uppercase;
-        letter-spacing: clamp(4px, 1vw, 8px);
-        color: #00ffff;
-        border-top: 1px solid rgba(0, 255, 255, 0.3);
-        display: inline-block;
-        padding-top: 15px;
-        margin-bottom: clamp(100px, 20vh, 200px);
-        text-shadow: 
-            0 0 10px rgba(0, 255, 255, 0.8),
-            0 0 20px rgba(0, 255, 255, 0.5),
-            0 0 30px rgba(0, 255, 255, 0.3);
-    }
-
-    .email {
-        position: absolute;
-        bottom: clamp(100px, 12vh, 150px);
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: clamp(14px, 2vw, 22px);
-        color: #00d4ff;
-        letter-spacing: 2px;
-        padding: 0 20px;
-        text-align: center;
-    }
-
-    .est {
-        position: absolute;
-        bottom: 40px;
-        right: 40px;
-        font-size: clamp(9px, 1vw, 11px);
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        color: rgba(255, 255, 255, 0.3);
-    }
-
-    .qr-code {
-        position: absolute;
-        bottom: 40px;
-        left: 40px;
-        width: clamp(80px, 10vw, 120px);
-        height: clamp(80px, 10vw, 120px);
-        background: white;
-        padding: 5px;
-        border-radius: 5px;
-    }
-
-    .qr-code img {
-        width: 100%;
-        height: 100%;
-        display: block;
-    }
-
-    @media (max-width: 768px) {
-        .email {
-            bottom: 120px;
+        body {
+            background-color: #050505;
+            color: #00ff41;
+            /* Zastosowanie nowego fontu */
+            font-family: 'JetBrains Mono', monospace;
+            overflow: hidden;
+            height: 100vh;
         }
-        .qr-code {
-            left: 20px;
-            bottom: 20px;
-        }
-        .est { 
-            right: 20px; 
-            bottom: 20px;
-        }
-    }
 
-    @media (max-width: 480px) {
+        /* Nakładka CRT - linie skanowania */
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05));
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            z-index: 5;
+            text-align: center;
+        }
+
+        /* Nagłówek systemowy */
+        .terminal-header {
+            font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+            color: rgba(0, 255, 65, 0.6);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
         h1 {
-            font-size: 36px;
-            letter-spacing: 6px;
+            font-size: clamp(28px, 8vw, 70px);
+            font-weight: 800;
+            letter-spacing: clamp(4px, 1.5vw, 12px);
+            text-shadow: 0 0 15px rgba(0, 255, 65, 0.6);
+            margin-bottom: 15px;
         }
-        .coming-soon {
-            font-size: 10px;
-            letter-spacing: 3px;
-        }
-    }
-</style>
-```
 
+        /* Stylizacja Coming Soon */
+        .coming-soon-wrapper {
+            font-size: clamp(12px, 2.5vw, 20px);
+            margin-bottom: 80px;
+            min-height: 1.5em; /* Zapobiega skakaniu tekstu przy wpisywaniu */
+            color: #fff; /* Biały dla kontrastu, jak w Twoim screenie */
+            text-transform: uppercase;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 12px;
+            height: 1.2em;
+            background: #00ff41;
+            margin-left: 5px;
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Kontakt */
+        .email {
+            color: #00ff41;
+            text-decoration: none;
+            font-size: clamp(14px, 2vw, 18px);
+            border: 1px solid #00ff41;
+            padding: 10px 20px;
+            transition: 0.3s;
+        }
+
+        .email:hover {
+            background: rgba(0, 255, 65, 0.2);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+        }
+
+        /* Detale w rogach - poprawione RWD */
+        .qr-code {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            width: clamp(60px, 10vw, 100px);
+            border: 1px solid #00ff41;
+            padding: 5px;
+            filter: invert(1) hue-rotate(80deg) brightness(1.2);
+            opacity: 0.8;
+        }
+
+        .est {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            font-size: clamp(9px, 1.5vw, 11px);
+            opacity: 0.5;
+            letter-spacing: 2px;
+        }
+
+        /* Matrix Background Canvas */
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            opacity: 0.1; /* Subtelne tło */
+        }
+
+        /* Media Query dla bardzo małych ekranów */
+        @media (max-width: 480px) {
+            .qr-code, .est {
+                position: static; /* Wrzuca je do normalnego przepływu na dole */
+                margin-top: 20px;
+            }
+            .container {
+                justify-content: space-around;
+                padding: 40px 10px;
+            }
+        }
+    </style>
 </head>
 <body>
+
+    <div class="overlay"></div>
+    <canvas id="matrix"></canvas>
+
     <div class="container">
-        <div class="bokeh bokeh-1"></div>
-        <div class="bokeh bokeh-2"></div>
-        <div class="bokeh bokeh-3"></div>
-        <div class="bokeh bokeh-4"></div>
+        <div class="terminal-header">
+            &gt; SYSTEM_ID: BK_SOLUTIONS_CORE<br>
+            &gt; ENCRYPTION: ACTIVE (AES-256)
+        </div>
 
-```
-    <div class="rain-overlay"></div>
-
-    <div class="content">
         <h1>BK SOLUTIONS</h1>
-        <div class="coming-soon">Coming soon...</div>
+        
+        <div class="coming-soon-wrapper">
+            <span id="typing-text"></span><span class="cursor"></span>
+        </div>
+
+        <a href="mailto:info@bksolutions.pl" class="email">info@bksolutions.pl</a>
+
+        <div class="qr-code">
+            <img src="qr-code.png" alt="QR" style="width: 100%; display: block;">
+        </div>
+
+        <div class="est">EST. 2025 // SECURE TERMINAL V1.0</div>
     </div>
 
-    <div class="email">info@bksolutions.pl</div>
-    <div class="qr-code">
-        <img src="qr-code.png" alt="QR Code">
-    </div>
-    <div class="est">Est. 2025</div>
-</div>
-```
+    <script>
+        // Efekt wpisywania
+        const textToType = "COMING SOON...";
+        let index = 0;
+        function type() {
+            if (index < textToType.length) {
+                document.getElementById("typing-text").textContent += textToType.charAt(index);
+                index++;
+                setTimeout(type, 150);
+            }
+        }
 
+        // Matrix Rain
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = "rgba(5, 5, 5, 0.1)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00ff41";
+            ctx.font = fontSize + "px 'JetBrains Mono'";
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 50);
+        window.onload = type;
+        window.onresize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+    </script>
 </body>
 </html>
