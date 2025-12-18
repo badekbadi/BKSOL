@@ -17,7 +17,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: #050a14; /* GŁÓWNY KOLOR TŁA */
+            background: #050a14; /* TŁO STRONY */
             color: #fff;
             font-family: 'JetBrains Mono', monospace;
             height: 100vh;
@@ -40,7 +40,7 @@
             position: relative;
             z-index: 2;
             text-align: center;
-            background: rgba(0, 242, 255, 0.03); /* PRZEZROCZYSTOŚĆ SZKŁA */
+            background: rgba(0, 242, 255, 0.03); 
             padding: 40px 60px; 
             border-left: 1px solid rgba(0, 242, 255, 0.3);
             border-right: 1px solid rgba(0, 242, 255, 0.3);
@@ -49,16 +49,16 @@
         }
 
         h1 {
-            /* WIELKOŚĆ LOGO (RESPONSYWNA) */
+            /* WIELKOŚĆ BK SOLUTIONS */
             font-size: clamp(1.8rem, 4vw, 3.2rem); 
             letter-spacing: clamp(6px, 1vw, 12px);
             margin-bottom: 20px;
             text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(0, 242, 255, 0.7); /* POŚWIATA NEONOWA */
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.7);
         }
 
         .standard-trust {
-            /* WIELKOŚĆ HASŁA STANDARD OF TRUST */
+            /* WIELKOŚĆ HASŁA */
             font-size: clamp(0.7rem, 1.5vw, 1.1rem);
             letter-spacing: 5px;
             opacity: 0.9;
@@ -66,7 +66,7 @@
             text-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
         }
 
-        /* --- COMING SOON (WPISYWANY TEKST) --- */
+        /* --- COMING SOON --- */
         .coming-soon-box {
             z-index: 2;
             margin-top: 30px;
@@ -78,20 +78,31 @@
             text-transform: uppercase;
         }
 
+        /* --- DOLNA SEKCJA KONTAKTOWA (SOCIALE + MAIL) --- */
+        .bottom-contact-area {
+            position: fixed;
+            bottom: 25px; /* ODLEGŁOŚĆ CAŁEJ SEKCJI OD DOŁU */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px; /* ODSTĘP MIĘDZY IKONAMI A MAILEM */
+        }
+
         /* --- PRZYCISKI SOCIAL MEDIA --- */
         .social-buttons {
             display: flex;
-            gap: 20px; /* ODSTĘP MIĘDZY IKONAMI */
-            z-index: 2;
-            margin-top: 30px; /* ODSTĘP OD COMING SOON */
+            gap: 15px; /* ODSTĘP MIĘDZY PRZYCISKAMI */
         }
 
         .social-btn {
             color: #00f2ff;
             text-decoration: none;
-            font-size: 1.4rem; /* WIELKOŚĆ IKON */
-            width: 45px;
-            height: 45px;
+            font-size: 1.2rem; /* ROZMIAR IKONY */
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -104,28 +115,22 @@
             border-color: #00f2ff;
             background: rgba(0, 242, 255, 0.1);
             box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
-            transform: translateY(-3px); /* EFEKT LEKKIEGO UNIESIENIA */
         }
 
-        /* --- MAIL (PRZYKLEJONY DO DOŁU) --- */
+        /* --- LINK E-MAIL --- */
         .email-link {
-            position: fixed;
-            bottom: 25px; /* ODLEGŁOŚĆ OD DOLNEJ KRAWĘDZI */
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 3;
             color: #00f2ff;
             text-decoration: none;
             font-size: 0.8rem;
             letter-spacing: 2px;
-            padding: 8px 16px;
-            border: 1px solid rgba(0, 242, 255, 0.15);
+            padding: 5px 15px;
+            border-bottom: 1px solid transparent;
             transition: 0.3s;
         }
 
         .email-link:hover {
-            background: rgba(0, 242, 255, 0.1);
-            border-color: #00f2ff;
+            border-bottom: 1px solid #00f2ff;
+            text-shadow: 0 0 10px #00f2ff;
         }
 
         /* --- KOD QR (LEWY RÓG) --- */
@@ -137,7 +142,7 @@
         }
 
         .qr-code {
-            width: 60px; /* ROZMIAR KODU QR */
+            width: 60px;
             height: 60px;
             border: 1px solid rgba(0, 242, 255, 0.4);
             padding: 4px;
@@ -177,11 +182,11 @@
 
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* --- RESPONSYWNOŚĆ MOBILNA --- */
+        /* --- DOPASOWANIE MOBILNE --- */
         @media (max-width: 768px) {
-            body { justify-content: flex-start; padding: 10vh 10px 100px; overflow-y: auto; }
+            body { justify-content: flex-start; padding: 10vh 10px 150px; overflow-y: auto; }
             .container { padding: 30px 20px; }
-            .social-buttons { margin-bottom: 40px; }
+            .bottom-contact-area { position: relative; bottom: 0; margin-top: 50px; }
             .qr-fixed-left, .est-fixed-right { position: static; margin-top: 25px; text-align: center; display: flex; justify-content: center; }
         }
     </style>
@@ -199,16 +204,17 @@
     <span id="type-text"></span><span class="cursor"></span>
 </div>
 
-<div class="social-buttons">
-    <a href="https://x.com/BKSolutions_" target="_blank" class="social-btn" title="X (Twitter)">
-        <i class="fa-brands fa-x-twitter"></i>
-    </a>
-    <a href="https://www.youtube.com/@BKSolutions_pl" target="_blank" class="social-btn" title="YouTube">
-        <i class="fa-brands fa-youtube"></i>
-    </a>
+<div class="bottom-contact-area">
+    <div class="social-buttons">
+        <a href="https://x.com/BKSolutions_" target="_blank" class="social-btn">
+            <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="https://www.youtube.com/@BKSolutions_pl" target="_blank" class="social-btn">
+            <i class="fa-brands fa-youtube"></i>
+        </a>
+    </div>
+    <a href="mailto:info@bksolutions.pl" class="email-link">info@bksolutions.pl</a>
 </div>
-
-<a href="mailto:info@bksolutions.pl" class="email-link">info@bksolutions.pl</a>
 
 <div class="qr-fixed-left">
     <div class="qr-code">
@@ -222,26 +228,24 @@
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-    /* --- SKRYPT WPISYWANIA TEKSTU --- */
     const text = "COMING SOON...";
     let i = 0;
     function type() {
         if (i < text.length) {
             document.getElementById("type-text").textContent += text.charAt(i++);
-            setTimeout(type, 150); /* PRĘDKOŚĆ WPISYWANIA */
+            setTimeout(type, 150);
         }
     }
     window.onload = type;
 
-    /* --- PARAMETRY ANIMACJI TŁA --- */
     particlesJS("particles-js", {
         "particles": {
-            "number": { "value": 90 }, /* LICZBA PUNKTÓW */
+            "number": { "value": 90 },
             "color": { "value": "#00f2ff" },
             "opacity": { "value": .3 },
             "size": { "value": 2 },
             "line_linked": { "enable": true, "distance": 150, "color": "#00f2ff", "opacity": .2 },
-            "move": { "enable": true, "speed": 1.05 } /* PRĘDKOŚĆ RUCHU */
+            "move": { "enable": true, "speed": 1.1 }
         },
         "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" } } },
         "retina_detect": true
