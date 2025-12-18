@@ -35,7 +35,7 @@
             z-index: 1;
         }
 
-        /* --- GŁÓWNY KONTENER (RAMKA ŚRODKOWA) --- */
+        /* --- GŁÓWNY KONTENER (LOGO I HASŁO) --- */
         .container {
             position: relative;
             z-index: 2;
@@ -49,7 +49,7 @@
         }
 
         h1 {
-            /* WIELKOŚĆ BK SOLUTIONS */
+            /* ROZMIAR LOGO BK SOLUTIONS */
             font-size: clamp(1.8rem, 4vw, 3.2rem); 
             letter-spacing: clamp(6px, 1vw, 12px);
             margin-bottom: 20px;
@@ -58,7 +58,7 @@
         }
 
         .standard-trust {
-            /* WIELKOŚĆ HASŁA */
+            /* ROZMIAR HASŁA */
             font-size: clamp(0.7rem, 1.5vw, 1.1rem);
             letter-spacing: 5px;
             opacity: 0.9;
@@ -78,10 +78,10 @@
             text-transform: uppercase;
         }
 
-        /* --- DOLNA SEKCJA KONTAKTOWA (SOCIALE + MAIL) --- */
+        /* --- SEKCJA KONTAKTOWA NA SAMYM DOLE --- */
         .bottom-contact-area {
             position: fixed;
-            bottom: 25px; /* ODLEGŁOŚĆ CAŁEJ SEKCJI OD DOŁU */
+            bottom: 25px; /* ODSTĘP OD DOLNEJ KRAWĘDZI */
             left: 50%;
             transform: translateX(-50%);
             z-index: 3;
@@ -91,16 +91,16 @@
             gap: 15px; /* ODSTĘP MIĘDZY IKONAMI A MAILEM */
         }
 
-        /* --- PRZYCISKI SOCIAL MEDIA --- */
+        /* --- PRZYCISKI X ORAZ YOUTUBE --- */
         .social-buttons {
             display: flex;
-            gap: 15px; /* ODSTĘP MIĘDZY PRZYCISKAMI */
+            gap: 15px;
         }
 
         .social-btn {
             color: #00f2ff;
             text-decoration: none;
-            font-size: 1.2rem; /* ROZMIAR IKONY */
+            font-size: 1.2rem;
             width: 40px;
             height: 40px;
             display: flex;
@@ -117,7 +117,7 @@
             box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
         }
 
-        /* --- LINK E-MAIL --- */
+        /* --- E-MAIL --- */
         .email-link {
             color: #00f2ff;
             text-decoration: none;
@@ -133,33 +133,7 @@
             text-shadow: 0 0 10px #00f2ff;
         }
 
-        /* --- KOD QR (LEWY RÓG) --- */
-        .qr-fixed-left {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            z-index: 3;
-        }
-
-        .qr-code {
-            width: 60px;
-            height: 60px;
-            border: 1px solid rgba(0, 242, 255, 0.4);
-            padding: 4px;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .qr-code img { 
-            max-width: 100%; 
-            max-height: 100%; 
-            object-fit: contain;
-            display: block;
-        }
-
-        /* --- EST / JEDNOSTKA (PRAWY RÓG) --- */
+        /* --- EST. 2025 (PRAWY DOLNY RÓG) --- */
         .est-fixed-right {
             position: fixed;
             bottom: 30px;
@@ -170,7 +144,7 @@
             opacity: 0.4;
         }
 
-        /* --- KURSOR WPISYWANIA --- */
+        /* --- KURSOR MASZYNY DO PISANIA --- */
         .cursor {
             display: inline-block;
             width: 8px;
@@ -182,12 +156,12 @@
 
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* --- DOPASOWANIE MOBILNE --- */
+        /* --- DOPASOWANIE MOBILNE (RWD) --- */
         @media (max-width: 768px) {
             body { justify-content: flex-start; padding: 10vh 10px 150px; overflow-y: auto; }
             .container { padding: 30px 20px; }
             .bottom-contact-area { position: relative; bottom: 0; margin-top: 50px; }
-            .qr-fixed-left, .est-fixed-right { position: static; margin-top: 25px; text-align: center; display: flex; justify-content: center; }
+            .est-fixed-right { position: static; margin-top: 25px; text-align: center; display: flex; justify-content: center; }
         }
     </style>
 </head>
@@ -206,20 +180,14 @@
 
 <div class="bottom-contact-area">
     <div class="social-buttons">
-        <a href="https://x.com/BKSolutions_" target="_blank" class="social-btn">
+        <a href="https://x.com/BKSolutions_" target="_blank" class="social-btn" title="X (Twitter)">
             <i class="fa-brands fa-x-twitter"></i>
         </a>
-        <a href="https://www.youtube.com/@BKSolutions_pl" target="_blank" class="social-btn">
+        <a href="https://www.youtube.com/@BKSolutions_pl" target="_blank" class="social-btn" title="YouTube">
             <i class="fa-brands fa-youtube"></i>
         </a>
     </div>
     <a href="mailto:info@bksolutions.pl" class="email-link">info@bksolutions.pl</a>
-</div>
-
-<div class="qr-fixed-left">
-    <div class="qr-code">
-        <img src="qr-code.png" alt="QR">
-    </div>
 </div>
 
 <div class="est-fixed-right">
@@ -228,6 +196,7 @@
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
+    /* --- SKRYPT WPISYWANIA COMING SOON --- */
     const text = "COMING SOON...";
     let i = 0;
     function type() {
@@ -238,6 +207,7 @@
     }
     window.onload = type;
 
+    /* --- SKRYPT ANIMOWANYCH CZĄSTECZEK TŁA --- */
     particlesJS("particles-js", {
         "particles": {
             "number": { "value": 90 },
