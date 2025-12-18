@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>BK SOLUTIONS - THE STANDARD OF TRUST</title>
+    <title>BK SOLUTIONS</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
         * {
@@ -16,82 +16,59 @@
             background-color: #050a10;
             color: #ffffff;
             font-family: 'Orbitron', sans-serif;
-            height: 100dvh; /* Dynamic viewport height dla iPhone */
-            overflow: hidden;
+            height: 100dvh; /* Kluczowe dla iPhone */
             display: flex;
             flex-direction: column;
-            position: relative;
+            overflow: hidden;
         }
 
-        /* Tło z siatką/pajączkiem */
-        #canvas-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        /* Główny kontener - środek */
-        .main-content {
+        /* Główne napisy na środku */
+        .content {
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 2;
             text-align: center;
-            padding: 20px;
+            z-index: 2;
         }
 
         .logo-box {
-            border: 2px solid rgba(0, 255, 255, 0.3);
+            border: 1px solid #00ffff;
             padding: 40px;
-            background: rgba(5, 10, 16, 0.8);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
             margin-bottom: 40px;
-            max-width: 90%;
         }
 
         h1 {
-            font-size: clamp(1.5rem, 8vw, 3rem);
-            letter-spacing: 8px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
+            font-size: 2.5rem;
+            letter-spacing: 10px;
         }
 
         .tagline {
-            font-size: clamp(0.6rem, 3vw, 1rem);
+            font-size: 0.8rem;
             letter-spacing: 4px;
             color: #88edff;
-            opacity: 0.8;
+            margin-top: 10px;
         }
 
         .coming-soon {
             font-family: 'Roboto Mono', monospace;
-            letter-spacing: 6px;
-            font-size: clamp(0.9rem, 4vw, 1.2rem);
             color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            letter-spacing: 4px;
+            font-size: 1rem;
         }
 
-        /* Stopka - Sekcja dolna */
+        /* Sekcja dolna - stopka */
         footer {
-            z-index: 2;
-            padding: 20px 40px;
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            align-items: center;
-            font-family: 'Roboto Mono', monospace;
-            font-size: 12px;
-            letter-spacing: 2px;
             width: 100%;
-        }
-
-        .footer-left {
-            text-align: left;
-            color: #555;
+            padding: 0 40px 40px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            z-index: 2;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
         }
 
         .footer-center {
@@ -101,93 +78,59 @@
             gap: 15px;
         }
 
-        .footer-right {
-            text-align: right;
-            color: #555;
-        }
-
-        .social-icons {
+        .socials {
             display: flex;
-            gap: 20px;
+            gap: 15px;
         }
 
-        .social-icons a {
+        .socials a {
             color: #00ffff;
-            text-decoration: none;
-            border: 1px solid rgba(0, 255, 255, 0.3);
+            border: 1px solid #00ffff;
             padding: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s;
+            text-decoration: none;
         }
 
-        .social-icons a:hover {
-            background: rgba(0, 255, 255, 0.1);
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-        }
-
-        .email-link {
+        .email {
             color: #00ffff;
             text-decoration: none;
             font-size: 14px;
-            opacity: 0.8;
         }
 
-        /* Responsywność dla Mobile */
+        .side-text {
+            color: #333; /* Ciemniejszy tekst dla EST i SECURE UNIT */
+            padding-bottom: 5px;
+        }
+
+        /* Poprawka dla mobile */
         @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
             footer {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto auto auto;
-                gap: 20px;
-                padding-bottom: 40px; /* Miejsce na pasek iPhone */
-            }
-            .footer-left, .footer-right {
-                text-align: center;
-                order: 2;
-            }
-            .footer-center {
-                order: 1;
-            }
-            .logo-box {
-                padding: 25px;
+                padding: 0 20px 30px 20px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div id="canvas-container">
-        </div>
-
-    <main class="main-content">
+    <div class="content">
         <div class="logo-box">
             <h1>BK SOLUTIONS</h1>
             <p class="tagline">THE STANDARD OF TRUST</p>
         </div>
-        <div class="coming-soon">COMING SOON ...</div>
-    </main>
+        <p class="coming-soon">COMING SOON ...</p>
+    </div>
 
     <footer>
-        <div class="footer-left">
-            EST. 2026
-        </div>
-
+        <div class="side-text">EST. 2026</div>
+        
         <div class="footer-center">
-            <div class="social-icons">
-                <a href="#" target="_blank">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
-                <a href="#" target="_blank">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.377.505 9.377.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
+            <div class="socials">
+                <a href="#">X</a> <a href="#">YT</a>
             </div>
-            <a href="mailto:info@bksolutions.pl" class="email-link">info@bksolutions.pl</a>
+            <a href="mailto:info@bksolutions.pl" class="email">info@bksolutions.pl</a>
         </div>
 
-        <div class="footer-right">
-            SECURE UNIT
-        </div>
+        <div class="side-text">SECURE UNIT</div>
     </footer>
 
 </body>
