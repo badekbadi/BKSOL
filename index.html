@@ -3,215 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BK Solutions | Secure Terminal</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500;800&display=swap" rel="stylesheet">
-
+    <title>BK Solutions | Cryptographic Protection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        * {
+        :root {
+            --primary: #0072ff;
+            --accent: #00f2ff;
+            --bg: #020408;
+        }
+
+        body, html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #050505;
-            color: #00ff41;
-            /* Zastosowanie nowego fontu */
-            font-family: 'JetBrains Mono', monospace;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg);
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
             overflow: hidden;
-            height: 100vh;
-        }
-
-        /* Nakładka CRT - linie skanowania */
-        .overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05));
-            background-size: 100% 3px, 3px 100%;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        .container {
-            position: relative;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            padding: 20px;
-            z-index: 5;
+        }
+
+        /* Animowane tło - pulsacyjne linie */
+        .bg-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to bottom, rgba(0,114,255,0.05) 1px, transparent 1px);
+            background-size: 100% 40px;
+            z-index: 1;
+            animation: moveLines 10s linear infinite;
+        }
+
+        @keyframes moveLines {
+            from { background-position: 0 0; }
+            to { background-position: 0 100%; }
+        }
+
+        /* Efekt skanera */
+        .scanner {
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, transparent, var(--accent), transparent);
+            box-shadow: 0 0 20px var(--accent);
+            top: -10%;
+            z-index: 2;
+            opacity: 0.3;
+            animation: scan 8s ease-in-out infinite;
+        }
+
+        @keyframes scan {
+            0% { top: -10%; opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { top: 110%; opacity: 0; }
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 3;
             text-align: center;
         }
 
-        /* Nagłówek systemowy */
-        .terminal-header {
-            font-size: clamp(0.6rem, 1.5vw, 0.8rem);
-            color: rgba(0, 255, 65, 0.6);
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
         h1 {
-            font-size: clamp(28px, 8vw, 70px);
-            font-weight: 800;
-            letter-spacing: clamp(4px, 1.5vw, 12px);
-            text-shadow: 0 0 15px rgba(0, 255, 65, 0.6);
-            margin-bottom: 15px;
+            font-family: 'Syncopate', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: 15px;
+            margin-bottom: 0;
+            background: linear-gradient(90deg, #fff, var(--accent), #fff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 5s linear infinite;
         }
 
-        /* Stylizacja Coming Soon */
-        .coming-soon-wrapper {
-            font-size: clamp(12px, 2.5vw, 20px);
-            margin-bottom: 80px;
-            min-height: 1.5em; /* Zapobiega skakaniu tekstu przy wpisywaniu */
-            color: #fff; /* Biały dla kontrastu, jak w Twoim screenie */
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 8px;
             text-transform: uppercase;
+            margin-bottom: 50px;
+            opacity: 0.6;
         }
 
-        .cursor {
-            display: inline-block;
-            width: 12px;
-            height: 1.2em;
-            background: #00ff41;
-            margin-left: 5px;
-            animation: blink 1s step-end infinite;
-            vertical-align: middle;
+        .form-container {
+            margin: 40px auto;
+            max-width: 400px;
         }
 
-        @keyframes blink {
-            50% { opacity: 0; }
+        .input-group {
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
         }
 
-        /* Kontakt */
-        .email {
-            color: #00ff41;
-            text-decoration: none;
-            font-size: clamp(14px, 2vw, 18px);
-            border: 1px solid #00ff41;
-            padding: 10px 20px;
-            transition: 0.3s;
+        input {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            outline: none;
+            letter-spacing: 1px;
         }
 
-        .email:hover {
-            background: rgba(0, 255, 65, 0.2);
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+        button {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 10px 25px;
+            cursor: pointer;
+            font-family: 'Syncopate', sans-serif;
+            font-size: 0.7rem;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Detale w rogach - poprawione RWD */
-        .qr-code {
-            position: absolute;
-            bottom: 30px;
-            left: 30px;
-            width: clamp(60px, 10vw, 100px);
-            border: 1px solid #00ff41;
-            padding: 5px;
-            filter: invert(1) hue-rotate(80deg) brightness(1.2);
-            opacity: 0.8;
+        button:hover {
+            background: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 0 30px var(--accent);
         }
 
-        .est {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-            font-size: clamp(9px, 1.5vw, 11px);
-            opacity: 0.5;
+        .contact {
+            margin-top: 50px;
+            font-size: 0.8rem;
             letter-spacing: 2px;
         }
 
-        /* Matrix Background Canvas */
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            opacity: 0.1; /* Subtelne tło */
-        }
-
-        /* Media Query dla bardzo małych ekranów */
-        @media (max-width: 480px) {
-            .qr-code, .est {
-                position: static; /* Wrzuca je do normalnego przepływu na dole */
-                margin-top: 20px;
-            }
-            .container {
-                justify-content: space-around;
-                padding: 40px 10px;
-            }
+        .contact a {
+            color: var(--accent);
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="overlay"></div>
-    <canvas id="matrix"></canvas>
+    <div class="bg-lines"></div>
+    <div class="scanner"></div>
 
-    <div class="container">
-        <div class="terminal-header">
-            &gt; SYSTEM_ID: BK_SOLUTIONS_CORE<br>
-            &gt; ENCRYPTION: ACTIVE (AES-256)
-        </div>
-
+    <div class="main-content">
         <h1>BK SOLUTIONS</h1>
-        
-        <div class="coming-soon-wrapper">
-            <span id="typing-text"></span><span class="cursor"></span>
+        <p class="subtitle">Secure Data Systems</p>
+
+        <div class="form-container">
+            <div class="input-group">
+                <input type="email" placeholder="PODAJ E-MAIL">
+                <button>DOŁĄCZ</button>
+            </div>
         </div>
 
-        <a href="mailto:info@bksolutions.pl" class="email">info@bksolutions.pl</a>
-
-        <div class="qr-code">
-            <img src="qr-code.png" alt="QR" style="width: 100%; display: block;">
-        </div>
-
-        <div class="est">EST. 2025 // SECURE TERMINAL V1.0</div>
+        <p class="contact">SUPPORT: <a href="mailto:info@bksolutions.pl">info@bksolutions.pl</a></p>
     </div>
 
-    <script>
-        // Efekt wpisywania
-        const textToType = "COMING SOON...";
-        let index = 0;
-        function type() {
-            if (index < textToType.length) {
-                document.getElementById("typing-text").textContent += textToType.charAt(index);
-                index++;
-                setTimeout(type, 150);
-            }
-        }
-
-        // Matrix Rain
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(1);
-
-        function draw() {
-            ctx.fillStyle = "rgba(5, 5, 5, 0.1)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#00ff41";
-            ctx.font = fontSize + "px 'JetBrains Mono'";
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = chars.charAt(Math.floor(Math.random() * chars.length));
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-
-        setInterval(draw, 50);
-        window.onload = type;
-        window.onresize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        };
-    </script>
 </body>
 </html>
