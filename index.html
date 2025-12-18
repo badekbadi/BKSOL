@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BK Solutions | The Standard of Trust</title>
-    
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500;700&display=swap" rel="stylesheet">
 
@@ -13,9 +17,9 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: #050a14; /* Twoje tło */
+            background-color: #050a14;
             color: #ffffff;
-            font-family: 'JetBrains Mono', monospace; /* Techniczny font */
+            font-family: 'JetBrains Mono', monospace;
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -24,7 +28,6 @@
             position: relative;
         }
 
-        /* Tło z cząsteczkami */
         #particles-js {
             position: absolute;
             width: 100%;
@@ -34,14 +37,15 @@
             z-index: 1;
         }
 
+        /* GŁÓWNY KONTENER */
         .container {
             position: relative;
             z-index: 2;
             text-align: center;
             background: rgba(0, 242, 255, 0.02);
             padding: clamp(30px, 5vw, 60px);
-            border-left: 1px solid rgba(0, 242, 255, 0.3);
-            border-right: 1px solid rgba(0, 242, 255, 0.3);
+            border-left: 1px solid rgba(0, 242, 255, 0.2);
+            border-right: 1px solid rgba(0, 242, 255, 0.2);
             backdrop-filter: blur(8px);
             max-width: 90vw;
         }
@@ -49,13 +53,13 @@
         .coming-soon-box {
             font-size: 0.8rem;
             letter-spacing: 4px;
-            color: #00f2ff; /* Twoje cyjanowe kolory */
+            color: #00f2ff;
             margin-bottom: 20px;
             min-height: 1.2em;
         }
 
         h1 {
-            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-size: clamp(2.2rem, 7vw, 4.5rem);
             letter-spacing: clamp(6px, 1.5vw, 12px);
             line-height: 1.1;
             margin-bottom: 10px;
@@ -65,7 +69,7 @@
         }
 
         .standard-trust {
-            font-size: clamp(0.9rem, 2vw, 1.3rem);
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
             color: #ffffff;
             letter-spacing: clamp(3px, 1vw, 6px);
             text-transform: uppercase;
@@ -77,12 +81,10 @@
         .email-link {
             color: #00f2ff;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.9rem;
             letter-spacing: 2px;
             transition: 0.3s;
-            display: inline-block;
             border-bottom: 1px solid transparent;
-            margin-bottom: 30px;
         }
 
         .email-link:hover {
@@ -90,22 +92,25 @@
             border-bottom: 1px solid #00f2ff;
         }
 
-        /* Kod QR pod spodem */
-        .qr-section {
+        /* SEKACJA QR W LEWYM DOLNYM ROGU */
+        .qr-fixed-bottom {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            z-index: 3;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 15px;
+            align-items: flex-start;
+            gap: 10px;
         }
 
         .qr-code {
-            width: 100px;
-            height: 100px;
-            border: 1px solid rgba(0, 242, 255, 0.4);
-            padding: 5px;
-            background: rgba(255, 255, 255, 0.1);
-            /* Filtr dopasowujący czarny QR do niebieskiego stylu */
-            filter: brightness(1.2) contrast(1.2);
+            width: 65px; /* Zmniejszony kod QR */
+            height: 65px;
+            border: 1px solid rgba(0, 242, 255, 0.3);
+            padding: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(4px);
         }
 
         .qr-code img {
@@ -115,10 +120,9 @@
         }
 
         .est {
-            font-size: 0.6rem;
-            color: rgba(255, 255, 255, 0.4);
-            letter-spacing: 3px;
-            margin-top: 10px;
+            font-size: 0.55rem;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 2px;
         }
 
         .cursor {
@@ -132,6 +136,21 @@
         }
 
         @keyframes blink { 50% { opacity: 0; } }
+
+        /* DOPASOWANIE DO MOBILE */
+        @media (max-width: 600px) {
+            .qr-fixed-bottom {
+                position: relative; /* Na mobile wraca pod tekst */
+                left: 0;
+                bottom: 0;
+                align-items: center;
+                margin-top: 40px;
+            }
+            .container {
+                border: none;
+                background: transparent;
+            }
+        }
     </style>
 </head>
 <body>
@@ -146,15 +165,14 @@
     <h1>BK SOLUTIONS</h1>
     <p class="standard-trust">The Standard of Trust</p>
 
-    <div class="qr-section">
-        <a href="mailto:info@bksolutions.pl" class="email-link">info@bksolutions.pl</a>
-        
-        <div class="qr-code">
-            <img src="qr-code.png" alt="QR Code">
-        </div>
-        
-        <p class="est">EST. 2025 // SECURE UNIT</p>
+    <a href="mailto:info@bksolutions.pl" class="email-link">info@bksolutions.pl</a>
+</div>
+
+<div class="qr-fixed-bottom">
+    <div class="qr-code">
+        <img src="qr-code.png" alt="QR Code">
     </div>
+    <p class="est">EST. 2025 // SECURE UNIT</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -171,21 +189,16 @@
     }
     window.onload = type;
 
-    // 2. Cząsteczki w Twoim kolorze #00f2ff
+    // 2. Cząsteczki
     particlesJS("particles-js", {
         "particles": {
-            "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
+            "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
             "color": { "value": "#00f2ff" },
-            "shape": { "type": "circle" },
             "opacity": { "value": 0.2 },
             "size": { "value": 2 },
             "line_linked": { "enable": true, "distance": 150, "color": "#00f2ff", "opacity": 0.1, "width": 1 },
-            "move": { "enable": true, "speed": 0.5, "direction": "none", "random": true, "out_mode": "out" }
-        },
-        "interactivity": {
-            "events": { "onhover": { "enable": true, "mode": "grab" } }
-        },
-        "retina_detect": true
+            "move": { "enable": true, "speed": 0.4, "direction": "none", "random": true, "out_mode": "out" }
+        }
     });
 </script>
 
