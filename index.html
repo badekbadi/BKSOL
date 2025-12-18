@@ -35,20 +35,15 @@
             z-index: 1;
         }
 
-        /* --- GŁÓWNY KONTENER (TERAZ Z PEŁNĄ ŚWIECĄCĄ RAMKĄ) --- */
+        /* --- GŁÓWNY KONTENER (ŚWIECĄCA RAMKA) --- */
         .container {
             position: relative;
             z-index: 2;
             text-align: center;
             background: rgba(0, 242, 255, 0.03); 
             padding: 40px 60px; 
-            
-            /* --- ZMIANA: PEŁNA RAMKA ZAMIAST TYLKO BOKÓW --- */
             border: 1px solid rgba(0, 242, 255, 0.4); 
-            
-            /* --- DODANIE EFEKTU ŚWIECENIA NA ZEWNĄTRZ I WEWNĄTRZ --- */
             box-shadow: 0 0 15px rgba(0, 242, 255, 0.2), inset 0 0 10px rgba(0, 242, 255, 0.1);
-            
             backdrop-filter: blur(10px);
             max-width: 80vw;
         }
@@ -69,19 +64,18 @@
             text-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
         }
 
-        /* --- COMING SOON --- */
+        /* --- COMING SOON (BEZ RAMKI) --- */
         .coming-soon-box {
             z-index: 2;
-            margin-top: 30px;
-            padding: 8px 18px;
-            border: 1px solid rgba(0, 242, 255, 0.15);
+            margin-top: 40px; /* ODSTĘP OD KONTENERA */
             color: #00f2ff;
-            letter-spacing: 3px;
-            font-size: 0.85rem;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
             text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
         }
 
-        /* --- SEKCJA KONTAKTOWA NA SAMYM DOLE --- */
+        /* --- SEKCJA KONTAKTOWA --- */
         .bottom-contact-area {
             position: fixed;
             bottom: 25px;
@@ -134,7 +128,6 @@
             text-shadow: 0 0 10px #00f2ff;
         }
 
-        /* --- EST. 2025 --- */
         .est-fixed-right {
             position: fixed;
             bottom: 30px;
@@ -152,6 +145,7 @@
             background: #00f2ff;
             margin-left: 5px;
             animation: blink 0.8s step-end infinite;
+            vertical-align: middle;
         }
 
         @keyframes blink { 50% { opacity: 0; } }
