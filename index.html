@@ -17,11 +17,12 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: #050a14; /* KOLOR TŁA STRONY */
+            background-color: #050a14; /* <--- TU ZMIENIASZ KOLOR TŁA CAŁEJ STRONY */
             color: #ffffff;
             font-family: 'JetBrains Mono', monospace;
             height: 100vh;
             display: flex;
+            flex-direction: column; /* Ustawienie pionowe */
             justify-content: center;
             align-items: center;
             overflow: hidden;
@@ -37,57 +38,58 @@
             z-index: 1;
         }
 
-        /* --- GŁÓWNY KONTENER NA ŚRODKU --- */
+        /* --- KONTENER ŚRODKOWY (RAMKA I SZKŁO) --- */
         .container {
             position: relative;
             z-index: 2;
             text-align: center;
-            background: rgba(0, 242, 255, 0.03);
-            padding: clamp(40px, 8vw, 80px); /* WEWNĘTRZNY ODSTĘP KONTENERA */
-            border-left: 1px solid rgba(0, 242, 255, 0.2);
-            border-right: 1px solid rgba(0, 242, 255, 0.2);
+            background: rgba(0, 242, 255, 0.03); /* <--- TU ZMIENIASZ PRZEZROCZYSTOŚĆ TŁA ŚRODKA */
+            padding: clamp(40px, 8vw, 80px);
+            border-left: 1px solid rgba(0, 242, 255, 0.2); /* <--- TU ZMIENIASZ JASNOŚĆ LEWEJ LINII */
+            border-right: 1px solid rgba(0, 242, 255, 0.2); /* <--- TU ZMIENIASZ JASNOŚĆ PRAWEJ LINII */
             backdrop-filter: blur(10px);
-            max-width: 120vw;
+            max-width: 90vw;
+            margin-bottom: 40px; /* <--- ODSTĘP MIĘDZY KONTENEREM A MAILEM */
         }
 
-        /* --- TEKST "COMING SOON" --- */
+        /* --- COMING SOON --- */
         .coming-soon-box {
-            font-size: 0.9rem; /* ROZMIAR CZCIONKI COMING SOON */
-            letter-spacing: 5px; /* ODSTĘPY MIĘDZY LITERAMI */
-            color: #00f2ff; /* KOLOR TEKSTU */
-            margin-bottom: 45px; /* ODSTĘP POD TEKSTEM COMING SOON */
+            font-size: 0.9rem; /* <--- TU ZMIENIASZ WIELKOŚĆ COMING SOON */
+            letter-spacing: 5px;
+            color: #00f2ff; /* <--- TU ZMIENIASZ KOLOR COMING SOON */
+            margin-bottom: 45px;
             min-height: 1.2em;
         }
 
-        /* --- GŁÓWNE LOGO "BK SOLUTIONS" --- */
+        /* --- BK SOLUTIONS (LOGO) --- */
         h1 {
-            /* clamp(MIN, RESPONSIVE, MAX) - automatycznie dopasowuje do ekranu */
-            font-size: clamp(2.2rem, 7vw, 4.5rem); 
-            letter-spacing: clamp(6px, 1.5vw, 15px); /* ODSTĘPY MIĘDZY LITERAMI */
-            line-height: 1.2; /* INTERLINIA (ŚRODKOWA) */
-            margin-bottom: 30px; /* ODSTĘP POD LOGO */
+            font-size: clamp(2.2rem, 7vw, 4.5rem); /* <--- TU ZMIENIASZ WIELKOŚĆ NAPISU BK SOLUTIONS */
+            letter-spacing: clamp(6px, 1.5vw, 15px);
+            line-height: 1.5; /* <--- TU ZMIENIASZ ODSTĘP MIĘDZY LINIAMI LOGO */
+            margin-bottom: 30px;
             font-weight: 700;
             text-transform: uppercase;
-            text-shadow: 0 0 25px rgba(0, 242, 255, 0.4); /* POŚWIATA LOGO */
+            text-shadow: 0 0 25px rgba(0, 242, 255, 0.4); /* <--- TU ZMIENIASZ MOC ŚWIECENIA LOGO */
         }
 
-        /* --- HASŁO "THE STANDARD OF TRUST" --- */
+        /* --- HASŁO POD LOGO --- */
         .standard-trust {
-            font-size: clamp(0.8rem, 2vw, 1.2rem); /* ROZMIAR CZCIONKI HASŁA */
+            font-size: clamp(0.8rem, 2vw, 1.2rem); /* <--- TU ZMIENIASZ WIELKOŚĆ HASŁA */
             color: #ffffff;
             letter-spacing: clamp(4px, 1vw, 8px);
             text-transform: uppercase;
-            font-weight: 600;
+            font-weight: 300;
             opacity: 0.8;
-            line-height: 2.0; /* INTERLINIA HASŁA */
-            margin-bottom: 160px; /* ODSTĘP PRZED MAILEM */
+            line-height: 2.0;
         }
 
-        /* --- LINK E-MAIL --- */
+        /* --- E-MAIL (TERAZ POD KONTENEREM) --- */
         .email-link {
-            color: #00f2ff;
+            position: relative;
+            z-index: 2;
+            color: #00f2ff; /* <--- TU ZMIENIASZ KOLOR MAILA */
             text-decoration: none;
-            font-size: 1rem; /* ROZMIAR CZCIONKI MAILA */
+            font-size: 1rem;
             letter-spacing: 3px;
             transition: 0.4s;
             padding: 10px 20px;
@@ -103,14 +105,14 @@
         /* --- KOD QR (LEWY DÓŁ) --- */
         .qr-fixed-left {
             position: absolute;
-            bottom: 30px; /* ODLEGŁOŚĆ OD DOŁU */
-            left: 30px;   /* ODLEGŁOŚĆ OD LEWEJ */
+            bottom: 30px; /* <--- TU ZMIENIASZ ODLEGŁOŚĆ QR OD DOŁU */
+            left: 30px;   /* <--- TU ZMIENIASZ ODLEGŁOŚĆ QR OD LEWEJ */
             z-index: 3;
         }
 
         .qr-code {
-            width: 65px;  /* SZEROKOŚĆ KODU QR */
-            height: 65px; /* WYSOKOŚĆ KODU QR */
+            width: 65px; /* <--- TU ZMIENIASZ ROZMIAR KODU QR */
+            height: 65px;
             border: 1px solid rgba(0, 242, 255, 0.4);
             padding: 5px;
             background: rgba(255, 255, 255, 0.05);
@@ -121,10 +123,10 @@
         /* --- NAPIS EST. 2025 (PRAWY DÓŁ) --- */
         .est-fixed-right {
             position: absolute;
-            bottom: 30px; /* ODLEGŁOŚĆ OD DOŁU */
-            right: 30px;  /* ODLEGŁOŚĆ OD PRAWEJ */
+            bottom: 30px; /* <--- TU ZMIENIASZ ODLEGŁOŚĆ DATY OD DOŁU */
+            right: 30px;  /* <--- TU ZMIENIASZ ODLEGŁOŚĆ DATY OD PRAWEJ */
             z-index: 3;
-            font-size: 0.6rem; /* ROZMIAR CZCIONKI DATY */
+            font-size: 0.6rem;
             color: rgba(255, 255, 255, 0.4);
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -133,9 +135,9 @@
         /* --- KURSOR PISANIA --- */
         .cursor {
             display: inline-block;
-            width: 10px; /* SZEROKOŚĆ KURSORA */
+            width: 10px;
             height: 1.1em;
-            background: #00f2ff;
+            background: #00f2ff; /* <--- TU ZMIENIASZ KOLOR KURSORA */
             margin-left: 5px;
             animation: blink 0.8s step-end infinite;
             vertical-align: middle;
@@ -143,17 +145,18 @@
 
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* --- MOBILNE DOPASOWANIE (DLA TELEFONÓW) --- */
+        /* --- MOBILNE DOPASOWANIE --- */
         @media (max-width: 768px) {
             .qr-fixed-left, .est-fixed-right {
-                position: relative; /* Wyłącza przyklejenie do rogów */
+                position: relative;
                 bottom: 0; left: 0; right: 0;
-                margin-top: 40px;
+                margin-top: 30px;
                 text-align: center;
                 display: flex;
                 justify-content: center;
             }
             body { overflow-y: auto; display: block; padding: 15vh 10px 40px; }
+            .container { margin-bottom: 20px; }
         }
     </style>
 </head>
@@ -168,9 +171,9 @@
     
     <h1>BK SOLUTIONS</h1>
     <p class="standard-trust">The Standard of Trust</p>
-
-    <a href="mailto:info@bksolutions.pl" class="email-link">info@bksolutions.pl</a>
 </div>
+
+<a href="mailto:info@bksolutions.pl" class="email-link">info@bksolutions.pl</a>
 
 <div class="qr-fixed-left">
     <div class="qr-code">
@@ -184,35 +187,35 @@
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-    // --- SKRYPT WPISYWANIA TEKSTU ---
+    // --- TU ZMIENIASZ PRĘDKOŚĆ PISANIA ---
     const text = "COMING SOON...";
     let i = 0;
     function type() {
         if (i < text.length) {
             document.getElementById("type-text").textContent += text.charAt(i);
             i++;
-            setTimeout(type, 150); // PRĘDKOŚĆ PISANIA (im więcej, tym wolniej)
+            setTimeout(type, 150); // <--- ZWIĘKSZ LICZBĘ, ŻEBY PISAŁ WOLNIEJ
         }
     }
     window.onload = type;
 
-    // --- SKRYPT ANIMACJI TŁA (CZĄSTECZKI) ---
+    // --- TU ZMIENIASZ PARAMETRY CZĄSTECZEK (ANIMACJI) ---
     particlesJS("particles-js", {
         "particles": {
-            "number": { "value": 110, "density": { "enable": true, "value_area": 800 } }, // LICZBA CZĄSTECZEK
-            "color": { "value": "#00f2ff" }, // KOLOR CZĄSTECZEK
+            "number": { "value": 110, "density": { "enable": true, "value_area": 800 } }, // <--- LICZBA CZĄSTECZEK
+            "color": { "value": "#00f2ff" },
             "opacity": { "value": 0.3, "random": true },
-            "size": { "value": 3, "random": true }, // ROZMIAR CZĄSTECZEK
+            "size": { "value": 3, "random": true },
             "line_linked": { 
                 "enable": true, 
-                "distance": 160, // DŁUGOŚĆ LINII ŁĄCZĄCYCH
+                "distance": 160, // <--- DŁUGOŚĆ LINII ŁĄCZĄCYCH
                 "color": "#00f2ff", 
                 "opacity": 0.25, 
                 "width": 1 
             },
             "move": { 
                 "enable": true, 
-                "speed": 1.6, // PRĘDKOŚĆ RUCHU
+                "speed": 1.6, // <--- PRĘDKOŚĆ RUCHU CZĄSTECZEK
                 "direction": "none", 
                 "random": true, 
                 "out_mode": "out" 
@@ -220,10 +223,10 @@
         },
         "interactivity": {
             "events": { 
-                "onhover": { "enable": true, "mode": "grab" } // REAKCJA NA MYSZKĘ
+                "onhover": { "enable": true, "mode": "grab" } // <--- EFEKT PO NAJECHANIU MYSZKĄ
             },
-            "modes": { 
-                "grab": { "distance": 220, "line_linked": { "opacity": 0.6 } } 
+            "modes": {
+                "grab": { "distance": 220, "line_linked": { "opacity": 0.6 } }
             }
         },
         "retina_detect": true
