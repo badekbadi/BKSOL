@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BK Solutions - Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0f;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a0a2e 0%, #0f0520 50%, #1a0a2e 100%);
+        }
+
+        /* Bokeh lights */
+        .bokeh {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(15px);
+            opacity: 0.6;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .bokeh-1 { width: 120px; height: 120px; background: rgba(255, 100, 150, 0.4); top: 10%; left: 15%; }
+        .bokeh-2 { width: 80px; height: 80px; background: rgba(100, 200, 255, 0.4); top: 60%; left: 10%; animation-delay: 2s; }
+        .bokeh-3 { width: 150px; height: 150px; background: rgba(255, 150, 200, 0.3); top: 30%; right: 20%; animation-delay: 4s; }
+        .bokeh-4 { width: 100px; height: 100px; background: rgba(150, 200, 255, 0.4); bottom: 20%; right: 15%; animation-delay: 1s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-20px) translateX(10px); }
+        }
+
+        .rain-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(ellipse at 50% 50%, rgba(0, 255, 255, 0.05), transparent 70%);
+            backdrop-filter: blur(1px);
+            pointer-events: none;
+        }
+
+        .rain {
+            position: absolute;
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(transparent, rgba(0, 255, 255, 0.3));
+            animation: rain-fall linear infinite;
+        }
+
+        @keyframes rain-fall { to { transform: translateY(100vh); } }
+
+        /* Navigation / Logo */
+        .nav {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+            letter-spacing: 2px;
+        }
+
+        /* Content */
+        .content {
+            text-align: center;
+            z-index: 5;
+        }
+
+        h1 {
+            font-size: clamp(40px, 10vw, 90px);
+            font-weight: 300;
+            letter-spacing: 10px;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .email {
+            font-size: clamp(18px, 3vw, 24px);
+            color: #00ffff;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .coming-soon {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            color: rgba(255, 255, 255, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: inline-block;
+            padding-top: 20px;
+        }
+
+        /* Footer */
+        .footer-nav {
+            position: absolute;
+            bottom: 40px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .footer-nav { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bokeh bokeh-1"></div>
+        <div class="bokeh bokeh-2"></div>
+        <div class="bokeh bokeh-3"></div>
+        <div class="bokeh bokeh-4"></div>
+        
+        <div class="rain-overlay"></div>
+
+        <div class="nav">
+            <span class="logo">BK</span>
+        </div>
+
+        <div class="content">
+            <h1>BK Solutions</h1>
+            <div class="email">info@bksolutions.pl</div>
+            <div class="coming-soon">New website coming soon</div>
+        </div>
+
+        <div class="footer-nav">
+            <span>BK Solutions</span>
+            <span>|</span>
+            <span>(039_173h 1033#2)</span>
+            <span>|</span>
+            <span>Est. 2025</span>
+        </div>
+    </div>
+
+    <script>
+        function createRain() {
+            const container = document.querySelector('.container');
+            for (let i = 0; i < 40; i++) {
+                const rain = document.createElement('div');
+                rain.className = 'rain';
+                rain.style.left = Math.random() * 100 + '%';
+                rain.style.animationDuration = (Math.random() * 0.4 + 0.4) + 's';
+                rain.style.animationDelay = Math.random() * 5 + 's';
+                rain.style.opacity = Math.random() * 0.3;
+                container.appendChild(rain);
+            }
+        }
+        createRain();
+    </script>
+</body>
+</html>
