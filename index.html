@@ -63,7 +63,7 @@
             text-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
         }
 
-        /* --- COMING SOON (BEZ RAMKI) --- */
+        /* --- STATUS TEXT (BEZ RAMKI) --- */
         .coming-soon-box {
             z-index: 2;
             margin-top: 40px;
@@ -208,12 +208,13 @@
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-    const text = "COMING SOON...";
+    /* ZMIANA TEKSTU NA STATUS: PRE-DEPLOYMENT PHASE */
+    const text = "STATUS: PRE-DEPLOYMENT PHASE";
     let i = 0;
     function type() {
         if (i < text.length) {
             document.getElementById("type-text").textContent += text.charAt(i++);
-            setTimeout(type, 150);
+            setTimeout(type, 100); /* Zwiększyłem lekko szybkość pisania (było 150) żeby status wbił się szybciej */
         }
     }
     window.onload = type;
