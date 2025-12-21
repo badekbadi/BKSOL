@@ -5,14 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BK SOLUTIONS</title>
     
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-    <link rel="manifest" href="assets/site.webmanifest">
     <link rel="shortcut icon" href="assets/favicon.ico">
-
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/style.css">
     
@@ -22,53 +18,59 @@
 
     <div id="particles-js"></div>
 
-    <div class="glass-panel">
-        <h1>BK SOLUTIONS</h1>
-        <p style="margin-top: 10px; color: #00f2ff;">Twoje rozwiązanie w świecie IT</p>
+    <div class="content-wrapper">
+        
+        <div class="hero-box">
+            <h1>BK SOLUTIONS</h1>
+            <p>THE STANDARD OF TRUST</p>
+        </div>
+
+        <div class="status-line">
+            STATUS: PRE-DEPLOYMENT PHASE<span class="cursor"></span>
+        </div>
+
+        <div class="label-text">STAY INFORMED:</div>
+
+        <form action="https://formspree.io/f/xgowznow" method="POST" class="newsletter-form">
+            <input type="email" name="email" placeholder="ENTER_EMAIL_ADDRESS_" required>
+            <button type="submit" class="submit-btn">JOIN NETWORK</button>
+        </form>
+
+        <div class="social-icons">
+            <a href="#" class="icon-box"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="icon-box"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+
+        <a href="mailto:info@bksolutions.pl" class="footer-email">info@bksolutions.pl</a>
+
     </div>
 
-    <div class="glass-panel newsletter-content">
-        <h2>Newsletter</h2>
-        <p>Zapisz się, aby otrzymywać wiedzę o AI i nowoczesnych technologiach.</p>
-        
-        <form action="https://formspree.io/f/xgowznow" method="POST" class="newsletter-form">
-            <div class="input-group">
-                <input type="email" id="email" name="email" placeholder="Wpisz adres e-mail..." required>
-            </div>
-
-            <button type="submit" class="submit-btn">
-                ZAPISZ <i class="fa-solid fa-terminal"></i>
-            </button>
-
-            <div class="checkbox-group">
-                <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">Akceptuję <a href="#">regulamin</a></label>
-            </div>
-        </form>
+    <div class="corner-logo">
+        <div class="diamond">✦</div> <div class="corner-text">SECURE UNIT</div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         particlesJS("particles-js", {
-          "particles": {
-            "number": { "value": 80 },
-            "color": { "value": "#00f2ff" },
-            "shape": { "type": "circle" },
-            "opacity": { "value": 0.5 },
-            "size": { "value": 3 },
-            "line_linked": {
-              "enable": true,
-              "distance": 150,
-              "color": "#00f2ff",
-              "opacity": 0.2,
-              "width": 1
+            "particles": {
+                "number": { "value": 60 },
+                "color": { "value": "#00F0FF" }, /* Cyjanowe kropki */
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3 },
+                "size": { "value": 3 },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#00484d", /* Ciemne linie */
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": { "enable": true, "speed": 1 }
             },
-            "move": { "enable": true, "speed": 2 }
-          },
-          "interactivity": {
-            "detect_on": "canvas",
-            "events": { "onhover": { "enable": true, "mode": "repulse" } }
-          }
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" } }
+            }
         });
     </script>
 </body>

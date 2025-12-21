@@ -1,10 +1,8 @@
-/* --- GŁÓWNE ZMIENNE KOLORYSTYCZNE --- */
+/* --- RESET I BAZA --- */
 :root {
-    --main-bg: #050a14;
-    --neon-cyan: #00f2ff;
-    --glass-bg: rgba(0, 242, 255, 0.05);
-    --glass-border: rgba(0, 242, 255, 0.4);
-    --glass-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+    --bg-color: #02060c; /* Bardzo ciemne tło */
+    --neon-cyan: #00F0FF; /* Twój cyjanowy kolor */
+    --text-color: #ffffff;
 }
 
 * {
@@ -14,135 +12,210 @@
 }
 
 body {
-    background: var(--main-bg);
-    color: #fff;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: 'JetBrains Mono', monospace;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    /* justify-content: center; - usuwamy to, żeby elementy układały się od góry */
-    padding-top: 50px; 
-    overflow-x: hidden;
+    overflow: hidden;
     position: relative;
 }
 
 #particles-js {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 1;
+    opacity: 0.4; /* Przyciemnienie sieci w tle */
 }
 
-/* --- WSPÓLNA KLASA DLA RAMEK (Main + Newsletter) --- */
-.glass-panel {
+/* --- GŁÓWNY KONTENER TREŚCI --- */
+.content-wrapper {
     position: relative;
-    z-index: 2;
-    text-align: center;
-    background: var(--glass-bg);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+/* --- GŁÓWNA RAMKA (LOGO) --- */
+.hero-box {
+    border: 1px solid var(--neon-cyan);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.15); /* Delikatna poświata */
     padding: 40px 60px;
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-    border-radius: 4px; /* Bardziej techniczne, ostre rogi pasują do terminala */
-    backdrop-filter: blur(5px); /* Rozmycie tła pod spodem */
-    max-width: 900px;
-    width: 90%;
-    margin-bottom: 30px; /* Odstęp między sekcjami */
+    text-align: center;
+    background: rgba(2, 6, 12, 0.8); /* Półprzezroczyste tło */
+    margin-bottom: 40px;
+    backdrop-filter: blur(2px);
 }
 
-/* --- SPECIFICZNE STYLE NEWSLETTERA --- */
-.newsletter-content h2 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: var(--neon-cyan);
+.hero-box h1 {
+    font-size: 2.5rem;
+    letter-spacing: 6px; /* Szeroki rozstaw liter jak na zdjęciu */
+    color: var(--text-color);
+    text-shadow: 0 0 10px var(--neon-cyan);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.hero-box p {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: #a0a0a0;
     text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
-.newsletter-content p {
-    color: #ccc;
+/* --- STATUS I KURSOR --- */
+.status-line {
     font-size: 0.9rem;
-    margin-bottom: 25px;
+    letter-spacing: 2px;
+    color: var(--neon-cyan);
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background-color: var(--neon-cyan);
+    margin-left: 5px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* --- FORMULARZ --- */
+.label-text {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--neon-cyan);
+    margin-bottom: 15px;
+    text-transform: uppercase;
 }
 
 .newsletter-form {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start; /* Ważne dla wyrównania inputa i przycisku */
     gap: 15px;
-}
-
-/* Styl pola wpisywania */
-.input-group {
-    position: relative;
-    flex: 1;
-    min-width: 280px;
-}
-
-input[type="email"] {
+    margin-bottom: 60px;
     width: 100%;
-    padding: 12px 20px;
-    background: rgba(0, 0, 0, 0.5); /* Ciemniejsze tło pola */
-    border: 1px solid #333;
-    color: var(--neon-cyan);
-    font-family: 'JetBrains Mono', monospace;
-    outline: none;
-    transition: 0.3s;
+    max-width: 600px;
 }
 
-input[type="email"]:focus {
-    border-color: var(--neon-cyan);
-    box-shadow: 0 0 10px rgba(0, 242, 255, 0.1);
-}
-
-/* Komunikat błędu */
-.error-text {
-    display: none;
-    color: #ff4d4d;
-    font-size: 0.75rem;
-    text-align: left;
-    margin-top: 5px;
-    padding-left: 5px;
-}
-
-/* Przycisk */
-.submit-btn {
+/* Pole Input - Wygląd terminala */
+input[type="email"] {
+    flex: 1;
     background: transparent;
-    color: var(--neon-cyan);
     border: 1px solid var(--neon-cyan);
-    padding: 12px 30px;
-    cursor: pointer;
+    padding: 15px 20px;
+    color: #fff;
     font-family: 'JetBrains Mono', monospace;
-    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 240, 255, 0.1);
+}
+
+input[type="email"]::placeholder {
+    color: #555;
+    text-transform: uppercase;
+}
+
+/* Przycisk - Pełny Cyjan */
+.submit-btn {
+    background-color: var(--neon-cyan);
+    color: #000; /* Czarny tekst na cyjanie */
+    border: none;
+    padding: 15px 30px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    cursor: pointer;
     text-transform: uppercase;
     transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
 }
 
 .submit-btn:hover {
-    background: var(--neon-cyan);
-    color: #000;
-    box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
 }
 
-/* Checkbox */
-.checkbox-group {
-    width: 100%;
-    margin-top: 15px;
-    font-size: 0.75rem;
-    color: #aaa;
+/* --- IKONY SOCIAL MEDIA I STOPKA --- */
+.social-icons {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
-.checkbox-group a {
+.icon-box {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: var(--neon-cyan);
     text-decoration: none;
-    border-bottom: 1px dashed var(--neon-cyan);
+    font-size: 1.2rem;
+    transition: 0.3s;
 }
 
-.checkbox-group input {
-    accent-color: var(--neon-cyan);
-    cursor: pointer;
+.icon-box:hover {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.footer-email {
+    color: var(--neon-cyan);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+/* --- LOGO W ROGU (Secure Unit) --- */
+.corner-logo {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    text-align: right;
+    opacity: 0.5;
+}
+
+.diamond {
+    font-size: 2rem;
+    color: #fff;
+}
+.corner-text {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+/* Responsywność na telefony */
+@media (max-width: 600px) {
+    .newsletter-form {
+        flex-direction: column;
+    }
+    .hero-box {
+        padding: 30px 20px;
+        width: 100%;
+    }
+    .hero-box h1 {
+        font-size: 1.8rem;
+    }
 }
