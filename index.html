@@ -13,14 +13,12 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Saira:wght@700;900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
 </head>
 <body>
 
     <div id="particles-js"></div>
 
     <div class="center-content">
-        
         <div class="title-box">
             <h1>BK SOLUTIONS</h1>
             <p>THE STANDARD OF TRUST</p>
@@ -36,7 +34,6 @@
             <input type="email" name="email" placeholder="enter_email_address" required>
             <button type="submit" class="submit-btn">JOIN</button>
         </form>
-
     </div>
 
     <div class="contact-footer">
@@ -51,15 +48,15 @@
         EST. 2025
     </div>
 
-    <script src="https://cdn.particlejs.org/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 100 },
+                "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
                 "color": { "value": "#00F0FF" },
                 "shape": { "type": "circle" },
-                "opacity": { "value": 0.6 },
-                "size": { "value": 2.5 },
+                "opacity": { "value": 0.6, "random": false },
+                "size": { "value": 2.5, "random": true },
                 "line_linked": {
                     "enable": true,
                     "distance": 150,
@@ -67,19 +64,29 @@
                     "opacity": 0.3,
                     "width": 1
                 },
-                "move": { "enable": true, "speed": 1.5 }
+                "move": { 
+                    "enable": true, 
+                    "speed": 1.5, 
+                    "direction": "none", 
+                    "random": false, 
+                    "straight": false, 
+                    "out_mode": "out", 
+                    "bounce": false 
+                }
             },
             "interactivity": {
-                "detect_on": "window",
+                "detect_on": "canvas",
                 "events": { 
                     "onhover": { "enable": true, "mode": "grab" },
-                    "onclick": { "enable": true, "mode": "push" } 
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
                 },
                 "modes": {
                     "grab": { "distance": 180, "line_linked": { "opacity": 1 } },
                     "push": { "particles_nb": 4 }
                 }
-            }
+            },
+            "retina_detect": true
         });
     </script>
 </body>
