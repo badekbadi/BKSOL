@@ -28,12 +28,13 @@
             STATUS: PRE-DEPLOYMENT PHASE<span class="cursor"></span>
         </div>
 
-        <div class="form-label">STAY INFORMED:</div>
-
-        <form action="https://formspree.io/f/xgowznow" method="POST" class="newsletter-form">
-            <input type="email" name="email" placeholder="enter_email_address" required>
-            <button type="submit" class="submit-btn">JOIN</button>
-        </form>
+        <div class="form-container">
+            <div class="form-label">STAY INFORMED:</div>
+            <form action="https://formspree.io/f/xgowznow" method="POST" class="newsletter-form">
+                <input type="email" name="email" placeholder="enter_email_address" required>
+                <button type="submit" class="submit-btn">JOIN</button>
+            </form>
+        </div>
     </div>
 
     <div class="contact-footer">
@@ -55,7 +56,7 @@
                 "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
                 "color": { "value": "#00F0FF" },
                 "shape": { "type": "circle" },
-                "opacity": { "value": 0.6, "random": false },
+                "opacity": { "value": 0.6 },
                 "size": { "value": 2.5, "random": true },
                 "line_linked": {
                     "enable": true,
@@ -64,22 +65,13 @@
                     "opacity": 0.3,
                     "width": 1
                 },
-                "move": { 
-                    "enable": true, 
-                    "speed": 1.5, 
-                    "direction": "none", 
-                    "random": false, 
-                    "straight": false, 
-                    "out_mode": "out", 
-                    "bounce": false 
-                }
+                "move": { "enable": true, "speed": 1.5 }
             },
             "interactivity": {
                 "detect_on": "canvas",
                 "events": { 
                     "onhover": { "enable": true, "mode": "grab" },
-                    "onclick": { "enable": true, "mode": "push" },
-                    "resize": true
+                    "onclick": { "enable": true, "mode": "push" } 
                 },
                 "modes": {
                     "grab": { "distance": 180, "line_linked": { "opacity": 1 } },
