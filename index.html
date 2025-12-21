@@ -8,7 +8,9 @@
     <link rel="shortcut icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Saira:wght@700;900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" defer></script>
@@ -32,7 +34,7 @@
 
         <form action="https://formspree.io/f/xgowznow" method="POST" class="newsletter-form">
             <input type="email" name="email" placeholder="ENTER_EMAIL_ADDRESS_" required>
-            <button type="submit" class="submit-btn">JOIN NETWORK</button>
+            <button type="submit" class="submit-btn">JOIN</button>
         </form>
 
         <div class="social-icons">
@@ -52,37 +54,28 @@
     <script>
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 100 }, /* Więcej kropek */
+                "number": { "value": 100 },
                 "color": { "value": "#00F0FF" },
                 "shape": { "type": "circle" },
-                "opacity": { "value": 0.6 }, /* Jaśniejsze kropki */
+                "opacity": { "value": 0.6 },
                 "size": { "value": 2.5 },
                 "line_linked": {
                     "enable": true,
                     "distance": 150,
                     "color": "#00F0FF",
-                    "opacity": 0.3, /* Widoczne linie łączące */
+                    "opacity": 0.3,
                     "width": 1
                 },
                 "move": { "enable": true, "speed": 1.5 }
             },
             "interactivity": {
-                "detect_on": "window", /* Wykrywanie na całym oknie */
+                "detect_on": "window",
                 "events": { 
-                    "onhover": { 
-                        "enable": true, 
-                        "mode": "grab" /* TO JEST TEN EFEKT SIECI POD MYSZKĄ */
-                    },
-                    "onclick": { 
-                        "enable": true, 
-                        "mode": "push" 
-                    } 
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" } 
                 },
                 "modes": {
-                    "grab": {
-                        "distance": 180, /* Zasięg łapania linii */
-                        "line_linked": { "opacity": 1 } /* Linie stają się jasne przy myszce */
-                    },
+                    "grab": { "distance": 180, "line_linked": { "opacity": 1 } },
                     "push": { "particles_nb": 4 }
                 }
             }
