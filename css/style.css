@@ -69,7 +69,197 @@ body {
     text-transform: uppercase;
 }
 
+/* --- ZAKTUALIZOWANY NAPIS "THE STANDARD OF TRUST" --- */
 .title-box p {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1.1rem;             /* Powiększone */
-    letter-spacing:
+    font-size: 1.2rem;             /* Jeszcze większy */
+    letter-spacing: 12px;          /* Bardzo wyraźny rozstrzał */
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    /* Mocniejszy efekt świecenia (kilka warstw cienia) */
+    text-shadow: 
+        0 0 10px var(--neon-cyan), 
+        0 0 20px var(--neon-cyan), 
+        0 0 40px var(--neon-cyan); 
+}
+
+/* --- STATUS --- */
+.status-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: var(--neon-cyan);
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-shadow: 0 0 5px var(--neon-cyan);
+}
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1em;
+    background-color: var(--neon-cyan);
+    margin-left: 8px;
+    animation: blink 1s infinite;
+    vertical-align: text-bottom;
+}
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* --- FORMULARZ --- */
+.form-container {
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.form-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: var(--neon-cyan);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0 0 5px var(--neon-cyan);
+    width: 100%;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+}
+
+input[type="email"] {
+    flex-grow: 1;
+    background: rgba(0, 10, 20, 0.8);
+    border: 1px solid var(--neon-cyan);
+    border-right: none;
+    padding: 0 20px;
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    outline: none;
+    text-transform: uppercase;
+}
+
+.submit-btn {
+    background-color: var(--neon-cyan);
+    color: #000;
+    border: 1px solid var(--neon-cyan);
+    padding: 0 30px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #fff;
+    box-shadow: 0 0 30px var(--neon-cyan);
+}
+
+/* --- KONTAKT I SOCIALE --- */
+.contact-footer {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon-box {
+    color: var(--neon-cyan);
+    text-decoration: none;
+    font-size: 1.2rem;
+    width: 38px; 
+    height: 38px;
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    transition: 0.3s;
+    background: rgba(0,0,0,0.3);
+}
+
+.icon-box:hover {
+    background: var(--neon-cyan);
+    color: #000;
+    box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.footer-link {
+    color: var(--neon-cyan);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+    opacity: 0.7;
+    font-family: 'JetBrains Mono', monospace;
+    transition: 0.3s;
+}
+
+.footer-link:hover {
+    opacity: 1;
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* --- EST. 2025 --- */
+.est-date {
+    position: absolute;
+    bottom: 35px;
+    left: 50px;
+    z-index: 10;
+    font-family: 'Saira', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: var(--neon-cyan);
+    border-left: 3px solid var(--neon-cyan);
+    padding-left: 12px;
+    line-height: 1;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 700px) {
+    .title-box { 
+        padding: 30px 20px; 
+        min-width: unset; 
+        width: 92%; 
+        margin-bottom: 40px;
+    }
+    .title-box h1 { font-size: 2.3rem; }
+    .title-box p { font-size: 0.7rem; letter-spacing: 4px; } /* Skalowanie dla mobile */
+    .newsletter-form { flex-direction: column; height: auto; }
+    input[type="email"] { border-right: 1px solid var(--neon-cyan); margin-bottom: 12px; height: 45px; }
+    .submit-btn { height: 45px; }
+    
+    .contact-footer {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 40px;
+    }
+    .est-date { position: relative; left: auto; bottom: auto; margin-top: 20px; text-align: center; border: none; padding: 0; }
+    body { overflow-y: auto; height: auto; padding: 40px 0; }
+}
