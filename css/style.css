@@ -61,8 +61,8 @@ body {
 /* ZMIANA FONTU NA SAIRA */
 .title-box h1 {
     font-family: 'Saira', sans-serif; /* Nowy font */
-    font-weight: 900; /* Black / ExtraBold */
-    font-size: 3.5rem; /* Powiększony dla mocy */
+    font-weight: 700; /* Black / ExtraBold */
+    font-size: 3 rem; /* Powiększony dla mocy */
     letter-spacing: 2px; /* Saira jest wąska, więc mniejszy spacing */
     color: #fff;
     text-shadow: 0 0 25px var(--neon-cyan);
