@@ -69,19 +69,14 @@ body {
     text-transform: uppercase;
 }
 
-/* --- ZAKTUALIZOWANY NAPIS "THE STANDARD OF TRUST" --- */
 .title-box p {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1.2rem;             /* Jeszcze większy */
-    letter-spacing: 12px;          /* Bardzo wyraźny rozstrzał */
+    font-size: 1rem;
+    letter-spacing: 10px;
     color: #fff;
     text-transform: uppercase;
     font-weight: 700;
-    /* Mocniejszy efekt świecenia (kilka warstw cienia) */
-    text-shadow: 
-        0 0 10px var(--neon-cyan), 
-        0 0 20px var(--neon-cyan), 
-        0 0 40px var(--neon-cyan); 
+    text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
 }
 
 /* --- STATUS --- */
@@ -248,7 +243,6 @@ input[type="email"] {
         margin-bottom: 40px;
     }
     .title-box h1 { font-size: 2.3rem; }
-    .title-box p { font-size: 0.7rem; letter-spacing: 4px; } /* Skalowanie dla mobile */
     .newsletter-form { flex-direction: column; height: auto; }
     input[type="email"] { border-right: 1px solid var(--neon-cyan); margin-bottom: 12px; height: 45px; }
     .submit-btn { height: 45px; }
