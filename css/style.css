@@ -51,7 +51,7 @@ body {
     background: var(--glass-bg);
     box-shadow: 0 0 40px rgba(0, 240, 255, 0.2);
     padding: 45px 85px;
-    margin-bottom: 65px;
+    margin-bottom: 70px; /* Zwiększony odstęp */
     text-align: center;
     backdrop-filter: blur(5px);
     min-width: 620px;
@@ -84,7 +84,7 @@ body {
     font-size: 0.85rem;
     letter-spacing: 2px;
     color: var(--neon-cyan);
-    margin-bottom: 45px;
+    margin-bottom: 60px; /* Większy odstęp do newslettera */
     text-transform: uppercase;
     font-weight: 700;
     text-shadow: 0 0 5px var(--neon-cyan);
@@ -102,24 +102,27 @@ body {
 
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-/* --- FORMULARZ (WYŚRODKOWANY) --- */
+/* --- FORMULARZ (ZMNIEJSZONY I PRZESUNIĘTY W DÓŁ) --- */
 .form-container {
     width: 100%;
-    max-width: 550px;
+    max-width: 450px; /* Zmniejszona szerokość z 550px */
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 20px; /* Przesunięcie całego bloku w dół */
 }
 
 .form-label {
+    /* Styl identyczny jak status-text */
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     letter-spacing: 2px;
     color: var(--neon-cyan);
     margin-bottom: 15px;
     text-transform: uppercase;
     font-weight: 700;
-    text-align: center; /* Napis na środku */
+    text-align: center;
+    text-shadow: 0 0 5px var(--neon-cyan);
     width: 100%;
 }
 
@@ -127,7 +130,7 @@ body {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 55px;
+    height: 50px; /* Nieco smuklejszy */
     box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
 }
 
@@ -136,10 +139,10 @@ input[type="email"] {
     background: rgba(0, 10, 20, 0.8);
     border: 1px solid var(--neon-cyan);
     border-right: none;
-    padding: 0 25px;
+    padding: 0 20px;
     color: #fff;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1rem;
+    font-size: 0.9rem;
     outline: none;
     text-transform: uppercase;
 }
@@ -148,10 +151,10 @@ input[type="email"] {
     background-color: var(--neon-cyan);
     color: #000;
     border: 1px solid var(--neon-cyan);
-    padding: 0 40px;
+    padding: 0 30px;
     font-family: 'JetBrains Mono', monospace;
     font-weight: 800;
-    font-size: 1.1rem;
+    font-size: 1rem;
     cursor: pointer;
     text-transform: uppercase;
     transition: 0.3s;
@@ -166,26 +169,26 @@ input[type="email"] {
 .contact-footer {
     position: absolute;
     bottom: 35px;
-    left: 50%; /* Wyśrodkowanie */
+    left: 50%;
     transform: translateX(-50%);
     z-index: 10;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Elementy pod sobą na środku */
-    gap: 15px;
+    align-items: center;
+    gap: 12px;
 }
 
 .social-icons {
     display: flex;
-    gap: 20px;
+    gap: 15px;
 }
 
 .icon-box {
     color: var(--neon-cyan);
     text-decoration: none;
-    font-size: 1.3rem;
-    width: 40px; 
-    height: 40px;
+    font-size: 1.2rem;
+    width: 38px; 
+    height: 38px;
     border: 1px solid rgba(0, 240, 255, 0.4);
     display: flex; 
     align-items: center; 
@@ -202,7 +205,7 @@ input[type="email"] {
 
 .footer-link {
     color: var(--neon-cyan);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     letter-spacing: 2px;
     text-decoration: none;
     opacity: 0.7;
@@ -215,7 +218,7 @@ input[type="email"] {
     text-shadow: 0 0 10px var(--neon-cyan);
 }
 
-/* --- EST. 2025 (POZOSTAJE PO LEWEJ) --- */
+/* --- EST. 2025 --- */
 .est-date {
     position: absolute;
     bottom: 35px;
@@ -239,10 +242,10 @@ input[type="email"] {
         width: 92%; 
         margin-bottom: 40px;
     }
-    .title-box h1 { font-size: 2.5rem; }
+    .title-box h1 { font-size: 2.3rem; }
     .newsletter-form { flex-direction: column; height: auto; }
-    input[type="email"] { border-right: 1px solid var(--neon-cyan); margin-bottom: 15px; height: 50px; }
-    .submit-btn { height: 50px; }
+    input[type="email"] { border-right: 1px solid var(--neon-cyan); margin-bottom: 12px; height: 45px; }
+    .submit-btn { height: 45px; }
     
     .contact-footer {
         position: relative;
