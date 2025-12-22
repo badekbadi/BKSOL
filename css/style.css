@@ -255,5 +255,13 @@ input[type="email"] {
         margin-top: 40px;
     }
     .est-date { position: relative; left: auto; bottom: auto; margin-top: 20px; text-align: center; border: none; padding: 0; }
-    body { overflow-y: auto; height: auto; padding: 40px 0; }
+    
+    /* POPRAWKI DLA MOBILE */
+    body { 
+        overflow-y: auto; 
+        height: auto; 
+        padding: 40px 0; 
+        flex-direction: column; /* Naprawia układanie elementów w pionie */
+        width: 100%;            /* Zapobiega poziomemu paskowi przewijania */
+    }
 }
