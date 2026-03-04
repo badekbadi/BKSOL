@@ -64,7 +64,7 @@ body {
     margin-bottom: 60px;
     text-align: center;
     backdrop-filter: blur(5px);
-    width: clamp(560px, 72vw, 920px);
+    width: clamp(min(560px, 100%), 72vw, 920px);
     box-shadow: 0 0 80px rgba(0, 240, 255, 0.06);
 }
 
@@ -302,4 +302,9 @@ body {
         flex-direction: column;
         width: 100%;
     }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .title-box::before { animation: none; }
+    .title-box h1 { animation: none; }
 }
