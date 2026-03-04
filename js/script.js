@@ -20,7 +20,7 @@
     setInterval(() => {
         spinner.textContent = SPINNER_FRAMES[spinnerIndex++ % SPINNER_FRAMES.length];
     }, 120);
-    const MAX_HISTORY = 7;
+    const MAX_HISTORY = 5;
 
     let msgIndex = 0;
     let charIndex = 0;
