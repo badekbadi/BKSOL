@@ -98,14 +98,13 @@
     }
     setTimeout(triggerGlitch, 45000 + Math.random() * 45000);
 
-    // Wskaźnik postępu — dolna krawędź title-box, pętla co 90 sekund
+    // SYSTEM_LOAD — pętla co 90 sekund, aktualizuje tylko cyfrę
     (function () {
         const CYCLE = 90000;
-        const progressEl = document.getElementById('border-progress');
+        const pctEl = document.getElementById('sys-load-pct');
 
         function update() {
-            const pct = (Date.now() % CYCLE) / CYCLE * 100;
-            progressEl.style.width = pct.toFixed(2) + '%';
+            pctEl.textContent = ((Date.now() % CYCLE) / CYCLE * 100).toFixed(1);
         }
         update();
         setInterval(update, 500);

@@ -168,21 +168,32 @@ body {
     font-weight: 700;
 }
 
-.border-progress {
-    position: absolute;
-    bottom: -2px;
-    left: -2px;
-    height: 2px;
-    width: 0%;
-    background: linear-gradient(
-        to right,
-        rgba(0, 240, 255, 0.5),
-        rgba(0, 240, 255, 0.95) 80%,
-        rgba(255, 255, 255, 1) 100%
-    );
-    box-shadow: 0 0 10px var(--neon-cyan), 0 0 25px rgba(0, 240, 255, 0.4);
-    pointer-events: none;
-    z-index: 2;
+.terminal-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 40px;
+    width: 100%;
+    max-width: 960px;
+}
+
+.sys-load {
+    flex-shrink: 0;
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    line-height: 1.6;
+    color: var(--neon-cyan);
+    opacity: 0.45;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.sys-load span {
+    font-size: 1.1rem;
+    font-weight: 700;
+    opacity: 0.9;
+    letter-spacing: 1px;
 }
 
 /* Pulsujące punkty danych */
@@ -202,88 +213,6 @@ body {
     z-index: 2;
 }
 
-/* --- FORMULARZ --- */
-.form-container {
-    width: 100%;
-    max-width: 320px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.form-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    color: var(--neon-cyan);
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    font-weight: 700;
-    text-align: center;
-    text-shadow: 0 0 5px var(--neon-cyan);
-    width: 100%;
-}
-
-.newsletter-form {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 44px;
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
-}
-
-@keyframes scanline {
-    from { background-position: 0 -8px; }
-    to   { background-position: 0 calc(100% + 8px); }
-}
-
-@keyframes ph-pulse {
-    0%, 100% { opacity: 0.35; }
-    50%       { opacity: 0.7; }
-}
-
-input[type="email"] {
-    flex-grow: 1;
-    background-color: rgba(0, 10, 20, 0.8);
-    background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 240, 255, 0.12) 50%, transparent 100%);
-    background-size: 100% 8px;
-    background-repeat: no-repeat;
-    border: 1px solid var(--neon-cyan);
-    border-right: none;
-    padding: 0 20px;
-    color: #fff;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.9rem;
-    outline: none;
-    text-transform: uppercase;
-    animation: scanline 2.8s linear infinite;
-}
-
-input[type="email"]::placeholder {
-    color: var(--neon-cyan);
-    text-transform: none;
-    font-weight: 400;
-    letter-spacing: 1px;
-    animation: ph-pulse 2.5s ease-in-out infinite;
-}
-
-.submit-btn {
-    background-color: var(--neon-cyan);
-    color: #000;
-    border: 1px solid var(--neon-cyan);
-    padding: 0 30px;
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 800;
-    font-size: 1rem;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: 0.3s;
-}
-
-.submit-btn:hover {
-    background-color: #fff;
-    box-shadow: 0 0 30px var(--neon-cyan);
-}
 
 /* --- STOPKA DOLNA --- */
 .bottom-bar {
@@ -322,20 +251,6 @@ input[type="email"]::placeholder {
     box-shadow: 0 0 15px var(--neon-cyan);
 }
 
-.footer-link {
-    color: var(--neon-cyan);
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    text-decoration: none;
-    opacity: 0.7;
-    font-family: 'JetBrains Mono', monospace;
-    transition: 0.3s;
-}
-
-.footer-link:hover {
-    opacity: 1;
-    text-shadow: 0 0 10px var(--neon-cyan);
-}
 
 /* --- EST. 2026 --- */
 .est-date {
@@ -368,6 +283,15 @@ input[type="email"]::placeholder {
     .title-box h1 { font-size: 2.5rem; }
 
     .status-text { margin-bottom: 30px; }
+
+    .terminal-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .sys-load {
+        text-align: left;
+    }
 
     .bottom-bar {
         position: relative;
