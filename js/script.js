@@ -98,14 +98,14 @@
     }
     setTimeout(triggerGlitch, 45000 + Math.random() * 45000);
 
-    // Wskaźnik postępu — inline, pętla co 90 sekund
+    // Wskaźnik postępu — dolna krawędź title-box, pętla co 90 sekund
     (function () {
         const CYCLE = 90000;
-        const barEl = document.getElementById('progress-inline');
+        const progressEl = document.getElementById('border-progress');
 
         function update() {
             const pct = (Date.now() % CYCLE) / CYCLE * 100;
-            barEl.textContent = `  —  ${pct.toFixed(1)}%`;
+            progressEl.style.width = pct.toFixed(2) + '%';
         }
         update();
         setInterval(update, 500);

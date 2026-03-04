@@ -168,11 +168,21 @@ body {
     font-weight: 700;
 }
 
-.progress-inline {
-    opacity: 0.4;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    font-weight: 400;
+.border-progress {
+    position: absolute;
+    bottom: -2px;
+    left: -2px;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(
+        to right,
+        rgba(0, 240, 255, 0.5),
+        rgba(0, 240, 255, 0.95) 80%,
+        rgba(255, 255, 255, 1) 100%
+    );
+    box-shadow: 0 0 10px var(--neon-cyan), 0 0 25px rgba(0, 240, 255, 0.4);
+    pointer-events: none;
+    z-index: 2;
 }
 
 /* Pulsujące punkty danych */
