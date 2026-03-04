@@ -279,37 +279,12 @@ input[type="email"]::placeholder {
 .bottom-bar {
     position: absolute;
     bottom: 35px;
-    left: 50px;
-    right: 50px;
+    left: 0;
+    right: 0;
     z-index: 10;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-}
-
-.contact-left {
-    display: flex;
-}
-
-.footer-email {
-    color: var(--neon-cyan);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.82rem;
-    letter-spacing: 2px;
-    text-decoration: none;
-    opacity: 0.7;
-    text-align: center;
-    white-space: nowrap;
-    transition: 0.3s;
-}
-
-.footer-email:hover {
-    opacity: 1;
-    text-shadow: 0 0 10px var(--neon-cyan);
-}
-
-.bottom-bar .form-container {
-    max-width: 300px;
 }
 
 .social-icons {
@@ -354,7 +329,16 @@ input[type="email"]::placeholder {
 
 /* --- EST. 2026 --- */
 .est-date {
-    display: none;
+    position: absolute;
+    bottom: 38px;
+    left: 50px;
+    z-index: 10;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 4px;
+    color: var(--neon-cyan);
+    opacity: 0.3;
+    text-transform: uppercase;
 }
 
 /* --- MOBILE --- */
@@ -374,18 +358,10 @@ input[type="email"]::placeholder {
 
     .status-text { margin-bottom: 30px; }
 
-    .newsletter-form { flex-direction: column; height: auto; }
-    input[type="email"] { border-right: 1px solid var(--neon-cyan); margin-bottom: 12px; height: 45px; }
-    .submit-btn { height: 45px; }
-
     .bottom-bar {
         position: relative;
         bottom: auto;
         left: auto;
-        transform: none;
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
         margin-top: 40px;
         padding-bottom: 40px;
     }

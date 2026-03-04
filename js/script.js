@@ -1,19 +1,13 @@
 (function () {
     const messages = [
+        "INITIALIZING CORE ENVIRONMENT...",
+        "LOADING CRYPTOGRAPHIC MODULES... [ OK ]",
+        "VERIFYING ZERO-TRUST ARCHITECTURE... [ OK ]",
+        "ENFORCING STRICT ACCESS POLICIES... [ OK ]",
+        "SECURING END-TO-END DATA STREAMS... [ OK ]",
+        "INTEGRITY CHECKSUM: VALIDATED [ DONE ]",
         "STATUS: PRE-DEPLOYMENT PHASE",
-        "INITIALIZING PROTOCOLS...",
-        "SECURING CONNECTIONS...",
-        "RUNNING DIAGNOSTICS...",
-        "ENCRYPTING DATA STREAMS...",
-        "VERIFYING SYSTEM INTEGRITY...",
-        "SCANNING FOR VULNERABILITIES...",
-        "ESTABLISHING SECURE CHANNEL...",
-        "COMPILING THREAT MODELS...",
-        "AWAITING DEPLOYMENT CLEARANCE...",
-        "LOADING SECURITY MODULES...",
-        "CHECKSUM VERIFIED...",
-        "ACCESS PROTOCOLS ENGAGED...",
-        "SYSTEM STANDBY..."
+        "AWAITING AUTHORIZATION_"
     ];
 
     const el = document.getElementById("status-message");
