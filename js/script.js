@@ -126,7 +126,7 @@ particlesJS("particles-js", {
             "opacity": 0.3,
             "width": 1
         },
-        "move": { "enable": true, "speed": 1.5 }
+        "move": { "enable": true, "speed": 0.6 }
     },
     "interactivity": {
         "detect_on": "canvas",
