@@ -282,15 +282,13 @@ input[type="email"]::placeholder {
     left: 50px;
     right: 50px;
     z-index: 10;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 40px;
 }
 
 .contact-left {
     display: flex;
-    justify-content: flex-end;
 }
 
 .footer-email {
@@ -312,7 +310,6 @@ input[type="email"]::placeholder {
 
 .bottom-bar .form-container {
     max-width: 300px;
-    justify-self: start;
 }
 
 .social-icons {
