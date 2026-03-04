@@ -20,7 +20,7 @@
     setInterval(() => {
         spinner.textContent = SPINNER_FRAMES[spinnerIndex++ % SPINNER_FRAMES.length];
     }, 120);
-    const MAX_HISTORY = 5;
+    const MAX_HISTORY = 3;
 
     let msgIndex = 0;
     let charIndex = 0;
@@ -98,18 +98,14 @@
     }
     setTimeout(triggerGlitch, 45000 + Math.random() * 45000);
 
-    // Pasek postępu — pętla co 90 sekund
+    // Wskaźnik postępu — inline, pętla co 90 sekund
     (function () {
         const CYCLE = 90000;
-        const barEl = document.getElementById('progress-line');
-
-        function renderBar(pct) {
-            const filled = Math.round(pct / 100 * 20);
-            return `[${'█'.repeat(filled)}${'░'.repeat(20 - filled)}] ${pct.toFixed(1)}%`;
-        }
+        const barEl = document.getElementById('progress-inline');
 
         function update() {
-            barEl.textContent = renderBar((Date.now() % CYCLE) / CYCLE * 100);
+            const pct = (Date.now() % CYCLE) / CYCLE * 100;
+            barEl.textContent = `  —  ${pct.toFixed(1)}%`;
         }
         update();
         setInterval(update, 500);

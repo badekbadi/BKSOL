@@ -168,11 +168,11 @@ body {
     font-weight: 700;
 }
 
-.progress-line {
-    margin-top: 18px;
-    opacity: 0.75;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
+.progress-inline {
+    opacity: 0.4;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    font-weight: 400;
 }
 
 /* Pulsujące punkty danych */
