@@ -9,18 +9,34 @@
         "SCANNING FOR VULNERABILITIES...",
         "ESTABLISHING SECURE CHANNEL...",
         "COMPILING THREAT MODELS...",
-        "AWAITING DEPLOYMENT CLEARANCE..."
+        "AWAITING DEPLOYMENT CLEARANCE...",
+        "LOADING SECURITY MODULES...",
+        "CHECKSUM VERIFIED...",
+        "ACCESS PROTOCOLS ENGAGED...",
+        "SYSTEM STANDBY..."
     ];
 
     const el = document.getElementById("status-message");
+    const logLines = document.getElementById("log-lines");
+    const history = [];
+    const MAX_HISTORY = 2;
+
     let msgIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
 
     const TYPING_SPEED = 55;
-    const DELETING_SPEED = 25;
-    const PAUSE_AFTER_TYPE = 3000;
-    const PAUSE_AFTER_DELETE = 400;
+    const DELETING_SPEED = 18;
+    const PAUSE_AFTER_TYPE = 12000;
+    const PAUSE_AFTER_DELETE = 500;
+
+    function updateHistory(msg) {
+        history.push(msg);
+        if (history.length > MAX_HISTORY) history.shift();
+        logLines.innerHTML = history
+            .map(m => `<div class="log-line-old">&gt; ${m}</div>`)
+            .join('');
+    }
 
     function tick() {
         const current = messages[msgIndex];
@@ -39,6 +55,7 @@
             charIndex--;
 
             if (charIndex === 0) {
+                updateHistory(messages[msgIndex]);
                 isDeleting = false;
                 msgIndex = (msgIndex + 1) % messages.length;
                 setTimeout(tick, PAUSE_AFTER_DELETE);

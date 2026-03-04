@@ -79,7 +79,7 @@ body {
     text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
 }
 
-/* --- STATUS --- */
+/* --- STATUS / TERMINAL LOG --- */
 .status-text {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.85rem;
@@ -89,6 +89,30 @@ body {
     text-transform: uppercase;
     font-weight: 700;
     text-shadow: 0 0 5px var(--neon-cyan);
+    text-align: left;
+    width: 100%;
+    max-width: 500px;
+}
+
+.log-lines {
+    margin-bottom: 3px;
+}
+
+.log-line-old {
+    opacity: 0.2;
+    font-size: 0.78rem;
+    line-height: 1.8;
+    letter-spacing: 1.5px;
+}
+
+.log-current {
+    display: flex;
+    align-items: center;
+}
+
+.log-prefix {
+    margin-right: 8px;
+    opacity: 0.6;
 }
 
 .cursor {
