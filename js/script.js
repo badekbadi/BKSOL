@@ -39,6 +39,8 @@
             .join('');
     }
 
+    const PAUSE_BEFORE_STATUS = 700;
+
     function tick() {
         const current = messages[msgIndex];
 
@@ -49,6 +51,11 @@
             if (charIndex === current.length) {
                 isDeleting = true;
                 setTimeout(tick, PAUSE_AFTER_TYPE);
+                return;
+            }
+
+            if (current.slice(charIndex).startsWith(' [')) {
+                setTimeout(tick, PAUSE_BEFORE_STATUS);
                 return;
             }
         } else {

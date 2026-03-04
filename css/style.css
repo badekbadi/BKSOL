@@ -337,7 +337,8 @@ input[type="email"]::placeholder {
     font-size: 0.72rem;
     letter-spacing: 4px;
     color: var(--neon-cyan);
-    opacity: 0.3;
+    opacity: 0.65;
+    text-shadow: 0 0 8px var(--neon-cyan), 0 0 20px rgba(0, 240, 255, 0.4);
     text-transform: uppercase;
 }
 
