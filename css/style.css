@@ -169,7 +169,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
 }
 
 .form-label {
@@ -222,6 +221,9 @@ input[type="email"] {
 
 input[type="email"]::placeholder {
     color: var(--neon-cyan);
+    text-transform: none;
+    font-weight: 400;
+    letter-spacing: 1px;
     animation: ph-pulse 2.5s ease-in-out infinite;
 }
 
@@ -243,13 +245,19 @@ input[type="email"]::placeholder {
     box-shadow: 0 0 30px var(--neon-cyan);
 }
 
-/* --- KONTAKT I SOCIALE --- */
-.contact-footer {
+/* --- STOPKA DOLNA --- */
+.bottom-bar {
     position: absolute;
     bottom: 35px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
+    display: flex;
+    align-items: flex-end;
+    gap: 140px;
+}
+
+.contact-left {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -333,14 +341,18 @@ input[type="email"]::placeholder {
     input[type="email"] { border-right: 1px solid var(--neon-cyan); margin-bottom: 12px; height: 45px; }
     .submit-btn { height: 45px; }
 
-    .contact-footer {
+    .bottom-bar {
         position: relative;
         bottom: auto;
         left: auto;
         transform: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
         margin-top: 40px;
+        padding-bottom: 40px;
     }
-    .est-date { position: relative; left: auto; bottom: auto; margin-top: 20px; text-align: center; border: none; padding: 0; }
+    .est-date { display: none; }
 
     body {
         overflow-y: auto;
