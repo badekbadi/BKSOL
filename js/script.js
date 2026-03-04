@@ -103,8 +103,8 @@
         const barEl = document.getElementById('progress-line');
 
         function renderBar(pct) {
-            const filled = Math.round(pct / 100 * 13);
-            return `[${'█'.repeat(filled)}${'░'.repeat(13 - filled)}] ${pct.toFixed(1)}%`;
+            const filled = Math.round(pct / 100 * 20);
+            return `[${'█'.repeat(filled)}${'░'.repeat(20 - filled)}] ${pct.toFixed(1)}%`;
         }
 
         function update() {

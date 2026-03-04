@@ -42,7 +42,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 800px;
+    max-width: 960px;
 }
 
 /* --- RAMKA TYTUŁOWA --- */
@@ -54,11 +54,11 @@ body {
 .title-box {
     border: 2px solid var(--neon-cyan);
     background: var(--glass-bg);
-    padding: 45px 85px;
-    margin-bottom: 70px;
+    padding: 50px 80px;
+    margin-bottom: 60px;
     text-align: center;
     backdrop-filter: blur(5px);
-    min-width: 620px;
+    width: clamp(560px, 72vw, 920px);
     animation: breathe 3.8s ease-in-out infinite;
 }
 
@@ -72,7 +72,7 @@ body {
 .title-box h1 {
     font-family: 'Saira', sans-serif;
     font-weight: 900;
-    font-size: 4.2rem;
+    font-size: 5rem;
     letter-spacing: 3px;
     color: #fff;
     text-shadow: 0 0 30px var(--neon-cyan);
@@ -98,16 +98,16 @@ body {
 /* --- STATUS / TERMINAL LOG --- */
 .status-text {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
+    font-size: 0.92rem;
     letter-spacing: 2px;
     color: var(--neon-cyan);
-    margin-bottom: 60px;
+    margin-bottom: 0;
     text-transform: uppercase;
     font-weight: 700;
     text-shadow: 0 0 5px var(--neon-cyan);
     text-align: left;
     width: 100%;
-    max-width: 620px;
+    max-width: 720px;
 }
 
 .log-lines {
@@ -116,7 +116,7 @@ body {
 
 .log-line-old {
     opacity: 0.2;
-    font-size: 0.78rem;
+    font-size: 0.84rem;
     line-height: 1.8;
     letter-spacing: 1.5px;
 }
@@ -139,10 +139,10 @@ body {
 }
 
 .progress-line {
-    margin-top: 8px;
-    opacity: 0.55;
-    font-size: 0.75rem;
-    letter-spacing: 1.5px;
+    margin-top: 18px;
+    opacity: 0.75;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
 }
 
 /* Pulsujące punkty danych */
@@ -253,8 +253,8 @@ input[type="email"]::placeholder {
     transform: translateX(-50%);
     z-index: 10;
     display: flex;
-    align-items: flex-end;
-    gap: 140px;
+    align-items: center;
+    gap: 0;
 }
 
 .contact-left {
@@ -262,6 +262,13 @@ input[type="email"]::placeholder {
     flex-direction: column;
     align-items: center;
     gap: 12px;
+    padding-right: 50px;
+}
+
+.bottom-bar .form-container {
+    border-left: 1px solid rgba(0, 240, 255, 0.25);
+    padding-left: 50px;
+    max-width: 300px;
 }
 
 .social-icons {
@@ -333,9 +340,9 @@ input[type="email"]::placeholder {
         width: 100%;
         margin-bottom: 40px;
     }
-    .title-box h1 { font-size: 2.3rem; }
+    .title-box h1 { font-size: 2.5rem; }
 
-    .status-text { margin-bottom: 40px; }
+    .status-text { margin-bottom: 30px; }
 
     .newsletter-form { flex-direction: column; height: auto; }
     input[type="email"] { border-right: 1px solid var(--neon-cyan); margin-bottom: 12px; height: 45px; }
