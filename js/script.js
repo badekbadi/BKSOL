@@ -1,3 +1,6 @@
+const isMobile = window.innerWidth < 700;
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 (function () {
     const messages = [
         "INITIALIZING CORE ENVIRONMENT...",
@@ -77,8 +80,9 @@
     tick();
 
     // Pulsujące punkty danych w tle
-    (function () {
-        for (let i = 0; i < 14; i++) {
+    if (!reducedMotion) {
+        const dotCount = isMobile ? 6 : 14;
+        for (let i = 0; i < dotCount; i++) {
             const dot = document.createElement('div');
             dot.className = 'data-pulse';
             dot.style.left = (Math.random() * 100) + 'vw';
@@ -87,16 +91,18 @@
             dot.style.animationDuration = (2.5 + Math.random() * 3.5) + 's';
             document.body.appendChild(dot);
         }
-    })();
+    }
 
     // Glitch na h1 — losowo co 45–90 sekund
-    const h1 = document.querySelector('.title-box h1');
-    function triggerGlitch() {
-        h1.classList.add('glitch-active');
-        setTimeout(() => h1.classList.remove('glitch-active'), 450);
+    if (!reducedMotion) {
+        const h1 = document.querySelector('.title-box h1');
+        function triggerGlitch() {
+            h1.classList.add('glitch-active');
+            setTimeout(() => h1.classList.remove('glitch-active'), 450);
+            setTimeout(triggerGlitch, 45000 + Math.random() * 45000);
+        }
         setTimeout(triggerGlitch, 45000 + Math.random() * 45000);
     }
-    setTimeout(triggerGlitch, 45000 + Math.random() * 45000);
 
     // SEC_MODULES — losowe bloki pamięci
     (function () {
@@ -113,6 +119,8 @@
             el.textContent = 'SEC_MODULES:\n' + rows.join('\n');
         }
 
+        const flipDelay = isMobile ? 800 : 300;
+
         function flip() {
             const count = 1 + Math.floor(Math.random() * 2);
             for (let i = 0; i < count; i++) {
@@ -121,40 +129,40 @@
                 state[r][c] ^= 1;
             }
             render();
-            setTimeout(flip, 300 + Math.floor(Math.random() * 200));
+            setTimeout(flip, flipDelay + Math.floor(Math.random() * 200));
         }
 
         render();
-        setTimeout(flip, 300 + Math.floor(Math.random() * 200));
+        setTimeout(flip, flipDelay + Math.floor(Math.random() * 200));
     })();
 })();
 
 particlesJS("particles-js", {
     "particles": {
-        "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
+        "number": { "value": isMobile ? 35 : 100, "density": { "enable": true, "value_area": 800 } },
         "color": { "value": "#00F0FF" },
         "shape": { "type": "circle" },
         "opacity": { "value": 0.6 },
         "size": { "value": 2.5, "random": true },
         "line_linked": {
-            "enable": true,
+            "enable": !isMobile,
             "distance": 150,
             "color": "#00F0FF",
             "opacity": 0.3,
             "width": 1
         },
-        "move": { "enable": true, "speed": 0.6 }
+        "move": { "enable": !reducedMotion, "speed": isMobile ? 0.3 : 0.6 }
     },
     "interactivity": {
         "detect_on": "canvas",
         "events": {
-            "onhover": { "enable": true, "mode": "grab" },
+            "onhover": { "enable": !isMobile, "mode": "grab" },
             "onclick": { "enable": true, "mode": "push" }
         },
         "modes": {
             "grab": { "distance": 180, "line_linked": { "opacity": 1 } },
-            "push": { "particles_nb": 4 }
+            "push": { "particles_nb": isMobile ? 2 : 4 }
         }
     },
-    "retina_detect": true
+    "retina_detect": !isMobile
 });
