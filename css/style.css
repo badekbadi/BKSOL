@@ -198,6 +198,11 @@ body {
     to   { background-position: 0 calc(100% + 8px); }
 }
 
+@keyframes ph-pulse {
+    0%, 100% { opacity: 0.35; }
+    50%       { opacity: 0.7; }
+}
+
 input[type="email"] {
     flex-grow: 1;
     background-color: rgba(0, 10, 20, 0.8);
@@ -213,6 +218,11 @@ input[type="email"] {
     outline: none;
     text-transform: uppercase;
     animation: scanline 2.8s linear infinite;
+}
+
+input[type="email"]::placeholder {
+    color: var(--neon-cyan);
+    animation: ph-pulse 2.5s ease-in-out infinite;
 }
 
 .submit-btn {
