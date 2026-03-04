@@ -1,5 +1,9 @@
-const isMobile = window.innerWidth < 700;
+let isMobile = window.innerWidth < 700;
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+window.addEventListener('resize', () => {
+    isMobile = window.innerWidth < 700;
+});
 
 (function () {
     const messages = [
@@ -37,9 +41,13 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
     function updateHistory(msg) {
         history.push(msg);
         if (history.length > MAX_HISTORY) history.shift();
-        logLines.innerHTML = history
-            .map(m => `<div class="log-line-old">&gt; ${m}</div>`)
-            .join('');
+        logLines.textContent = '';
+        history.forEach(m => {
+            const div = document.createElement('div');
+            div.className = 'log-line-old';
+            div.textContent = '> ' + m;
+            logLines.appendChild(div);
+        });
     }
 
     const PAUSE_BEFORE_STATUS = 700;
@@ -106,7 +114,7 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
 
     // SEC_MODULES — losowe bloki pamięci
     (function () {
-        const el = document.getElementById('mem-blocks');
+        const memEl = document.getElementById('mem-blocks');
         const ROWS = 3;
         const COLS = 8;
 
@@ -116,7 +124,7 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
 
         function render() {
             const rows = state.map(row => '[' + row.map(b => b ? '■' : '□').join('') + ']');
-            el.textContent = 'SEC_MODULES:\n' + rows.join('\n');
+            memEl.textContent = 'SEC_MODULES:\n' + rows.join('\n');
         }
 
         const flipDelay = isMobile ? 800 : 300;
