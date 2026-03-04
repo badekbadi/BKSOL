@@ -176,24 +176,17 @@ body {
     max-width: 960px;
 }
 
-.sys-load {
+.mem-blocks {
     flex-shrink: 0;
     text-align: right;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
+    font-size: 0.82rem;
     letter-spacing: 2px;
-    line-height: 1.6;
+    line-height: 1.8;
     color: var(--neon-cyan);
-    opacity: 0.45;
-    text-transform: uppercase;
-    white-space: nowrap;
-}
-
-.sys-load span {
-    font-size: 1.1rem;
-    font-weight: 700;
-    opacity: 0.9;
-    letter-spacing: 1px;
+    opacity: 0.6;
+    white-space: pre;
+    text-shadow: 0 0 5px var(--neon-cyan);
 }
 
 /* Pulsujące punkty danych */
@@ -289,7 +282,7 @@ body {
         gap: 16px;
     }
 
-    .sys-load {
+    .mem-blocks {
         text-align: left;
     }
 

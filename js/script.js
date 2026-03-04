@@ -98,16 +98,34 @@
     }
     setTimeout(triggerGlitch, 45000 + Math.random() * 45000);
 
-    // SYSTEM_LOAD — pętla co 90 sekund, aktualizuje tylko cyfrę
+    // SEC_MODULES — losowe bloki pamięci
     (function () {
-        const CYCLE = 90000;
-        const pctEl = document.getElementById('sys-load-pct');
+        const el = document.getElementById('mem-blocks');
+        const ROWS = 3;
+        const COLS = 8;
 
-        function update() {
-            pctEl.textContent = ((Date.now() % CYCLE) / CYCLE * 100).toFixed(1);
+        const state = Array.from({ length: ROWS }, () =>
+            Array.from({ length: COLS }, () => Math.random() > 0.45 ? 1 : 0)
+        );
+
+        function render() {
+            const rows = state.map(row => '[' + row.map(b => b ? '■' : '□').join('') + ']');
+            el.textContent = 'SEC_MODULES:\n' + rows.join('\n');
         }
-        update();
-        setInterval(update, 500);
+
+        function flip() {
+            const count = 1 + Math.floor(Math.random() * 2);
+            for (let i = 0; i < count; i++) {
+                const r = Math.floor(Math.random() * ROWS);
+                const c = Math.floor(Math.random() * COLS);
+                state[r][c] ^= 1;
+            }
+            render();
+            setTimeout(flip, 300 + Math.floor(Math.random() * 200));
+        }
+
+        render();
+        setTimeout(flip, 300 + Math.floor(Math.random() * 200));
     })();
 })();
 
