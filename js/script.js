@@ -27,7 +27,7 @@
 
     const TYPING_SPEED = 55;
     const DELETING_SPEED = 18;
-    const PAUSE_AFTER_TYPE = 12000;
+    const PAUSE_AFTER_TYPE = 2500;
     const PAUSE_AFTER_DELETE = 500;
 
     function updateHistory(msg) {
