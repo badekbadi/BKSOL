@@ -46,15 +46,27 @@ body {
 }
 
 /* --- RAMKA TYTUŁOWA --- */
+@keyframes breathe {
+    0%, 100% { box-shadow: 0 0 40px rgba(0, 240, 255, 0.18); }
+    50%       { box-shadow: 0 0 80px rgba(0, 240, 255, 0.48); }
+}
+
 .title-box {
     border: 2px solid var(--neon-cyan);
     background: var(--glass-bg);
-    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2);
     padding: 45px 85px;
     margin-bottom: 70px;
     text-align: center;
     backdrop-filter: blur(5px);
     min-width: 620px;
+    animation: breathe 3.8s ease-in-out infinite;
+}
+
+@keyframes glitch {
+    0%,  30%, 65%, 100% { transform: none; text-shadow: 0 0 30px var(--neon-cyan); }
+    10% { transform: skewX(-5deg) translateX(6px);  text-shadow: -6px 0 #ff0080, 6px 0 #00f0ff; }
+    20% { transform: skewX( 4deg) translateX(-5px); text-shadow:  5px 0 #ff0080, -5px 0 #00f0ff; }
+    55% { transform: skewX(-2deg) translateX(3px);  text-shadow: -3px 0 #ff0080, 0 0 30px var(--neon-cyan); }
 }
 
 .title-box h1 {
@@ -67,6 +79,10 @@ body {
     line-height: 1;
     margin-bottom: 12px;
     text-transform: uppercase;
+}
+
+.title-box h1.glitch-active {
+    animation: glitch 0.45s linear;
 }
 
 .title-box p {
@@ -115,17 +131,36 @@ body {
     opacity: 0.6;
 }
 
-.cursor {
-    display: inline-block;
-    width: 10px;
-    height: 1em;
-    background-color: var(--neon-cyan);
-    margin-left: 8px;
-    animation: blink 1s infinite;
-    vertical-align: text-bottom;
+#spinner {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 6px var(--neon-cyan);
+    margin-left: 6px;
+    font-weight: 700;
 }
 
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.progress-line {
+    margin-top: 8px;
+    opacity: 0.55;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+}
+
+/* Pulsujące punkty danych */
+@keyframes data-blink {
+    0%, 100% { opacity: 0;   box-shadow: none; }
+    50%       { opacity: 0.7; box-shadow: 0 0 8px var(--neon-cyan), 0 0 18px var(--neon-cyan); }
+}
+
+.data-pulse {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background-color: var(--neon-cyan);
+    border-radius: 50%;
+    animation: data-blink linear infinite;
+    pointer-events: none;
+    z-index: 2;
+}
 
 /* --- FORMULARZ --- */
 .form-container {
@@ -158,9 +193,17 @@ body {
     box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
 }
 
+@keyframes scanline {
+    from { background-position: 0 -8px; }
+    to   { background-position: 0 calc(100% + 8px); }
+}
+
 input[type="email"] {
     flex-grow: 1;
-    background: rgba(0, 10, 20, 0.8);
+    background-color: rgba(0, 10, 20, 0.8);
+    background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 240, 255, 0.12) 50%, transparent 100%);
+    background-size: 100% 8px;
+    background-repeat: no-repeat;
     border: 1px solid var(--neon-cyan);
     border-right: none;
     padding: 0 20px;
@@ -169,6 +212,7 @@ input[type="email"] {
     font-size: 0.9rem;
     outline: none;
     text-transform: uppercase;
+    animation: scanline 2.8s linear infinite;
 }
 
 .submit-btn {
