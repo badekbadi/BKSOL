@@ -140,7 +140,7 @@ window.addEventListener('resize', () => {
 
 particlesJS("particles-js", {
     "particles": {
-        "number": { "value": isMobile ? 20 : 55, "density": { "enable": true, "value_area": 900 } },
+        "number": { "value": isMobile ? 25 : 70, "density": { "enable": true, "value_area": 900 } },
         "color": { "value": "#00F0FF" },
         "shape": { "type": "circle" },
         "opacity": { "value": 0.5 },
