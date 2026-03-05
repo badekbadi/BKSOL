@@ -60,8 +60,8 @@ body {
     position: relative;
     border: 2px solid rgba(0, 240, 255, 0.15);
     background: var(--glass-bg);
-    padding: 50px 80px;
-    margin-bottom: 60px;
+    padding: 44px 70px;
+    margin-bottom: 50px;
     text-align: center;
     backdrop-filter: blur(5px);
     width: clamp(min(560px, 100%), 72vw, 920px);
@@ -105,12 +105,13 @@ body {
 .title-box h1 {
     font-family: 'Saira', sans-serif;
     font-weight: 900;
-    font-size: 5rem;
+    font-size: 4.5rem;
     letter-spacing: 3px;
     color: #fff;
     text-shadow: 0 0 30px var(--neon-cyan);
     line-height: 1;
-    margin-bottom: 12px;
+    padding-bottom: 18px;
+    margin-bottom: 0;
     text-transform: uppercase;
 }
 
@@ -118,14 +119,42 @@ body {
     animation: glitch 0.45s linear;
 }
 
+.title-box .accent-line {
+    display: block;
+    width: 60px;
+    height: 1px;
+    margin: 0 auto 16px;
+    background: var(--neon-cyan);
+    opacity: 0;
+    animation: line-in 0.8s ease-out 0.4s both;
+    box-shadow: 0 0 8px var(--neon-cyan);
+}
+
+@keyframes line-in {
+    from { width: 0; opacity: 0; }
+    to   { width: 60px; opacity: 0.6; }
+}
+
+@keyframes subtitle-in {
+    from { opacity: 0; letter-spacing: 14px; filter: blur(2px); }
+    to   { opacity: 1; letter-spacing: 6px; filter: blur(0); }
+}
+
+@keyframes subtle-glow {
+    0%, 100% { text-shadow: 0 0 6px var(--neon-cyan), 0 0 14px rgba(0, 240, 255, 0.25); }
+    50%      { text-shadow: 0 0 10px var(--neon-cyan), 0 0 24px rgba(0, 240, 255, 0.45); }
+}
+
 .title-box p {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1rem;
-    letter-spacing: 10px;
-    color: #fff;
+    font-family: 'Saira', sans-serif;
+    font-size: 0.88rem;
+    letter-spacing: 6px;
+    color: rgba(255, 255, 255, 0.85);
     text-transform: uppercase;
-    font-weight: 700;
-    text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+    font-weight: 400;
+    text-shadow: 0 0 6px var(--neon-cyan), 0 0 14px rgba(0, 240, 255, 0.25);
+    animation: subtitle-in 1s ease-out 0.6s both,
+               subtle-glow 4s ease-in-out 1.6s infinite;
 }
 
 /* --- STATUS / TERMINAL LOG --- */
@@ -266,42 +295,71 @@ body {
 /* --- MOBILE --- */
 @media (max-width: 700px) {
     .center-content {
-        padding: 0 20px;
+        padding: 0 16px;
         width: 100%;
     }
 
     .title-box {
-        padding: 30px 20px;
+        padding: 24px 16px;
         min-width: unset;
         width: 100%;
-        margin-bottom: 40px;
+        margin-bottom: 32px;
     }
-    .title-box h1 { font-size: 2.5rem; }
+    .title-box h1 {
+        font-size: 2rem;
+        letter-spacing: 2px;
+        padding-bottom: 12px;
+    }
+    .title-box .accent-line {
+        margin-bottom: 12px;
+    }
+    @keyframes line-in {
+        from { width: 0; opacity: 0; }
+        to   { width: 40px; opacity: 0.6; }
+    }
+    .title-box p {
+        font-size: 0.65rem;
+        letter-spacing: 3.5px;
+    }
 
-    .status-text { margin-bottom: 30px; }
+    @keyframes subtitle-in {
+        from { opacity: 0; letter-spacing: 10px; filter: blur(1px); }
+        to   { opacity: 1; letter-spacing: 3.5px; filter: blur(0); }
+    }
+
+    .status-text {
+        font-size: 0.78rem;
+        letter-spacing: 1.5px;
+        margin-bottom: 20px;
+    }
+
+    .log-line-old {
+        font-size: 0.72rem;
+    }
 
     .terminal-row {
         flex-direction: column;
-        gap: 16px;
+        gap: 12px;
     }
 
     .mem-blocks {
         text-align: left;
+        font-size: 0.72rem;
     }
 
     .bottom-bar {
         position: relative;
         bottom: auto;
         left: auto;
-        margin-top: 40px;
-        padding-bottom: 40px;
+        margin-top: 32px;
+        padding-bottom: 32px;
     }
     .est-date { display: none; }
 
     body {
         overflow-y: auto;
         height: auto;
-        padding: 40px 0;
+        padding: 30px 0;
         flex-direction: column;
         width: 100%;
     }
