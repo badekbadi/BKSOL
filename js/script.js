@@ -22,11 +22,7 @@ window.addEventListener('resize', () => {
     const spinner = document.getElementById("spinner");
     const history = [];
 
-    const SPINNER_FRAMES = ['|', '/', '-', '\\'];
-    let spinnerIndex = 0;
-    setInterval(() => {
-        spinner.textContent = SPINNER_FRAMES[spinnerIndex++ % SPINNER_FRAMES.length];
-    }, 120);
+    spinner.textContent = '▊';
     const MAX_HISTORY = 3;
 
     let msgIndex = 0;
@@ -89,7 +85,7 @@ window.addEventListener('resize', () => {
 
     // Pulsujące punkty danych w tle
     if (!reducedMotion) {
-        const dotCount = isMobile ? 6 : 14;
+        const dotCount = isMobile ? 4 : 8;
         for (let i = 0; i < dotCount; i++) {
             const dot = document.createElement('div');
             dot.className = 'data-pulse';
@@ -127,50 +123,46 @@ window.addEventListener('resize', () => {
             memEl.textContent = 'SEC_MODULES:\n' + rows.join('\n');
         }
 
-        const flipDelay = isMobile ? 800 : 300;
+        const flipDelay = isMobile ? 1500 : 700;
 
         function flip() {
-            const count = 1 + Math.floor(Math.random() * 2);
-            for (let i = 0; i < count; i++) {
-                const r = Math.floor(Math.random() * ROWS);
-                const c = Math.floor(Math.random() * COLS);
-                state[r][c] ^= 1;
-            }
+            const r = Math.floor(Math.random() * ROWS);
+            const c = Math.floor(Math.random() * COLS);
+            state[r][c] ^= 1;
             render();
-            setTimeout(flip, flipDelay + Math.floor(Math.random() * 200));
+            setTimeout(flip, flipDelay + Math.floor(Math.random() * 500));
         }
 
         render();
-        setTimeout(flip, flipDelay + Math.floor(Math.random() * 200));
+        setTimeout(flip, flipDelay + Math.floor(Math.random() * 500));
     })();
 })();
 
 particlesJS("particles-js", {
     "particles": {
-        "number": { "value": isMobile ? 35 : 100, "density": { "enable": true, "value_area": 800 } },
+        "number": { "value": isMobile ? 20 : 55, "density": { "enable": true, "value_area": 900 } },
         "color": { "value": "#00F0FF" },
         "shape": { "type": "circle" },
-        "opacity": { "value": 0.6 },
-        "size": { "value": 2.5, "random": true },
+        "opacity": { "value": 0.5 },
+        "size": { "value": 2, "random": true },
         "line_linked": {
             "enable": !isMobile,
-            "distance": 150,
+            "distance": 120,
             "color": "#00F0FF",
-            "opacity": 0.3,
+            "opacity": 0.2,
             "width": 1
         },
-        "move": { "enable": !reducedMotion, "speed": isMobile ? 0.3 : 0.6 }
+        "move": { "enable": !reducedMotion, "speed": isMobile ? 0.25 : 0.5 }
     },
     "interactivity": {
         "detect_on": "canvas",
         "events": {
             "onhover": { "enable": !isMobile, "mode": "grab" },
-            "onclick": { "enable": true, "mode": "push" }
+            "onclick": { "enable": false }
         },
         "modes": {
-            "grab": { "distance": 180, "line_linked": { "opacity": 1 } },
-            "push": { "particles_nb": isMobile ? 2 : 4 }
+            "grab": { "distance": 140, "line_linked": { "opacity": 0.6 } }
         }
     },
-    "retina_detect": !isMobile
+    "retina_detect": false
 });
