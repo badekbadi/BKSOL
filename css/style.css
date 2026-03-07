@@ -338,10 +338,14 @@ body {
         font-size: 0.78rem;
         letter-spacing: 1.5px;
         margin-bottom: 20px;
+        white-space: nowrap;
+        overflow: hidden;
     }
 
     .log-line-old {
         font-size: 0.72rem;
+        white-space: nowrap;
+        overflow: hidden;
     }
 
     .terminal-row {
