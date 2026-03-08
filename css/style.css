@@ -140,21 +140,31 @@ body {
     to   { opacity: 1; letter-spacing: 6px; filter: blur(0); }
 }
 
-@keyframes subtle-glow {
-    0%, 100% { text-shadow: 0 0 6px var(--neon-cyan), 0 0 14px rgba(0, 240, 255, 0.25); }
-    50%      { text-shadow: 0 0 10px var(--neon-cyan), 0 0 24px rgba(0, 240, 255, 0.45); }
+@keyframes shimmer-scan {
+    0%   { background-position: -250% center; }
+    100% { background-position: 250% center; }
 }
 
 .title-box p {
     font-family: 'Saira', sans-serif;
     font-size: 0.88rem;
     letter-spacing: 6px;
-    color: rgba(255, 255, 255, 0.85);
     text-transform: uppercase;
     font-weight: 400;
-    text-shadow: 0 0 6px var(--neon-cyan), 0 0 14px rgba(0, 240, 255, 0.25);
+    background: linear-gradient(
+        90deg,
+        var(--neon-cyan) 0%,
+        var(--neon-cyan) 35%,
+        #ffffff 50%,
+        var(--neon-cyan) 65%,
+        var(--neon-cyan) 100%
+    );
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     animation: subtitle-in 1s ease-out 0.6s both,
-               subtle-glow 4s ease-in-out 1.6s infinite;
+               shimmer-scan 4s linear 1.6s infinite;
 }
 
 /* --- STATUS / TERMINAL LOG --- */
