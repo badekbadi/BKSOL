@@ -23,7 +23,7 @@ window.addEventListener('resize', () => {
     const history = [];
 
     spinner.textContent = '▊';
-    const MAX_HISTORY = 3;
+    const MAX_HISTORY = isMobile ? 6 : 3;
 
     let msgIndex = 0;
     let charIndex = 0;
