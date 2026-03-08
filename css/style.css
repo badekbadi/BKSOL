@@ -141,8 +141,8 @@ body {
 }
 
 @keyframes shimmer-scan {
-    0%   { background-position: -250% center; }
-    100% { background-position: 250% center; }
+    0%   { background-position: -150% center; }
+    100% { background-position: 150% center; }
 }
 
 .title-box p {
@@ -151,6 +151,7 @@ body {
     letter-spacing: 6px;
     text-transform: uppercase;
     font-weight: 400;
+    will-change: background-position;
     background: linear-gradient(
         90deg,
         var(--neon-cyan) 0%,
