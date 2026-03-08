@@ -91,7 +91,7 @@ body {
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    animation: border-spin 6s linear infinite;
+    animation: border-spin 16s linear infinite;
     pointer-events: none;
 }
 
@@ -141,8 +141,8 @@ body {
 }
 
 @keyframes shimmer-scan {
-    0%   { background-position: -150% center; }
-    100% { background-position: 150% center; }
+    0%   { background-position: 150% center; }
+    100% { background-position: -150% center; }
 }
 
 .title-box p {
@@ -165,7 +165,7 @@ body {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: subtitle-in 1s ease-out 0.6s both,
-               shimmer-scan 9s linear 1.6s infinite;
+               shimmer-scan 18s linear 1.6s infinite;
 }
 
 /* --- STATUS / TERMINAL LOG --- */
