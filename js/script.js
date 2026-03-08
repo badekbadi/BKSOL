@@ -17,6 +17,19 @@ window.addEventListener('resize', () => {
         "AWAITING AUTHORIZATION_"
     ];
 
+    const mobileMessages = [
+        "INIT CORE ENVIRONMENT...",
+        "LOADING CRYPTO... [ OK ]",
+        "ZERO-TRUST VERIFY... [ OK ]",
+        "ACCESS POLICIES... [ OK ]",
+        "DATA STREAMS... [ OK ]",
+        "CHECKSUM: VALIDATED [ DONE ]",
+        "STATUS: PRE-DEPLOYMENT",
+        "AWAITING AUTHORIZATION_"
+    ];
+
+    const activeMessages = isMobile ? mobileMessages : messages;
+
     const el = document.getElementById("status-message");
     const logLines = document.getElementById("log-lines");
     const spinner = document.getElementById("spinner");
@@ -49,7 +62,7 @@ window.addEventListener('resize', () => {
     const PAUSE_BEFORE_STATUS = 700;
 
     function tick() {
-        const current = messages[msgIndex];
+        const current = activeMessages[msgIndex];
 
         if (!isDeleting) {
             el.textContent = current.slice(0, charIndex + 1);
@@ -70,9 +83,9 @@ window.addEventListener('resize', () => {
             charIndex--;
 
             if (charIndex === 0) {
-                updateHistory(messages[msgIndex]);
+                updateHistory(activeMessages[msgIndex]);
                 isDeleting = false;
-                msgIndex = (msgIndex + 1) % messages.length;
+                msgIndex = (msgIndex + 1) % activeMessages.length;
                 setTimeout(tick, PAUSE_AFTER_DELETE);
                 return;
             }
