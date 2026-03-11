@@ -7,25 +7,25 @@ window.addEventListener('resize', () => {
 
 (function () {
     const messages = [
-        "INITIALIZING CORE ENVIRONMENT...",
-        "LOADING CRYPTOGRAPHIC MODULES... [ OK ]",
-        "VERIFYING ZERO-TRUST ARCHITECTURE... [ OK ]",
-        "ENFORCING STRICT ACCESS POLICIES... [ OK ]",
-        "SECURING END-TO-END DATA STREAMS... [ OK ]",
-        "INTEGRITY CHECKSUM: VALIDATED [ DONE ]",
-        "STATUS: PRE-DEPLOYMENT PHASE",
-        "AWAITING AUTHORIZATION_"
+        "INITIALIZING RESEARCH FRAMEWORK...",
+        "LOADING THREAT INTELLIGENCE DB... [ DONE ]",
+        "CROSS-REFERENCING RISK MODELS... [ DONE ]",
+        "COMPILING STRATEGIC ANALYSIS... [ DONE ]",
+        "VALIDATING METHODOLOGY... [ DONE ]",
+        "PRELIMINARY FINDINGS: CLASSIFIED",
+        "STATUS: PRE-PUBLICATION PHASE",
+        "ESTABLISHING PARAMETERS_"
     ];
 
     const mobileMessages = [
-        "INIT CORE ENVIRONMENT...",
-        "LOADING CRYPTO... [ OK ]",
-        "ZERO-TRUST VERIFY... [ OK ]",
-        "ACCESS POLICIES... [ OK ]",
-        "DATA STREAMS... [ OK ]",
-        "CHECKSUM: VALIDATED [ DONE ]",
-        "STATUS: PRE-DEPLOYMENT",
-        "AWAITING AUTHORIZATION_"
+        "INIT RESEARCH FRAMEWORK...",
+        "LOADING INTEL DB... [ DONE ]",
+        "CROSS-REF MODELS... [ DONE ]",
+        "STRATEGIC ANALYSIS... [ DONE ]",
+        "METHODOLOGY: VALID [ DONE ]",
+        "FINDINGS: CLASSIFIED",
+        "STATUS: PRE-PUBLICATION",
+        "PARAMS ESTABLISHED_"
     ];
 
     const activeMessages = isMobile ? mobileMessages : messages;
@@ -42,9 +42,9 @@ window.addEventListener('resize', () => {
     let charIndex = 0;
     let isDeleting = false;
 
-    const TYPING_SPEED = 90;
-    const DELETING_SPEED = 35;
-    const PAUSE_AFTER_TYPE = 3000;
+    const TYPING_SPEED = 80;
+    const DELETING_SPEED = 30;
+    const PAUSE_AFTER_TYPE = 3200;
     const PAUSE_AFTER_DELETE = 500;
 
     function updateHistory(msg) {
@@ -54,7 +54,7 @@ window.addEventListener('resize', () => {
         history.forEach(m => {
             const div = document.createElement('div');
             div.className = 'log-line-old';
-            div.textContent = '> ' + m;
+            div.textContent = '› ' + m;
             logLines.appendChild(div);
         });
     }
@@ -96,32 +96,21 @@ window.addEventListener('resize', () => {
 
     tick();
 
-    // Pulsujące punkty danych w tle
+    // Ambient dust dots
     if (!reducedMotion) {
-        const dotCount = isMobile ? 4 : 8;
+        const dotCount = isMobile ? 3 : 6;
         for (let i = 0; i < dotCount; i++) {
             const dot = document.createElement('div');
             dot.className = 'data-pulse';
             dot.style.left = (Math.random() * 100) + 'vw';
             dot.style.top  = (Math.random() * 100) + 'vh';
-            dot.style.animationDelay    = (Math.random() * 5) + 's';
-            dot.style.animationDuration = (2.5 + Math.random() * 3.5) + 's';
+            dot.style.animationDelay    = (Math.random() * 6) + 's';
+            dot.style.animationDuration = (4 + Math.random() * 5) + 's';
             document.body.appendChild(dot);
         }
     }
 
-    // Glitch na h1 — losowo co 45–90 sekund
-    if (!reducedMotion) {
-        const h1 = document.querySelector('.title-box h1');
-        function triggerGlitch() {
-            h1.classList.add('glitch-active');
-            setTimeout(() => h1.classList.remove('glitch-active'), 450);
-            setTimeout(triggerGlitch, 45000 + Math.random() * 45000);
-        }
-        setTimeout(triggerGlitch, 45000 + Math.random() * 45000);
-    }
-
-    // SEC_MODULES — losowe bloki pamięci
+    // RESEARCH_NODES — module activity grid
     (function () {
         const memEl = document.getElementById('mem-blocks');
         const ROWS = 3;
@@ -132,49 +121,40 @@ window.addEventListener('resize', () => {
         );
 
         function render() {
-            const rows = state.map(row => '[' + row.map(b => b ? '■' : '□').join('') + ']');
-            memEl.textContent = 'SEC_MODULES:\n' + rows.join('\n');
+            const rows = state.map(row => '[' + row.map(b => b ? '◆' : '◇').join('') + ']');
+            memEl.textContent = 'RESEARCH_NODES:\n' + rows.join('\n');
         }
 
-        const flipDelay = isMobile ? 1500 : 700;
+        const flipDelay = isMobile ? 2000 : 1200;
 
         function flip() {
             const r = Math.floor(Math.random() * ROWS);
             const c = Math.floor(Math.random() * COLS);
             state[r][c] ^= 1;
             render();
-            setTimeout(flip, flipDelay + Math.floor(Math.random() * 500));
+            setTimeout(flip, flipDelay + Math.floor(Math.random() * 800));
         }
 
         render();
-        setTimeout(flip, flipDelay + Math.floor(Math.random() * 500));
+        setTimeout(flip, flipDelay + Math.floor(Math.random() * 800));
     })();
 })();
 
 particlesJS("particles-js", {
     "particles": {
-        "number": { "value": isMobile ? 25 : 70, "density": { "enable": true, "value_area": 900 } },
-        "color": { "value": "#00F0FF" },
+        "number": { "value": isMobile ? 15 : 35, "density": { "enable": true, "value_area": 1200 } },
+        "color": { "value": "#B8922A" },
         "shape": { "type": "circle" },
-        "opacity": { "value": 0.5 },
-        "size": { "value": 2, "random": true },
-        "line_linked": {
-            "enable": !isMobile,
-            "distance": 120,
-            "color": "#00F0FF",
-            "opacity": 0.2,
-            "width": 1
-        },
-        "move": { "enable": !reducedMotion, "speed": isMobile ? 0.25 : 0.5 }
+        "opacity": { "value": 0.2, "random": true },
+        "size": { "value": 1.5, "random": true },
+        "line_linked": { "enable": false },
+        "move": { "enable": !reducedMotion, "speed": isMobile ? 0.15 : 0.25 }
     },
     "interactivity": {
         "detect_on": "canvas",
         "events": {
-            "onhover": { "enable": !isMobile, "mode": "grab" },
+            "onhover": { "enable": false },
             "onclick": { "enable": false }
-        },
-        "modes": {
-            "grab": { "distance": 140, "line_linked": { "opacity": 0.6 } }
         }
     },
     "retina_detect": false

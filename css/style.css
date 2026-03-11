@@ -1,8 +1,12 @@
-/* --- RESET I BAZA --- */
+/* --- RESET & BASE --- */
 :root {
-    --neon-cyan: #00F0FF;
-    --bg-dark: #050a10;
-    --glass-bg: rgba(2, 6, 12, 0.7);
+    --gold: #B8922A;
+    --gold-light: #D4A84C;
+    --gold-dim: rgba(184, 146, 42, 0.35);
+    --bg: #07090f;
+    --text: #DDD8C8;
+    --text-muted: rgba(221, 216, 200, 0.45);
+    --border: rgba(184, 146, 42, 0.18);
 }
 
 * {
@@ -12,9 +16,9 @@
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: #fff;
-    font-family: 'JetBrains Mono', monospace;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
@@ -22,6 +26,30 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
+}
+
+/* Subtle grid background */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(184, 146, 42, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184, 146, 42, 0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    background-position: center center;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Vignette overlay */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 35%, rgba(7, 9, 15, 0.9) 100%);
+    z-index: 0;
+    pointer-events: none;
 }
 
 #particles-js {
@@ -33,7 +61,7 @@ body {
     z-index: 1;
 }
 
-/* --- KONTENER GŁÓWNY --- */
+/* --- MAIN CONTAINER --- */
 .center-content {
     position: relative;
     z-index: 10;
@@ -42,156 +70,120 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 960px;
+    max-width: 900px;
+    padding: 0 24px;
 }
 
-/* --- RAMKA TYTUŁOWA --- */
-@property --glow-angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
+/* --- INSTITUTE HEADER --- */
+@keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
-@keyframes border-spin {
-    to { --glow-angle: 360deg; }
+.institute-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 640px;
+    margin-bottom: 40px;
+    animation: fade-in 1.2s ease-out both;
 }
 
-.title-box {
-    position: relative;
-    border: 2px solid rgba(0, 240, 255, 0.15);
-    background: var(--glass-bg);
-    padding: 44px 70px;
-    margin-bottom: 50px;
-    text-align: center;
-    backdrop-filter: blur(5px);
-    width: clamp(min(560px, 100%), 72vw, 920px);
-    box-shadow: 0 0 80px rgba(0, 240, 255, 0.06);
-}
-
-.title-box::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    padding: 2px;
-    background: conic-gradient(
-        from var(--glow-angle),
-        transparent 0deg,
-        transparent 55deg,
-        rgba(0, 240, 255, 0.6) 78deg,
-        rgba(0, 240, 255, 1)   90deg,
-        rgba(0, 240, 255, 0.6) 102deg,
-        transparent 125deg,
-        transparent 360deg
-    );
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: border-spin 16s linear infinite;
-    pointer-events: none;
-}
-
-@keyframes glitch {
-    0%,  30%, 65%, 100% { transform: none; text-shadow: 0 0 30px var(--neon-cyan); }
-    10% { transform: skewX(-5deg) translateX(6px);  text-shadow: -6px 0 #ff0080, 6px 0 #00f0ff; }
-    20% { transform: skewX( 4deg) translateX(-5px); text-shadow:  5px 0 #ff0080, -5px 0 #00f0ff; }
-    55% { transform: skewX(-2deg) translateX(3px);  text-shadow: -3px 0 #ff0080, 0 0 30px var(--neon-cyan); }
-}
-
-.title-box h1 {
-    font-family: 'Saira', sans-serif;
-    font-weight: 900;
-    font-size: 4.5rem;
-    letter-spacing: 3px;
-    color: #fff;
-    text-shadow: 0 0 30px var(--neon-cyan);
-    line-height: 1;
-    padding-bottom: 18px;
-    margin-bottom: 0;
-    text-transform: uppercase;
-}
-
-.title-box h1.glitch-active {
-    animation: glitch 0.45s linear;
-}
-
-.title-box .accent-line {
-    display: block;
-    width: 60px;
+.h-rule {
+    flex: 1;
     height: 1px;
-    margin: 0 auto 16px;
-    background: var(--neon-cyan);
-    opacity: 0;
-    animation: line-in 0.8s ease-out 0.4s both;
-    box-shadow: 0 0 8px var(--neon-cyan);
+    background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
 }
 
-@keyframes line-in {
-    from { width: 0; opacity: 0; }
-    to   { width: 60px; opacity: 0.6; }
+.institute-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 5px;
+    color: var(--gold);
+    opacity: 0.8;
+    white-space: nowrap;
 }
 
-@keyframes subtitle-in {
-    from { opacity: 0; letter-spacing: 14px; filter: blur(2px); }
-    to   { opacity: 1; letter-spacing: 6px; filter: blur(0); }
+/* --- TITLE BLOCK --- */
+.title-block {
+    text-align: center;
+    margin-bottom: 52px;
+    width: 100%;
 }
 
-@keyframes shimmer-scan {
-    0%   { background-position: 150% center; }
-    100% { background-position: -150% center; }
+@keyframes title-reveal {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-.title-box p {
-    font-family: 'Saira', sans-serif;
-    font-size: 0.88rem;
-    letter-spacing: 6px;
+.title-block h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 5.2rem;
+    letter-spacing: 1px;
+    color: var(--text);
+    line-height: 1;
+    padding-bottom: 24px;
+    animation: title-reveal 1s ease-out 0.2s both;
+    text-shadow: 0 4px 60px rgba(184, 146, 42, 0.14);
+}
+
+.gold-divider {
+    display: block;
+    width: 110px;
+    height: 1px;
+    margin: 0 auto 20px;
+    background: linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+    opacity: 0.55;
+    animation: fade-in 0.8s ease-out 0.6s both;
+}
+
+@keyframes tagline-in {
+    from { opacity: 0; letter-spacing: 10px; }
+    to   { opacity: 0.55; letter-spacing: 5px; }
+}
+
+.tagline {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    animation: tagline-in 1s ease-out 0.8s both;
+}
+
+/* --- STATUS / RESEARCH LOG --- */
+.terminal-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 40px;
+    width: 100%;
+    max-width: 860px;
+}
+
+.status-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 1.5px;
+    color: var(--gold-light);
     text-transform: uppercase;
     font-weight: 400;
-    will-change: background-position;
-    background: linear-gradient(
-        90deg,
-        var(--neon-cyan) 0%,
-        var(--neon-cyan) 35%,
-        #ffffff 50%,
-        var(--neon-cyan) 65%,
-        var(--neon-cyan) 100%
-    );
-    background-size: 300% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: subtitle-in 1s ease-out 0.6s both,
-               shimmer-scan 18s linear 1.6s infinite;
-}
-
-/* --- STATUS / TERMINAL LOG --- */
-.status-text {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.92rem;
-    letter-spacing: 2px;
-    color: var(--neon-cyan);
-    margin-bottom: 0;
-    text-transform: uppercase;
-    font-weight: 700;
-    text-shadow: 0 0 5px var(--neon-cyan);
     text-align: left;
     width: 100%;
-    max-width: 720px;
+    max-width: 640px;
+    animation: fade-in 0.8s ease-out 1.2s both;
 }
 
 .log-lines {
-    margin-bottom: 3px;
+    margin-bottom: 4px;
 }
 
 .log-line-old {
     opacity: 0.2;
-    font-size: 0.84rem;
+    font-size: 0.74rem;
     line-height: 1.8;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
 }
 
 .log-current {
@@ -200,8 +192,11 @@ body {
 }
 
 .log-prefix {
-    margin-right: 8px;
-    opacity: 0.6;
+    margin-right: 10px;
+    color: var(--gold);
+    opacity: 0.7;
+    font-size: 1rem;
+    line-height: 1;
 }
 
 @keyframes cursor-blink {
@@ -210,45 +205,37 @@ body {
 }
 
 #spinner {
-    color: var(--neon-cyan);
-    text-shadow: 0 0 6px var(--neon-cyan);
+    color: var(--gold);
     margin-left: 2px;
     font-weight: 700;
-    animation: cursor-blink 0.9s step-end infinite;
+    animation: cursor-blink 1s step-end infinite;
 }
 
-.terminal-row {
-    display: flex;
-    align-items: flex-end;
-    gap: 40px;
-    width: 100%;
-    max-width: 960px;
-}
-
+/* --- RESEARCH NODES (mem-blocks) --- */
 .mem-blocks {
     flex-shrink: 0;
     text-align: right;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.82rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
     letter-spacing: 2px;
-    line-height: 1.8;
-    color: var(--neon-cyan);
-    opacity: 0.6;
+    line-height: 1.9;
+    color: var(--gold);
+    opacity: 0.4;
     white-space: pre;
-    text-shadow: 0 0 5px var(--neon-cyan);
+    animation: fade-in 0.8s ease-out 1.4s both;
 }
 
-/* Pulsujące punkty danych */
+/* Ambient data dots */
 @keyframes data-blink {
     0%, 100% { opacity: 0; transform: scale(1); }
-    50%      { opacity: 0.6; transform: scale(1.8); }
+    50%      { opacity: 0.35; transform: scale(1.5); }
 }
 
 .data-pulse {
     position: fixed;
-    width: 3px;
-    height: 3px;
-    background-color: var(--neon-cyan);
+    width: 2px;
+    height: 2px;
+    background-color: var(--gold);
     border-radius: 50%;
     animation: data-blink linear infinite;
     pointer-events: none;
@@ -256,8 +243,7 @@ body {
     will-change: opacity, transform;
 }
 
-
-/* --- STOPKA DOLNA --- */
+/* --- FOOTER --- */
 .bottom-bar {
     position: absolute;
     bottom: 35px;
@@ -271,90 +257,88 @@ body {
 
 .social-icons {
     display: flex;
-    gap: 15px;
+    gap: 12px;
 }
 
 .icon-box {
-    color: var(--neon-cyan);
+    color: var(--text-muted);
     text-decoration: none;
-    font-size: 1.2rem;
-    width: 38px; 
-    height: 38px;
-    border: 1px solid rgba(0, 240, 255, 0.4);
-    display: flex; 
-    align-items: center; 
+    font-size: 1.05rem;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(184, 146, 42, 0.2);
+    display: flex;
+    align-items: center;
     justify-content: center;
-    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-    background: rgba(0,0,0,0.3);
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+    background: transparent;
 }
 
 .icon-box:hover {
-    background: var(--neon-cyan);
-    color: #000;
-    box-shadow: 0 0 15px var(--neon-cyan);
+    background: rgba(184, 146, 42, 0.1);
+    color: var(--gold-light);
+    border-color: rgba(184, 146, 42, 0.5);
 }
-
 
 /* --- EST. 2026 --- */
 .est-date {
     position: absolute;
-    bottom: 38px;
-    left: 50px;
+    bottom: 40px;
+    left: 48px;
     z-index: 10;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
     letter-spacing: 4px;
-    color: var(--neon-cyan);
-    opacity: 0.65;
-    text-shadow: 0 0 8px var(--neon-cyan), 0 0 20px rgba(0, 240, 255, 0.4);
+    color: var(--gold);
+    opacity: 0.38;
     text-transform: uppercase;
 }
 
 /* --- MOBILE --- */
 @media (max-width: 700px) {
     .center-content {
-        padding: 0 16px;
+        padding: 0 20px;
         width: 100%;
     }
 
-    .title-box {
-        padding: 24px 16px;
-        min-width: unset;
-        width: 100%;
-        margin-bottom: 32px;
-    }
-    .title-box h1 {
-        font-size: 2rem;
-        letter-spacing: 2px;
-        padding-bottom: 12px;
-    }
-    .title-box .accent-line {
-        margin-bottom: 12px;
-    }
-    @keyframes line-in {
-        from { width: 0; opacity: 0; }
-        to   { width: 40px; opacity: 0.6; }
-    }
-    .title-box p {
-        font-size: 0.65rem;
-        letter-spacing: 3.5px;
+    .institute-header {
+        margin-bottom: 24px;
+        max-width: 100%;
     }
 
-    @keyframes subtitle-in {
-        from { opacity: 0; letter-spacing: 10px; filter: blur(1px); }
-        to   { opacity: 1; letter-spacing: 3.5px; filter: blur(0); }
+    .title-block {
+        margin-bottom: 28px;
+    }
+
+    .title-block h1 {
+        font-size: 2.6rem;
+        padding-bottom: 14px;
+    }
+
+    .gold-divider {
+        width: 70px;
+        margin-bottom: 14px;
+    }
+
+    .tagline {
+        font-size: 0.6rem;
+        letter-spacing: 3px;
+    }
+
+    @keyframes tagline-in {
+        from { opacity: 0; letter-spacing: 6px; }
+        to   { opacity: 0.55; letter-spacing: 3px; }
     }
 
     .status-text {
-        font-size: 0.78rem;
-        letter-spacing: 1.5px;
-        margin-bottom: 20px;
+        font-size: 0.72rem;
+        letter-spacing: 1px;
         white-space: nowrap;
         overflow: hidden;
     }
 
     .log-line-old {
-        font-size: 0.72rem;
+        font-size: 0.66rem;
         white-space: nowrap;
         overflow: hidden;
     }
@@ -362,32 +346,42 @@ body {
     .terminal-row {
         flex-direction: column;
         gap: 12px;
+        align-items: flex-start;
     }
 
     .mem-blocks {
         text-align: left;
-        font-size: 0.72rem;
+        font-size: 0.66rem;
     }
 
     .bottom-bar {
         position: relative;
         bottom: auto;
         left: auto;
-        margin-top: 32px;
+        margin-top: 28px;
         padding-bottom: 32px;
     }
+
     .est-date { display: none; }
 
     body {
         overflow-y: auto;
         height: auto;
-        padding: 30px 0;
+        padding: 40px 0;
         flex-direction: column;
         width: 100%;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .title-box::before { animation: none; }
-    .title-box h1 { animation: none; }
+    .title-block h1,
+    .institute-header,
+    .gold-divider,
+    .tagline,
+    .status-text,
+    .mem-blocks {
+        animation: none;
+        opacity: 1;
+    }
+    .tagline { opacity: 0.55; }
 }
