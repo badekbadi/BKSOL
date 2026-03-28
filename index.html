@@ -34,43 +34,331 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Saira:wght@700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=2">
+    <link rel="stylesheet" href="css/sections.css?v=4">
 </head>
 
-<body>
+<body class="phase-1">
 
     <div id="particles-js"></div>
 
-    <div class="center-content">
-        <div class="title-box">
-            <h1>BK SOLUTIONS</h1>
-            <span class="accent-line"></span>
-            <p>THE STANDARD OF TRUST</p>
-        </div>
+    <!-- ── NAWIGACJA ──────────────────────────────────────────── -->
+    <nav id="nav-main" aria-label="Main navigation">
+        <a class="nav-brand" href="#section-hero">BK <span>SOL</span></a>
+        <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+        <ul id="nav-links" class="nav-links">
+            <li><a href="#section-identity" class="nav-link">[PROFILE]</a></li>
+            <li><a href="#section-modules" class="nav-link">[MODULES]</a></li>
+            <li><a href="#section-threat" class="nav-link">[THREAT DATA]</a></li>
+            <li><a href="#section-access" class="nav-link">[REQUEST ACCESS]</a></li>
+        </ul>
+    </nav>
 
-        <div class="terminal-row">
-            <div class="status-text">
-                <div class="log-lines" id="log-lines"></div>
-                <div class="log-current">
-                    <span class="log-prefix">&gt;</span>
-                    <span id="status-message"></span><span id="spinner"></span>
+    <main>
+
+        <!-- ── HERO ─────────────────────────────────────────────── -->
+        <section id="section-hero">
+            <div class="center-content">
+                <div class="title-box">
+                    <h1>BK SOLUTIONS</h1>
+                    <span class="accent-line"></span>
+                    <p>THE STANDARD OF TRUST</p>
+                </div>
+
+                <div class="terminal-row">
+                    <div class="status-text">
+                        <div class="log-lines" id="log-lines"></div>
+                        <div class="log-current">
+                            <span class="log-prefix">&gt;</span>
+                            <span id="status-message"></span><span id="spinner"></span>
+                        </div>
+                    </div>
+                    <div class="mem-blocks" id="mem-blocks"></div>
                 </div>
             </div>
-            <div class="mem-blocks" id="mem-blocks"></div>
-        </div>
-    </div>
 
-    <div class="est-date">EST. 2026</div>
+            <div class="scroll-cue" id="scroll-cue">
+                <span class="scroll-cue__label">SCROLL TO INITIALIZE</span>
+                <span class="scroll-cue__arrow">▼</span>
+            </div>
 
-    <div class="bottom-bar">
-        <div class="social-icons">
+            <div class="est-date">EST. 2026</div>
+
+            <div class="bottom-bar">
+                <div class="social-icons">
+                    <a href="https://x.com/BKSolutions_" target="_blank" rel="noopener noreferrer" class="icon-box"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.youtube.com/@BKSolutions_pl" target="_blank" rel="noopener noreferrer" class="icon-box"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/bksolutions_pl" target="_blank" rel="noopener noreferrer" class="icon-box"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── ENTITY PROFILE ────────────────────────────────────── -->
+        <section id="section-identity" class="section-panel" aria-label="Entity Profile">
+            <div class="section-inner">
+                <div class="section-header reveal-on-scroll">
+                    <div class="section-header__label section-typewriter">&gt; ENTITY PROFILE // CLASSIFICATION: OPEN</div>
+                    <div class="section-header__line"></div>
+                </div>
+
+                <div class="identity-grid">
+                    <div class="identity-tag reveal-on-scroll reveal-delay-1">
+                        <span class="identity-tag__key">[SECTOR]</span>
+                        <span class="identity-tag__val">DIGITAL SECURITY EDUCATION</span>
+                    </div>
+                    <div class="identity-tag reveal-on-scroll reveal-delay-2">
+                        <span class="identity-tag__key">[FOCUS]</span>
+                        <span class="identity-tag__val">CYBERSECURITY × ASSET MANAGEMENT</span>
+                    </div>
+                    <div class="identity-tag reveal-on-scroll reveal-delay-3">
+                        <span class="identity-tag__key">[MODEL]</span>
+                        <span class="identity-tag__val">COMPREHENSIVE TRAINING PROGRAMS</span>
+                    </div>
+                    <div class="identity-tag reveal-on-scroll reveal-delay-4">
+                        <span class="identity-tag__key">[STATUS]</span>
+                        <span class="identity-tag__val">PRE-OPERATIONAL // EST. 2026</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── MISSION MODULES ───────────────────────────────────── -->
+        <section id="section-modules" class="section-panel" aria-label="Mission Modules">
+            <div class="section-inner">
+                <div class="section-header reveal-on-scroll">
+                    <div class="section-header__label section-typewriter" id="modules-header-text">&gt; MISSION MODULES // 3 OF 3 CLASSIFIED</div>
+                    <div class="section-header__line"></div>
+                </div>
+
+                <div class="modules-meta reveal-on-scroll">
+                    <div class="modules-meta__count" id="modules-count">CLEARANCE LEVEL REQUIRED: TOP SECRET</div>
+                    <div class="modules-progress" id="modules-progress">[░░░░░░░░░░]&nbsp;&nbsp;0% DECLASSIFIED</div>
+                </div>
+
+                <div class="modules-grid">
+                    <div id="mc-01" class="module-card module-card--locked reveal-on-scroll reveal-delay-1">
+                        <div class="module-card__header">
+                            <span class="module-card__id">MODULE_01</span>
+                            <span class="module-card__status">FOUNDATION CLEARANCE</span>
+                        </div>
+                        <div class="module-card__body">
+                            <div class="module-locked-view">
+                                ████████████████████<br>
+                                ███████████ ████████<br>
+                                ████████████████████<br>
+                                ████████ ███████████<br>
+                                ████████████████████
+                            </div>
+                            <div class="module-card__features m01-content">
+                                <div class="module-feature">DIGITAL THREAT LANDSCAPE</div>
+                                <div class="module-feature">OPSEC CORE PRINCIPLES</div>
+                                <div class="module-feature">CRYPTOGRAPHY FUNDAMENTALS</div>
+                                <div class="module-feature">SECURE DEVICE SETUP</div>
+                            </div>
+                        </div>
+                        <div class="module-card__lock-overlay" aria-hidden="true">
+                            <span class="module-card__lock-icon"><i class="fa-solid fa-lock"></i></span>
+                            <span class="module-card__lock-text">CLASSIFIED<br>ACCESS DENIED</span>
+                        </div>
+                    </div>
+
+                    <div id="mc-02" class="module-card module-card--locked reveal-on-scroll reveal-delay-2">
+                        <div class="module-card__header">
+                            <span class="module-card__id">MODULE_02</span>
+                            <span class="module-card__status">OPERATIONAL PROTOCOLS</span>
+                        </div>
+                        <div class="module-card__body">
+                            <div class="module-locked-view">
+                                ████████████████████<br>
+                                ████████ ███████████<br>
+                                ████████████████████<br>
+                                ███████████ ████████<br>
+                                ████████████████████
+                            </div>
+                            <div class="module-card__features m02-content">
+                                <div class="module-feature">ZERO-TRUST ARCHITECTURE</div>
+                                <div class="module-feature">DIGITAL ASSET CUSTODY</div>
+                                <div class="module-feature">KEY &amp; ACCESS MANAGEMENT</div>
+                                <div class="module-feature">INCIDENT RESPONSE</div>
+                            </div>
+                        </div>
+                        <div class="module-card__lock-overlay" aria-hidden="true">
+                            <span class="module-card__lock-icon"><i class="fa-solid fa-lock"></i></span>
+                            <span class="module-card__lock-text">CLASSIFIED<br>ACCESS DENIED</span>
+                        </div>
+                    </div>
+
+                    <div id="mc-03" class="module-card module-card--locked reveal-on-scroll reveal-delay-3">
+                        <div class="module-card__header">
+                            <span class="module-card__id">MODULE_03</span>
+                            <span class="module-card__status">ADVANCED ARCHITECTURE</span>
+                        </div>
+                        <div class="module-card__body">
+                            <div class="module-locked-view">
+                                ████████████████████<br>
+                                ███████████ ████████<br>
+                                ████████████████████<br>
+                                ████████ ███████████<br>
+                                ████████████████████
+                            </div>
+                            <div class="module-card__features m03-content">
+                                <div class="module-feature">MULTI-LAYER SECURITY DESIGN</div>
+                                <div class="module-feature">HARDWARE SECURITY MODULES</div>
+                                <div class="module-feature">ADVANCED KEY DERIVATION</div>
+                                <div class="module-feature">PERSONAL RISK ARCHITECTURE</div>
+                            </div>
+                        </div>
+                        <div class="module-card__lock-overlay" aria-hidden="true">
+                            <span class="module-card__lock-icon"><i class="fa-solid fa-lock"></i></span>
+                            <span class="module-card__lock-text">CLASSIFIED<br>ACCESS DENIED</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── THREAT LANDSCAPE ──────────────────────────────────── -->
+        <section id="section-threat" class="section-panel" aria-label="Threat Landscape">
+            <div class="section-inner">
+                <div class="section-header reveal-on-scroll">
+                    <div class="section-header__label section-typewriter">&gt; THREAT LANDSCAPE // INTEL: CURRENT</div>
+                    <div class="section-header__line"></div>
+                </div>
+
+                <div class="threat-layout">
+                    <div class="threat-stats">
+                        <div class="threat-stat reveal-on-scroll reveal-delay-1">
+                            <span class="threat-stat__value count-up" data-target="4.45" data-prefix="$" data-suffix="M" data-duration="1800">$0.00M</span>
+                            <span class="threat-stat__label">AVG. COST PER DATA BREACH</span>
+                            <span class="threat-stat__source">SOURCE: IBM SECURITY REPORT 2023</span>
+                        </div>
+                        <div class="threat-stat reveal-on-scroll reveal-delay-2">
+                            <span class="threat-stat__value count-up" data-target="74" data-suffix="%" data-duration="1400">0%</span>
+                            <span class="threat-stat__label">ATTACKS INVOLVE HUMAN ELEMENT</span>
+                            <span class="threat-stat__source">SOURCE: VERIZON DBIR 2023</span>
+                        </div>
+                        <div class="threat-stat reveal-on-scroll reveal-delay-3">
+                            <span class="threat-stat__value count-up" data-target="3.8" data-prefix="$" data-suffix="B" data-duration="1600">$0.0B</span>
+                            <span class="threat-stat__label">STOLEN FROM CRYPTO PLATFORMS</span>
+                            <span class="threat-stat__source">SOURCE: CHAINALYSIS 2023</span>
+                        </div>
+                    </div>
+
+                    <div class="threat-right">
+                        <div class="threat-matrix-wrap reveal-on-scroll">
+                            <div class="threat-matrix-label">THREAT_MATRIX // LIVE FEED</div>
+                            <pre id="threat-matrix" aria-hidden="true"></pre>
+                        </div>
+                        <div class="threat-description reveal-on-scroll reveal-delay-1">
+                            DIGITAL ASSETS ARE THE FASTEST-GROWING TARGET CLASS FOR THREAT ACTORS GLOBALLY.<br><br>
+                            THE PRIMARY VULNERABILITY IS NOT TECHNICAL — IT IS THE KNOWLEDGE GAP OF THE INDIVIDUAL OPERATOR.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── REQUEST ACCESS ────────────────────────────────────── -->
+        <section id="section-access" class="section-panel" aria-label="Request Access">
+            <div class="section-inner">
+                <div class="section-header reveal-on-scroll">
+                    <div class="section-header__label section-typewriter">&gt; REQUEST ACCESS // WAITLIST OPEN</div>
+                    <div class="section-header__line"></div>
+                </div>
+
+                <div class="access-layout">
+                    <div class="access-intro reveal-on-scroll">
+                        <div class="access-intro__title">
+                            SECURE YOUR<br>
+                            <span>POSITION.</span>
+                        </div>
+                        <div class="access-intro__text access-pre-launch">
+                            AUTHORIZATION REQUESTS ARE REVIEWED MANUALLY.<br>
+                            REGISTERED OPERATORS WILL BE NOTIFIED UPON SYSTEM ACTIVATION.<br><br>
+                            PROGRAM LAUNCH: Q3–Q4 2026
+                        </div>
+                        <div class="access-intro__text access-launch">
+                            SYSTEM IS OPERATIONAL.<br>
+                            SUBMIT YOUR ACCESS REQUEST TO BEGIN ENROLLMENT.<br>
+                            ALL REQUESTS ARE REVIEWED INDIVIDUALLY.<br><br>
+                            STATUS: ACCEPTING OPERATORS
+                        </div>
+                    </div>
+
+                    <div class="access-terminal reveal-on-scroll reveal-delay-1">
+                        <div class="access-terminal__bar">
+                            <span class="access-terminal__dot"></span>
+                            <span class="access-terminal__dot"></span>
+                            <span class="access-terminal__dot"></span>
+                            <span class="access-terminal__title">SECURE_CHANNEL // REQUEST_ACCESS.EXE</span>
+                        </div>
+
+                        <form id="access-form" novalidate>
+                            <div class="form-field">
+                                <label class="form-label" for="operator">&gt; OPERATOR:</label>
+                                <input id="operator" class="form-input" type="text" name="operator" placeholder="TWOJE IMIĘ / NICK" required autocomplete="name">
+                            </div>
+
+                            <div class="form-field">
+                                <label class="form-label" for="email">&gt; SECURE_CHANNEL:</label>
+                                <input id="email" class="form-input" type="email" name="email" placeholder="ADRES EMAIL" required autocomplete="email">
+                            </div>
+
+                            <div class="form-field">
+                                <label class="form-label" for="source">&gt; SOURCE:</label>
+                                <select id="source" class="form-select" name="source">
+                                    <option value="">— SKĄD SIĘ DOWIEDZIAŁEŚ —</option>
+                                    <option value="x">X (TWITTER)</option>
+                                    <option value="youtube">YOUTUBE</option>
+                                    <option value="instagram">INSTAGRAM</option>
+                                    <option value="other">INNE / OTHER</option>
+                                </select>
+                            </div>
+
+                            <div class="form-field form-field--checkbox">
+                                <input type="checkbox" id="rodo" class="form-checkbox" name="rodo" required>
+                                <label class="form-checkbox-label" for="rodo">
+                                    WYRAŻAM ZGODĘ NA PRZETWARZANIE DANYCH OSOBOWYCH ZGODNIE Z
+                                    <a href="/privacy-policy" class="form-privacy-link">POLITYKĄ PRYWATNOŚCI</a>
+                                </label>
+                            </div>
+
+                            <button type="submit" id="form-submit">[ TRANSMIT REQUEST ]</button>
+                        </form>
+
+                        <div id="access-status">
+                            <pre class="status-terminal-content"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ── FOOTER ────────────────────────────────────────────── -->
+    <footer id="footer-main">
+        <div class="footer-brand">BK SOLUTIONS // THE STANDARD OF TRUST</div>
+
+        <div class="footer-social social-icons">
             <a href="https://x.com/BKSolutions_" target="_blank" rel="noopener noreferrer" class="icon-box"><i class="fa-brands fa-x-twitter"></i></a>
             <a href="https://www.youtube.com/@BKSolutions_pl" target="_blank" rel="noopener noreferrer" class="icon-box"><i class="fa-brands fa-youtube"></i></a>
             <a href="https://www.instagram.com/bksolutions_pl" target="_blank" rel="noopener noreferrer" class="icon-box"><i class="fa-brands fa-instagram"></i></a>
         </div>
-    </div>
+
+        <div class="footer-legal">
+            &copy; <script>document.write(new Date().getFullYear())</script> BK SOLUTIONS<br>
+            <a href="/privacy-policy">POLITYKA PRYWATNOŚCI</a>
+        </div>
+    </footer>
 
     <script defer src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script defer src="js/utils.js"></script>
+    <script defer src="js/scroll-effects.js"></script>
+    <script defer src="js/nav.js"></script>
+    <script defer src="js/form.js"></script>
     <script defer src="js/script.js"></script>
 </body>
 </html>
