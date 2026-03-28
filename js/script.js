@@ -3,7 +3,7 @@
 // 2 = MODULE_01 odblokowany
 // 3 = MODULE_01 + MODULE_02 odblokowane
 // 4 = wszystkie odblokowane (pełny launch)
-const SITE_PHASE = 1;
+const SITE_PHASE = 2;
 document.documentElement.setAttribute('data-phase', SITE_PHASE);
 
 document.addEventListener('DOMContentLoaded', () => { applyPhase(SITE_PHASE); });
