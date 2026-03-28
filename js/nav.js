@@ -4,8 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.getElementById('nav-main');
     const toggle = document.getElementById('nav-toggle');
 
+    if (!nav) return;
+
+    const yearEl = document.getElementById('footer-year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    let navScrolled = false;
     window.addEventListener('scroll', () => {
-        nav.classList.toggle('nav--scrolled', window.scrollY > 50);
+        const shouldBeScrolled = window.scrollY > 50;
+        if (shouldBeScrolled !== navScrolled) {
+            navScrolled = shouldBeScrolled;
+            nav.classList.toggle('nav--scrolled', navScrolled);
+        }
     }, { passive: true });
 
     if (toggle) {

@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ── Count-up for stats ───────────────────────────────── */
+    const plFormat = new Intl.NumberFormat('pl-PL');
+
     const counterObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !entry.target.dataset.counted) {
@@ -48,21 +50,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 const duration = parseInt(entry.target.dataset.duration) || 1500;
                 const isDecimal = !Number.isInteger(target);
                 const el = entry.target;
+                const fmt = v => prefix + (isDecimal ? v.toFixed(2) : plFormat.format(Math.floor(v))) + suffix;
 
-                const start = performance.now();
-                const update = now => {
-                    const elapsed  = now - start;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const ease     = 1 - Math.pow(1 - progress, 3);
-                    const value    = ease * target;
-                    el.textContent = prefix + (isDecimal ? value.toFixed(2) : Math.floor(value).toLocaleString('pl-PL')) + suffix;
-                    if (progress < 1) requestAnimationFrame(update);
-                    else el.textContent = prefix + (isDecimal ? target.toFixed(2) : target.toLocaleString('pl-PL')) + suffix;
-                };
                 if (!reducedMotion) {
+                    const start = performance.now();
+                    const update = now => {
+                        const elapsed  = now - start;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const ease     = 1 - Math.pow(1 - progress, 3);
+                        el.textContent = fmt(ease * target);
+                        if (progress < 1) requestAnimationFrame(update);
+                    };
                     requestAnimationFrame(update);
                 } else {
-                    el.textContent = prefix + (isDecimal ? target.toFixed(2) : target.toLocaleString('pl-PL')) + suffix;
+                    el.textContent = fmt(target);
                 }
                 counterObserver.unobserve(entry.target);
             }
