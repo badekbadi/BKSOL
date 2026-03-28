@@ -1,3 +1,55 @@
+// ── PHASE CONTROL ──────────────────────────────────────────────
+// 1 = wszystkie moduły zablokowane (coming soon)
+// 2 = MODULE_01 odblokowany
+// 3 = MODULE_01 + MODULE_02 odblokowane
+// 4 = wszystkie odblokowane (pełny launch)
+const SITE_PHASE = 1;
+document.documentElement.setAttribute('data-phase', SITE_PHASE);
+
+document.addEventListener('DOMContentLoaded', () => { applyPhase(SITE_PHASE); });
+
+function applyPhase(phase) {
+    const p = Math.min(Math.max(phase, 1), 4);
+
+    const headerTexts = {
+        1: '> MISSION MODULES // 3 OF 3 CLASSIFIED',
+        2: '> MISSION MODULES // 2 OF 3 CLASSIFIED',
+        3: '> MISSION MODULES // 1 OF 3 CLASSIFIED',
+        4: '> MISSION MODULES // DECLASSIFIED'
+    };
+    const progressTexts = {
+        1: '[░░░░░░░░░░]  0% DECLASSIFIED',
+        2: '[███░░░░░░░]  33% DECLASSIFIED',
+        3: '[██████░░░░]  67% DECLASSIFIED',
+        4: '[██████████]  100% DECLASSIFIED'
+    };
+    const countTexts = {
+        1: 'CLEARANCE LEVEL REQUIRED: TOP SECRET',
+        2: 'CLEARANCE LEVEL: PARTIAL // 1 OF 3 ACTIVE',
+        3: 'CLEARANCE LEVEL: PARTIAL // 2 OF 3 ACTIVE',
+        4: 'CLEARANCE LEVEL: GRANTED // ALL MODULES ACTIVE'
+    };
+
+    const set = (id, map) => { const el = document.getElementById(id); if (el) el.textContent = map[p]; };
+    set('modules-header-text', headerTexts);
+    set('modules-progress', progressTexts);
+    set('modules-count', countTexts);
+
+    // Status aktywnych kart
+    const modules = [
+        { id: 'mc-01', unlockAt: 2, name: 'FOUNDATION CLEARANCE' },
+        { id: 'mc-02', unlockAt: 3, name: 'OPERATIONAL PROTOCOLS' },
+        { id: 'mc-03', unlockAt: 4, name: 'ADVANCED ARCHITECTURE' }
+    ];
+    modules.forEach(({ id, unlockAt, name }) => {
+        const card = document.getElementById(id);
+        if (!card) return;
+        const statusEl = card.querySelector('.module-card__status');
+        if (p >= unlockAt && statusEl) statusEl.textContent = name + ' // ACTIVE';
+    });
+}
+// ───────────────────────────────────────────────────────────────
+
 let isMobile = window.innerWidth < 700;
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -6,7 +58,16 @@ window.addEventListener('resize', () => {
 });
 
 (function () {
-    const messages = [
+    const messages = SITE_PHASE === 2 ? [
+        "LOADING CRYPTOGRAPHIC MODULES... [ OK ]",
+        "ZERO-TRUST ARCHITECTURE: VERIFIED [ OK ]",
+        "ACCESS POLICIES: ENFORCED [ OK ]",
+        "DATA STREAMS: SECURED [ OK ]",
+        "INTEGRITY CHECKSUM: VALIDATED [ DONE ]",
+        "AUTHORIZATION GRANTED... [ OK ]",
+        "STATUS: OPERATIONAL",
+        "WELCOME, OPERATOR_"
+    ] : [
         "INITIALIZING CORE ENVIRONMENT...",
         "LOADING CRYPTOGRAPHIC MODULES... [ OK ]",
         "VERIFYING ZERO-TRUST ARCHITECTURE... [ OK ]",
@@ -17,7 +78,15 @@ window.addEventListener('resize', () => {
         "AWAITING AUTHORIZATION_"
     ];
 
-    const mobileMessages = [
+    const mobileMessages = SITE_PHASE === 2 ? [
+        "CRYPTO MODULES... [ OK ]",
+        "ZERO-TRUST... [ OK ]",
+        "ACCESS POLICIES... [ OK ]",
+        "DATA STREAMS... [ OK ]",
+        "CHECKSUM: VALIDATED [ DONE ]",
+        "STATUS: OPERATIONAL",
+        "WELCOME, OPERATOR_"
+    ] : [
         "INIT CORE ENVIRONMENT...",
         "LOADING CRYPTO... [ OK ]",
         "ZERO-TRUST VERIFY... [ OK ]",
