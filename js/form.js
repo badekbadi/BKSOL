@@ -8,8 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusEl = document.getElementById('access-status');
 
     // Ustaw własny URL Formspree: https://formspree.io (darmowy plan: 50 zgłoszeń/mies.)
-    // Zamień 'REPLACE_ME' na swój endpoint, np. 'https://formspree.io/f/xabcdefg'
-    const FORMSPREE_URL = 'REPLACE_ME';
+    // Zamień null na swój endpoint, np. 'https://formspree.io/f/xabcdefg'
+    const FORMSPREE_URL = null;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     form.addEventListener('submit', async e => {
         e.preventDefault();
@@ -20,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.textContent = '[ TRANSMITTING... ]';
         submitBtn.disabled = true;
 
-        if (FORMSPREE_URL === 'REPLACE_ME') {
+        if (!FORMSPREE_URL) {
             showSuccess(operatorVal, emailVal);
             return;
         }
@@ -35,14 +37,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (res.ok) {
                 showSuccess(operatorVal, emailVal);
             } else {
-                submitBtn.textContent = '[ TRANSMISSION FAILED — RETRY ]';
-                submitBtn.disabled = false;
+                showError();
             }
         } catch {
-            submitBtn.textContent = '[ TRANSMISSION FAILED — RETRY ]';
-            submitBtn.disabled = false;
+            showError();
         }
     });
+
+    function showError() {
+        submitBtn.textContent = '[ TRANSMISSION FAILED — RETRY ]';
+        submitBtn.disabled = false;
+    }
 
     function showSuccess(operator, email) {
         form.style.display = 'none';
@@ -59,6 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
             '> ETA: NOTIFICATION VIA REGISTERED CHANNEL',
             '_'
         ];
+
+        if (reducedMotion) {
+            content.textContent = lines.join('\n');
+            return;
+        }
 
         let i = 0;
         function appendLine() {
