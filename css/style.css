@@ -198,6 +198,15 @@ body {
     align-items: center;
 }
 
+.log-status-fixed {
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+    opacity: 0.45;
+    font-size: 0.84rem;
+    letter-spacing: 1.5px;
+}
+
 .log-prefix {
     margin-right: 8px;
     opacity: 0.6;
